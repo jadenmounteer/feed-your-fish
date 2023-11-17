@@ -9,9 +9,15 @@ import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { GoldfishComponent } from './components/fish/goldfish/goldfish.component';
 import { NavComponent } from './components/nav/nav.component';
+import { GoogleButtonComponent } from './components/google-button/google-button.component';
 
 @NgModule({
-  declarations: [AppComponent, GoldfishComponent, NavComponent],
+  declarations: [
+    AppComponent,
+    GoldfishComponent,
+    NavComponent,
+    GoogleButtonComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
