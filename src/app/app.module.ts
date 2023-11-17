@@ -15,7 +15,7 @@ import { GoldfishComponent } from './components/fish/goldfish/goldfish.component
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    GoldfishComponent,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
   ],
