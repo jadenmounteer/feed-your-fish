@@ -7,10 +7,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment.prod';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { GoldfishComponent } from 'src/app/components/fish/goldfish/goldfish.component';
+import { GoldfishComponent } from './components/fish/goldfish/goldfish.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, GoldfishComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
