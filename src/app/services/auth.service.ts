@@ -3,12 +3,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Observable, of, Subject, switchMap } from 'rxjs';
 import { User } from 'src/app/types/user';
-import { AuthData } from './auth-data.model';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat/app';
+import { AuthData } from '../types/auth-data.model';
 
 @Injectable({
   providedIn: 'root',
