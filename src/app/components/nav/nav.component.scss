@@ -1,13 +1,27 @@
 @import "../../../styles.scss";
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
 .navbar,
 .dropdown-menu {
   background-color: $navBarColor;
 }
 
+.navbar-nav {
+  margin-left: auto;
+}
+
 .navbar-logo-img {
   max-height: 75px;
 }
-
+.nav-link-container {
+  display: flex;
+  align-items: center;
+  justify-content: row;
+  gap: 4px;
+}
 a,
 button {
   color: #fff !important;

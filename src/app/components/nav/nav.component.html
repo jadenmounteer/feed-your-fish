@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light mb-3">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="'.'">
+      <h1>Feed Your Fish</h1>
       <img class="navbar-logo-img" src="assets/goldfish-image.png" />
     </a>
     <div class="three navbar-toggler">
@@ -18,10 +19,11 @@
 
     <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
       <ul class="navbar-nav">
-        hello world
         <li class="nav-item active" *ngIf="isAuth">
           <div ngbDropdown>
             <span class="nav-link-container">
+              <fa-icon class="accept-button" [icon]="icon.faUser"></fa-icon>
+
               <a
                 class="nav-link"
                 style="cursor: pointer"

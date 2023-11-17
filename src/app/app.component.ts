@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,21 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'feed-your-fish';
+  private authSubscription!: Subscription;
+  public isAuth: boolean = false;
 
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
     this.authService.iniAuthListener();
+
+    this.authSubscription = this.authService.authChange.subscribe(
+      (authStatus) => {
+        this.isAuth = authStatus;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
   }
 }
