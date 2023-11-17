@@ -8,9 +8,10 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment.prod';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { GoldfishComponent } from './components/fish/goldfish/goldfish.component';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
-  declarations: [AppComponent, GoldfishComponent],
+  declarations: [AppComponent, GoldfishComponent, NavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

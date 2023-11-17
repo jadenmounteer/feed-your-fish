@@ -1,0 +1,141 @@
+<nav class="navbar navbar-expand-lg navbar-light mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="'.'">
+      <img class="navbar-logo-img" src="assets/images/logo-no-background.png" />
+    </a>
+
+    <div class="navbar-weather-widget">
+      <app-nav-weather></app-nav-weather>
+    </div>
+
+    <div class="three navbar-toggler">
+      <div
+        class="hamburger"
+        id="hamburger-1"
+        (click)="isMenuCollapsed = !isMenuCollapsed"
+        [class.is-active]="!isMenuCollapsed"
+      >
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
+      <ul class="navbar-nav">
+        <li class="nav-item active" *ngIf="!isAuth">
+          <a
+            class="nav-link"
+            [routerLink]="'login'"
+            (click)="isMenuCollapsed = true"
+            >Login
+          </a>
+        </li>
+
+        <li class="nav-item active" *ngIf="!isAuth">
+          <a
+            class="nav-link"
+            [routerLink]="'sign-up'"
+            (click)="isMenuCollapsed = true"
+            >Sign Up
+          </a>
+        </li>
+
+        <li class="nav-item active" *ngIf="isAuth">
+          <div ngbDropdown>
+            <span class="nav-link-container">
+              <a
+                class="nav-link"
+                style="cursor: pointer"
+                ngbDropdownToggle
+                *ngIf="authService.user$ | async as user"
+              >
+                {{ user.email }}
+              </a>
+            </span>
+
+            <div class="dropdown-menu" ngbDropdownMenu>
+              <a
+                ngbDropdownItem
+                (click)="isMenuCollapsed = true; authService.logout()"
+                >Sign Out</a
+              >
+            </div>
+          </div>
+        </li>
+        <li class="nav-item active" *ngIf="isAuth">
+          <a
+            class="nav-link"
+            [routerLink]="'reserve-trip-page'"
+            (click)="isMenuCollapsed = true"
+            >Book Now
+          </a>
+        </li>
+
+        <li class="nav-item active" *ngIf="isAuth">
+          <a
+            class="nav-link"
+            [routerLink]="'my-reservations-page'"
+            (click)="isMenuCollapsed = true"
+            >My Reservations
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            [routerLink]="'whats-happening'"
+            (click)="isMenuCollapsed = true"
+            *ngIf="isAuth"
+            >What's Happening
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            [routerLink]="'fitness-center'"
+            (click)="isMenuCollapsed = true"
+            *ngIf="isAuth"
+            >Fitness Center
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            [routerLink]="'announcements'"
+            (click)="isMenuCollapsed = true"
+            *ngIf="isAuth"
+            >Announcements
+          </a>
+        </li>
+        <li
+          class="nav-item active"
+          *ngIf="isAuth && (currentUserIsAdmin$ | async)"
+        >
+          <a
+            class="nav-link"
+            [routerLink]="'administration'"
+            (click)="isMenuCollapsed = true"
+            >Administration
+          </a>
+        </li>
+
+        <!-- <li class="nav-item active">
+          <a
+            class="nav-link"
+            [routerLink]="'donut-saturday-game'"
+            (click)="isMenuCollapsed = true"
+            >🍩
+          </a>
+        </li> -->
+
+        <li class="nav-item active nav-list-weather-widget">
+          <div class="weather-container">
+            <app-nav-weather></app-nav-weather>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
