@@ -24,7 +24,7 @@
 }
 a,
 button {
-  color: #fff !important;
+  color: black !important;
 }
 
 a {
@@ -35,12 +35,11 @@ a {
 .nav-link:focus,
 .active,
 .a:hover {
-  color: #ababab !important;
+  // color: black !important;
 }
 
 .dropdown-item:hover {
-  background-color: rgba(0, 0, 0);
-  color: #ababab;
+  background-color: $navBarColor;
 }
 
 .navbar-toggler {
@@ -51,7 +50,7 @@ a {
 .hamburger .line {
   width: 50px;
   height: 5px;
-  background-color: $backgroundColor;
+  background-color: black;
   display: block;
   margin: 8px auto;
   -webkit-transition: all 0.3s ease-in-out;
