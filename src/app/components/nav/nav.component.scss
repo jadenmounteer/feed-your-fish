@@ -1,0 +1,89 @@
+@import "../../../styles.scss";
+.navbar,
+.dropdown-menu {
+  background-color: $navBarColor;
+}
+
+.navbar-logo-img {
+  max-height: 75px;
+}
+
+a,
+button {
+  color: #fff !important;
+}
+
+a {
+  cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.active,
+.a:hover {
+  color: #ababab !important;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0);
+  color: #ababab;
+}
+
+.navbar-toggler {
+  color: $backgroundColor;
+}
+
+// The hamburger menu was taken from this Codepen: https://codepen.io/RRoberts/pen/ZBYaJr
+.hamburger .line {
+  width: 50px;
+  height: 5px;
+  background-color: $backgroundColor;
+  display: block;
+  margin: 8px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+}
+
+/* ONE */
+
+#hamburger-1.is-active .line:nth-child(2) {
+  opacity: 0;
+}
+
+#hamburger-1.is-active .line:nth-child(1) {
+  -webkit-transform: translateY(13px) rotate(45deg);
+  -ms-transform: translateY(13px) rotate(45deg);
+  -o-transform: translateY(13px) rotate(45deg);
+  transform: translateY(13px) rotate(45deg);
+}
+
+#hamburger-1.is-active .line:nth-child(3) {
+  -webkit-transform: translateY(-13px) rotate(-45deg);
+  -ms-transform: translateY(-13px) rotate(-45deg);
+  -o-transform: translateY(-13px) rotate(-45deg);
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+.weather-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-list-weather-widget {
+  display: none;
+  @include for-desktop-up {
+    display: block;
+  }
+}
+
+.navbar-weather-widget {
+  @include for-tablet-landscape-up {
+    display: none;
+  }
+}

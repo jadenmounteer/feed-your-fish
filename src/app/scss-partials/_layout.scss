@@ -1,0 +1,51 @@
+$spacing-large: 60px;
+$spacing-medium: 30px;
+$nav-bar-height: 101px;
+
+/*
+* Screen size mixins
+* Usage: @include layout.for-tablet-portrait-up {margin-left: -0.1em;}
+*/
+@mixin for-phone-only {
+  @media (max-width: 649px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 650px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 908px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+.modal-content {
+  margin-top: 106px;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-large;
+}
+
+.page-title {
+  margin-bottom: 10px;
+}
