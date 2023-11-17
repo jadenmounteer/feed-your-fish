@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light mb-3">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="'.'">
-      <!-- <img class="navbar-logo-img" src="assets/images/logo-no-background.png" /> -->
+      <img class="navbar-logo-img" src="assets/goldfish-image.png" />
     </a>
     <div class="three navbar-toggler">
       <div
@@ -18,22 +18,28 @@
 
     <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a
-            class="nav-link"
-            [routerLink]="'login'"
-            (click)="isMenuCollapsed = true"
-            >Login
-          </a>
-        </li>
+        hello world
+        <li class="nav-item active" *ngIf="isAuth">
+          <div ngbDropdown>
+            <span class="nav-link-container">
+              <a
+                class="nav-link"
+                style="cursor: pointer"
+                ngbDropdownToggle
+                *ngIf="authService.user$ | async as user"
+              >
+                {{ user.email }}
+              </a>
+            </span>
 
-        <li class="nav-item active">
-          <a
-            class="nav-link"
-            [routerLink]="'sign-up'"
-            (click)="isMenuCollapsed = true"
-            >Sign Up
-          </a>
+            <div class="dropdown-menu" ngbDropdownMenu>
+              <a
+                ngbDropdownItem
+                (click)="isMenuCollapsed = true; authService.logout()"
+                >Sign Out</a
+              >
+            </div>
+          </div>
         </li>
       </ul>
     </div>
