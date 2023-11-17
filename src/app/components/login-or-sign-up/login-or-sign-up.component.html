@@ -1,0 +1,148 @@
+<div class="login-page">
+  <div class="card">
+    <ngb-alert
+      class="danger-alert"
+      (closed)="displayBadEmailMsg = false"
+      [dismissible]="true"
+      [animation]="true"
+      type="danger"
+      *ngIf="displayBadEmailMsg"
+    >
+      Please type in a valid email address.
+    </ngb-alert>
+
+    <ngb-alert
+      class="success-alert"
+      (closed)="displayLoggedInMessage = false"
+      [dismissible]="true"
+      [animation]="true"
+      type="success"
+      *ngIf="displayLoggedInMessage"
+    >
+      You are logged in! 🥳
+    </ngb-alert>
+
+    <ngb-alert
+      [dismissible]="true"
+      (closed)="emailExistsMessage = ''"
+      *ngIf="emailExistsMessage"
+    >
+      {{ emailExistsMessage }}
+    </ngb-alert>
+
+    <ngb-alert
+      [dismissible]="true"
+      type="danger"
+      (closed)="signInErrorMessage = ''"
+      *ngIf="signInErrorMessage"
+    >
+      {{ signInErrorMessage }}
+    </ngb-alert>
+    <form
+      #f="ngForm"
+      (ngSubmit)="newUser ? onSignUp(f) : onLogin(f)"
+      *ngIf="contentLoaded && !forgotPassword"
+    >
+      <h1>{{ newUser ? "Sign Up" : "Login" }}</h1>
+      <div class="form-group" *ngIf="newUser">
+        <input
+          type="text"
+          placeholder="Your name"
+          ngModel
+          name="displayName"
+          required
+          #displayName="ngModel"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          placeholder="Email"
+          ngModel
+          name="email"
+          required
+          #emailInput="ngModel"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Password"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+          #pwInput="ngModel"
+          class="form-control"
+        />
+        <span class="form-hint-text"
+          >Password must be at least 6 characters long.</span
+        >
+      </div>
+
+      <div class="form-group" class="toggle-password-button">
+        <!-- An element to toggle between password visibility -->
+        <input type="checkbox" (click)="toggleShowPassword()" />
+        Show Password
+      </div>
+
+      <button type="submit" [disabled]="!f.valid" class="btn btn-primary">
+        {{ newUser ? "Sign Up" : "Login" }}
+      </button>
+
+      <a class="link-primary" (click)="switchToLoginOrSignUp()">
+        {{
+          newUser
+            ? "Already have an account? Click here to login."
+            : "Are you new here? Click here to create an account."
+        }}</a
+      >
+
+      <a class="link-primary" *ngIf="!newUser" (click)="toggleForgotPassword()">
+        Forgot your password?
+      </a>
+
+      <a
+        class="link-primary"
+        *ngIf="newUser"
+        (click)="navigateToRequestAccessPage()"
+      >
+        Need to get your email address approved? Click here.
+      </a>
+    </form>
+
+    <form
+      #resetPasswordForm="ngForm"
+      (ngSubmit)="sendResetPasswordEmail(resetPasswordForm)"
+      *ngIf="contentLoaded && forgotPassword"
+    >
+      <h1>Reset Password</h1>
+      <div class="form-group">
+        <input
+          type="email"
+          placeholder="Your email"
+          ngModel
+          name="email"
+          required
+          #emailInput="ngModel"
+          class="form-control"
+        />
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="!resetPasswordForm.valid"
+        class="btn btn-primary"
+      >
+        Reset Password
+      </button>
+
+      <a class="link-primary" (click)="toggleForgotPassword()">
+        I have suddenly remembered my password</a
+      >
+    </form>
+  </div>
+</div>

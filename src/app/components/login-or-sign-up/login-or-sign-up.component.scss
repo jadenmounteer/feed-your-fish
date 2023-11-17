@@ -1,0 +1,27 @@
+form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.card {
+  width: 500px;
+  padding: 10px;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  cursor: pointer;
+}
+
+.toggle-password-button {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
+  margin-left: 2px;
+}

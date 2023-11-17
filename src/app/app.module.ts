@@ -8,14 +8,12 @@ import { environment } from '../environments/environment';
 import { GoldfishComponent } from './components/fish/goldfish/goldfish.component';
 import { NavComponent } from './components/nav/nav.component';
 import { GoogleButtonComponent } from './components/google-button/google-button.component';
-import { LoginComponent } from './components/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { LoginOrSignUpComponent } from './components/login-or-sign-up/login-or-sign-up.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,19 +21,20 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     GoldfishComponent,
     NavComponent,
     GoogleButtonComponent,
-    LoginComponent,
+
+    LoginOrSignUpComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    AngularFireAuthModule,
+    FontAwesomeModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FontAwesomeModule,
+    AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
