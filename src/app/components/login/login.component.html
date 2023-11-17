@@ -1,0 +1,34 @@
+<div class="login-page">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <h1>Welcome back fellow adult!</h1>
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email"
+        ngModel
+        name="email"
+        required
+        #emailInput="ngModel"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+        #pwInput="ngModel"
+        class="form-control"
+      />
+    </div>
+
+    <button type="submit" [disabled]="!f.valid" class="btn btn-primary">
+      Login
+    </button>
+    <app-google-button (click)="onOathSignIn()"></app-google-button>
+  </form>
+</div>
