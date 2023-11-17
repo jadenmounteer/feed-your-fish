@@ -11,12 +11,6 @@ import { IconService } from 'src/app/services/icon.service';
 export class LoginComponent {
   constructor(private authService: AuthService, public icon: IconService) {}
 
-  public onSubmit(form: NgForm) {
-    this.authService.login({
-      email: form.value.email,
-      password: form.value.password,
-    });
-  }
   public onOathSignIn() {
     this.authService.googleSignin();
   }
