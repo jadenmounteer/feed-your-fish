@@ -13,7 +13,9 @@
         <button ngbDropdownItem *ngFor="let tank of tanks">
           {{ tank.tankName }}
         </button>
-        <button ngbDropdownItem>Create a tank +</button>
+        <button ngbDropdownItem (click)="onCreateTank()">
+          Create a tank +
+        </button>
       </div>
     </div>
   </div>

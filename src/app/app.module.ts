@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { LoginOrSignUpComponent } from './components/login-or-sign-up/login-or-sign-up.component';
 import { AuthService } from './services/auth.service';
 import { TankInfoComponent } from './components/tank-info/tank-info.component';
+import { CreateTankModalComponent } from './components/create-tank-modal/create-tank-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TankInfoComponent } from './components/tank-info/tank-info.component';
 
     LoginOrSignUpComponent,
      TankInfoComponent,
+     CreateTankModalComponent,
   ],
   imports: [
     BrowserModule,
