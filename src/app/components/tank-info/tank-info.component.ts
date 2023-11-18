@@ -42,9 +42,20 @@ export class TankInfoComponent implements OnInit, OnDestroy {
       .subscribe((tanks: Tank[]) => {
         this.tanks = tanks;
 
-        this.idOfFishTankViewing =
-          this.tankService.getTankUserIsCurrentlyViewing();
+        this.tankUserIsViewing = this.setTankUserIsViewing();
       });
+  }
+
+  private setTankUserIsViewing(): Tank | undefined {
+    this.idOfFishTankViewing = this.tankService.getTankUserIsCurrentlyViewing();
+
+    if (this.idOfFishTankViewing) {
+      return this.tankService.getTankUserIsViewing(
+        this.idOfFishTankViewing,
+        this.tanks
+      );
+    }
+    return undefined;
   }
 
   protected onCreateTank(): void {
