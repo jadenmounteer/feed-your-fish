@@ -47,6 +47,17 @@ export class TankService {
     return from(this.firestore.doc(`users/${userId}`).update(changes));
   }
 
+  public getUserData(userId: string): Observable<User[]> {
+    return this.firestore
+      .collection('users', (ref) => ref.where('uId', '==', userId))
+      .get()
+      .pipe(map((result) => convertSnaps<User>(result)));
+  }
+
+  public getTankUserIsViewing(userId: string, tanks: Tank[]): Tank {
+    return tanks.filter((tank) => tank.createdById === userId)[0];
+  }
+
   public deleteReview(tankId: string): Observable<void> {
     return from(this.firestore.doc(`tanks/${tankId}`).delete());
   }

@@ -16,6 +16,7 @@ export class AuthService {
   public isAuthenticated: boolean = false;
   public userId: string | undefined;
   public userEmail: string | null | undefined;
+
   public user$: Observable<User | null | undefined>;
   public userDisplayName: string | null | undefined = null;
 

@@ -1,25 +1,25 @@
-<div class="row">
-  <div class="col">
-    <div ngbDropdown class="d-inline-block">
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        id="dropdownBasic1"
-        ngbDropdownToggle
-      >
-        Change Tank
-      </button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <div *ngFor="let tank of tanks">
-          <button ngbDropdownItem (click)="setUserCurrentlyViewingTank(tank)">
-            {{ tank.tankName }}
-          </button>
-        </div>
+<div class="task-info-wrapper">
+  <div *ngIf="tankUserIsViewing">
+    <h3>{{ tankUserIsViewing.tankName }}</h3>
+  </div>
 
-        <button ngbDropdownItem (click)="onCreateTank()">
-          Create a tank +
+  <div ngbDropdown class="d-inline-block">
+    <button
+      type="button"
+      class="btn btn-outline-primary"
+      id="dropdownBasic1"
+      ngbDropdownToggle
+    >
+      Change Tank
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <div *ngFor="let tank of tanks">
+        <button ngbDropdownItem (click)="setUserCurrentlyViewingTank(tank)">
+          {{ tank.tankName }}
         </button>
       </div>
+
+      <button ngbDropdownItem (click)="onCreateTank()">Create a tank +</button>
     </div>
   </div>
 </div>

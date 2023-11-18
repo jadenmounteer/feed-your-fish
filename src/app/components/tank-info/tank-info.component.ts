@@ -13,10 +13,13 @@ import { TankService } from 'src/app/services/tank.service';
 export class TankInfoComponent implements OnInit, OnDestroy {
   @Input() userEmail: string | null | undefined;
   @Input() userId!: string | undefined;
+  @Input() idOfFishTankViewing!: string;
 
   protected loading: boolean = true;
   protected tanks: Tank[] = [];
   private tankSubscription$ = new Subscription();
+  private userDataSubscription$ = new Subscription();
+  protected tankUserIsViewing: Tank | undefined;
 
   constructor(
     private modalService: NgbModal,
@@ -39,9 +42,29 @@ export class TankInfoComponent implements OnInit, OnDestroy {
       .subscribe((tanks: Tank[]) => {
         this.tanks = tanks;
 
-        this.loading = false;
+        if (!this.userId) {
+          return;
+        }
+
+        this.userDataSubscription$ = this.tankService
+          .fetchTanksByUser(this.userId)
+          .subscribe((tanks: Tank[]) => {
+            this.tanks = tanks;
+
+            if (!this.userId) {
+              return;
+            }
+
+            this.tankUserIsViewing = this.tankService.getTankUserIsViewing(
+              this.userId,
+              tanks
+            );
+
+            this.loading = false;
+          });
       });
   }
+
   protected onCreateTank(): void {
     const modalRef = this.modalService.open(CreateTankModalComponent);
     modalRef.result.then((result) => {
@@ -65,5 +88,6 @@ export class TankInfoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.tankSubscription$.unsubscribe();
+    this.userDataSubscription$.unsubscribe();
   }
 }
