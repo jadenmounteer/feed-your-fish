@@ -12,6 +12,12 @@ const routes: Routes = [
   },
 
   {
+    path: 'home-page',
+    component: HomePageComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
     path: 'landing-page',
     component: LandingPageComponent,
   },

@@ -122,6 +122,7 @@ export class AuthService {
 
   public onSuccessfulAuthentication() {
     this.isAuthenticated = true;
+    this.router.navigate(['home-page']);
     this.authChange.next(true);
     // I don't want to navigate the user away from the reservation page if they login on that page.
     // Maybe pass in the desired route after they login and then navigate them only if the parameter exists.

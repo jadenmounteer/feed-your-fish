@@ -18,6 +18,7 @@ import { TankInfoComponent } from './components/tank-info/tank-info.component';
 import { CreateTankModalComponent } from './components/create-tank-modal/create-tank-modal.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     GoogleButtonComponent,
 
     LoginOrSignUpComponent,
-     TankInfoComponent,
-     CreateTankModalComponent,
-     LandingPageComponent,
-     HomePageComponent,
+    TankInfoComponent,
+    CreateTankModalComponent,
+    LandingPageComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +43,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
