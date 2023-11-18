@@ -11,7 +11,7 @@
       </button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
         <div *ngFor="let tank of tanks">
-          <button ngbDropdownItem>
+          <button ngbDropdownItem (click)="setUserCurrentlyViewingTank(tank)">
             {{ tank.tankName }}
           </button>
         </div>

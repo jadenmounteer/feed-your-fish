@@ -73,6 +73,7 @@ export class AuthService {
       email: user!.email,
       displayName: displayName,
       photoURL: user?.photoURL,
+      currentlyWatchingTank: '',
     };
 
     return userRef.set(data, { merge: true });

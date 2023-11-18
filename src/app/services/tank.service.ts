@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, from, map } from 'rxjs';
 import { Tank } from '../types/tank';
 import { convertSnaps } from './db-utils';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,13 @@ export class TankService {
 
   public updateTank(tankId: string, changes: Partial<Tank>): Observable<any> {
     return from(this.firestore.doc(`tanks/${tankId}`).update(changes));
+  }
+
+  public updateUserData(
+    userId: string,
+    changes: Partial<User>
+  ): Observable<any> {
+    return from(this.firestore.doc(`users/${userId}`).update(changes));
   }
 
   public deleteReview(tankId: string): Observable<void> {

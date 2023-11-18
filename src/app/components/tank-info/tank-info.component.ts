@@ -47,8 +47,20 @@ export class TankInfoComponent implements OnInit, OnDestroy {
     modalRef.result.then((result) => {
       if (result !== undefined) {
         this.tanks.push(result);
+        this.setUserCurrentlyViewingTank(result);
       }
     });
+  }
+
+  protected setUserCurrentlyViewingTank(tank: Tank): void {
+    if (!this.userId) {
+      return;
+    }
+    this.tankService
+      .updateUserData(this.userId, {
+        currentlyWatchingTank: tank.id,
+      })
+      .subscribe();
   }
 
   ngOnDestroy(): void {
