@@ -17,6 +17,7 @@ export class CreateTankModalComponent {
     collaboratorIds: [],
     usersWatchingTank: [],
     fishes: [],
+    tankName: '',
   };
 
   protected displayErrorMsg: boolean = false;
