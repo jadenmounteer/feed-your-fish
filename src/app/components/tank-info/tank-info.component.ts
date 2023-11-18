@@ -45,23 +45,6 @@ export class TankInfoComponent implements OnInit, OnDestroy {
         if (!this.userId) {
           return;
         }
-
-        this.userDataSubscription$ = this.tankService
-          .getUserData(this.userId)
-          .subscribe((userData) => {
-            this.tanks = tanks;
-
-            if (!this.userId) {
-              return;
-            }
-
-            this.tankUserIsViewing = this.tankService.getTankUserIsViewing(
-              userData[0].currentlyWatchingTank,
-              tanks
-            );
-
-            this.loading = false;
-          });
       });
   }
 
@@ -79,14 +62,17 @@ export class TankInfoComponent implements OnInit, OnDestroy {
     if (!this.userId) {
       return;
     }
-    this.tankService
-      .updateUserData(this.userId, {
-        currentlyWatchingTank: tank.id,
-      })
-      .subscribe();
 
-    console.log('Just changed to ', tank.id);
-    this.tankUserIsViewing = tank;
+    // TODO
+
+    // this.tankService
+    //   .updateUserData(this.userId, {
+    //     currentlyWatchingTank: tank.id,
+    //   })
+    //   .subscribe();
+
+    // console.log('Just changed to ', tank.id);
+    // this.tankUserIsViewing = tank;
   }
 
   ngOnDestroy(): void {
