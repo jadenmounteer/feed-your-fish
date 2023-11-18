@@ -40,5 +40,6 @@ export class TankInfoComponent implements OnInit {
   protected setUserCurrentlyViewingTank(tank: Tank): void {
     this.tankService.updateTankUserIsCurrentlyViewing(tank.id);
     this.tankUserIsViewing = tank;
+    this.tankService.tankViewingChanged.next(tank);
   }
 }

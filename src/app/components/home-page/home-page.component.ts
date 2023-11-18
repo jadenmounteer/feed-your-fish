@@ -12,11 +12,11 @@ import { Tank } from 'src/app/types/tank';
 export class HomePageComponent {
   private authSubscription!: Subscription;
   public isAuth: boolean = false;
-  private idOfFishTankViewing: string | null | undefined;
   protected tankUserIsViewing: Tank | undefined;
   private tankSubscription$ = new Subscription();
   protected loading: boolean = true;
   protected tanks: Tank[] = [];
+  private tankViewingSubscription$ = new Subscription();
 
   constructor(
     protected authService: AuthService,
@@ -24,6 +24,10 @@ export class HomePageComponent {
   ) {}
   ngOnInit(): void {
     this.loadTanks();
+    this.tankViewingSubscription$ =
+      this.tankService.tankViewingChanged.subscribe((tank: Tank) => {
+        this.tankUserIsViewing = tank;
+      });
   }
 
   private loadTanks(): void {
@@ -41,5 +45,6 @@ export class HomePageComponent {
 
   ngOnDestroy(): void {
     this.tankSubscription$.unsubscribe();
+    this.tankViewingSubscription$.unsubscribe();
   }
 }

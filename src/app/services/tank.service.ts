@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-import { Observable, from, map } from 'rxjs';
+import { Observable, Subject, from, map } from 'rxjs';
 import { Tank } from '../types/tank';
 import { convertSnaps } from './db-utils';
 import { User } from '../types/user';
@@ -10,6 +10,7 @@ import { User } from '../types/user';
   providedIn: 'root',
 })
 export class TankService {
+  public tankViewingChanged: Subject<Tank> = new Subject<Tank>();
   constructor(private firestore: AngularFirestore) {}
 
   public createTank(newTank: Partial<Tank>, tankId: string) {
