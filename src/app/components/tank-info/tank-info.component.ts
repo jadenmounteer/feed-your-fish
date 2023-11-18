@@ -10,16 +10,12 @@ import { TankService } from 'src/app/services/tank.service';
   templateUrl: './tank-info.component.html',
   styleUrls: ['./tank-info.component.scss'],
 })
-export class TankInfoComponent implements OnInit, OnDestroy {
+export class TankInfoComponent implements OnInit {
   @Input() userEmail: string | null | undefined;
   @Input() userId!: string | undefined;
-  @Input() idOfFishTankViewing: string | null | undefined;
 
-  protected loading: boolean = true;
-  protected tanks: Tank[] = [];
-  private tankSubscription$ = new Subscription();
-  private userDataSubscription$ = new Subscription();
-  protected tankUserIsViewing: Tank | undefined;
+  @Input() tanks: Tank[] = [];
+  @Input() tankUserIsViewing: Tank | undefined;
 
   constructor(
     private modalService: NgbModal,
@@ -30,32 +26,6 @@ export class TankInfoComponent implements OnInit, OnDestroy {
     if (!this.userId) {
       throw new Error('userId is undefined');
     }
-    this.loadTanks();
-  }
-
-  private loadTanks(): void {
-    if (!this.userId) {
-      return;
-    }
-    this.tankSubscription$ = this.tankService
-      .fetchTanksByUser(this.userId)
-      .subscribe((tanks: Tank[]) => {
-        this.tanks = tanks;
-
-        this.tankUserIsViewing = this.setTankUserIsViewing();
-      });
-  }
-
-  private setTankUserIsViewing(): Tank | undefined {
-    this.idOfFishTankViewing = this.tankService.getTankUserIsCurrentlyViewing();
-
-    if (this.idOfFishTankViewing) {
-      return this.tankService.getTankUserIsViewing(
-        this.idOfFishTankViewing,
-        this.tanks
-      );
-    }
-    return undefined;
   }
 
   protected onCreateTank(): void {
@@ -71,10 +41,5 @@ export class TankInfoComponent implements OnInit, OnDestroy {
   protected setUserCurrentlyViewingTank(tank: Tank): void {
     this.tankService.updateTankUserIsCurrentlyViewing(tank.id);
     this.tankUserIsViewing = tank;
-  }
-
-  ngOnDestroy(): void {
-    this.tankSubscription$.unsubscribe();
-    this.userDataSubscription$.unsubscribe();
   }
 }

@@ -27,6 +27,15 @@ export class TankService {
     );
   }
 
+  public setTankUserIsViewing(tanks: Tank[]): Tank | undefined {
+    const idOfFishTankViewing = this.getTankUserIsCurrentlyViewing();
+
+    if (idOfFishTankViewing) {
+      return this.getTankUserIsViewing(idOfFishTankViewing, tanks);
+    }
+    return undefined;
+  }
+
   public fetchTanksByUser(userId: string): Observable<Tank[]> {
     return this.firestore
       .collection('tanks', (ref) =>
