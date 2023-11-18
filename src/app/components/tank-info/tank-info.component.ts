@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Tank } from 'src/app/types/tank';
 
 @Component({
   selector: 'app-tank-info',
@@ -8,4 +9,6 @@ import { Component, Input } from '@angular/core';
 export class TankInfoComponent {
   @Input() userEmail: string | null | undefined;
   @Input() userId: string | undefined;
+
+  protected tanks: Tank[] = [];
 }
