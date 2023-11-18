@@ -44,6 +44,10 @@ export class TankService {
     localStorage.setItem('tankCurrentlyViewing', tankId);
   }
 
+  public getTankUserIsCurrentlyViewing(): string | null {
+    return localStorage.getItem('tankCurrentlyViewing');
+  }
+
   public getUserData(userId: string): Observable<User[]> {
     return this.firestore
       .collection('users', (ref) => ref.where('uid', '==', userId))

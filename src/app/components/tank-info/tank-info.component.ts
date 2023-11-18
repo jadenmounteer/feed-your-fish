@@ -13,7 +13,7 @@ import { TankService } from 'src/app/services/tank.service';
 export class TankInfoComponent implements OnInit, OnDestroy {
   @Input() userEmail: string | null | undefined;
   @Input() userId!: string | undefined;
-  @Input() idOfFishTankViewing!: string;
+  @Input() idOfFishTankViewing: string | null | undefined;
 
   protected loading: boolean = true;
   protected tanks: Tank[] = [];
@@ -42,9 +42,8 @@ export class TankInfoComponent implements OnInit, OnDestroy {
       .subscribe((tanks: Tank[]) => {
         this.tanks = tanks;
 
-        if (!this.userId) {
-          return;
-        }
+        this.idOfFishTankViewing =
+          this.tankService.getTankUserIsCurrentlyViewing();
       });
   }
 
@@ -59,9 +58,6 @@ export class TankInfoComponent implements OnInit, OnDestroy {
   }
 
   protected setUserCurrentlyViewingTank(tank: Tank): void {
-    if (!this.userId) {
-      return;
-    }
     this.tankService.updateTankUserIsCurrentlyViewing(tank.id);
     this.tankUserIsViewing = tank;
   }
