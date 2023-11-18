@@ -13,10 +13,10 @@ import { catchError, tap, throwError } from 'rxjs';
 })
 export class CreateTankModalComponent {
   protected newTank: Partial<Tank> = {
-    id: '',
     createdById: this.authService.userId,
     collaboratorIds: [],
     usersWatchingTank: [],
+    fishes: [],
   };
 
   protected displayErrorMsg: boolean = false;
@@ -32,8 +32,6 @@ export class CreateTankModalComponent {
 
   protected onCreateTank() {
     const newTankId = this.angularFirestore.createId();
-
-    this.newTank.createdById = this.authService.userId;
 
     this.tankService
       .createTank(this.newTank, newTankId)
