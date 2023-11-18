@@ -19,6 +19,7 @@ import { CreateTankModalComponent } from './components/create-tank-modal/create-
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AuthGuard } from './services/auth.guard';
+import { FishTankComponent } from './components/fish-tank/fish-tank.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthGuard } from './services/auth.guard';
     CreateTankModalComponent,
     LandingPageComponent,
     HomePageComponent,
+    FishTankComponent,
   ],
   imports: [
     BrowserModule,
