@@ -26,9 +26,11 @@ export class TankService {
     );
   }
 
-  public fetchTanks(): Observable<Tank[]> {
+  public fetchTanksByUser(userId: string): Observable<Tank[]> {
     return this.firestore
-      .collection('tanks')
+      .collection('tanks', (ref) =>
+        ref.where('collaboratorIds', 'array-contains', userId)
+      )
       .get()
       .pipe(map((result) => convertSnaps<Tank>(result)));
   }

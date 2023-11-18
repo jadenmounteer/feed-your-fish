@@ -12,7 +12,7 @@ import { TankService } from 'src/app/services/tank.service';
 })
 export class TankInfoComponent implements OnInit, OnDestroy {
   @Input() userEmail: string | null | undefined;
-  @Input() userId: string | undefined;
+  @Input() userId!: string | undefined;
 
   protected loading: boolean = true;
   protected tanks: Tank[] = [];
@@ -24,15 +24,20 @@ export class TankInfoComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    if (!this.userId) {
+      throw new Error('userId is undefined');
+    }
     this.loadTanks();
   }
 
   private loadTanks(): void {
+    if (!this.userId) {
+      return;
+    }
     this.tankSubscription$ = this.tankService
-      .fetchTanks()
+      .fetchTanksByUser(this.userId)
       .subscribe((tanks: Tank[]) => {
         this.tanks = tanks;
-        console.log(this.tanks);
 
         this.loading = false;
       });

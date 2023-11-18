@@ -34,6 +34,11 @@ export class CreateTankModalComponent {
   protected onCreateTank() {
     const newTankId = this.angularFirestore.createId();
 
+    if (this.authService.userId) {
+      this.newTank.createdById = this.authService.userId;
+      this.newTank.collaboratorIds = [this.authService.userId];
+    }
+
     this.tankService
       .createTank(this.newTank, newTankId)
       .pipe(
