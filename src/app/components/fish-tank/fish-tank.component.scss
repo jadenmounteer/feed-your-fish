@@ -1,7 +1,10 @@
 @import "../../../styles.scss";
 
 .fish-tank {
+  margin-left: auto;
+  margin-right: auto;
   border: 2px solid;
   height: 400px;
   background-color: $secondaryColor;
+  width: 90%;
 }
