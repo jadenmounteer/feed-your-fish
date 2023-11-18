@@ -16,6 +16,8 @@ import { LoginOrSignUpComponent } from './components/login-or-sign-up/login-or-s
 import { AuthService } from './services/auth.service';
 import { TankInfoComponent } from './components/tank-info/tank-info.component';
 import { CreateTankModalComponent } from './components/create-tank-modal/create-tank-modal.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { CreateTankModalComponent } from './components/create-tank-modal/create-
     LoginOrSignUpComponent,
      TankInfoComponent,
      CreateTankModalComponent,
+     LandingPageComponent,
+     HomePageComponent,
   ],
   imports: [
     BrowserModule,
