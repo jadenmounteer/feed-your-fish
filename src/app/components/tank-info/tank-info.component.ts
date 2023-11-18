@@ -2,7 +2,6 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tank } from 'src/app/types/tank';
 import { CreateTankModalComponent } from '../create-tank-modal/create-tank-modal.component';
-import { Subscription } from 'rxjs';
 import { TankService } from 'src/app/services/tank.service';
 
 @Component({

@@ -5,4 +5,6 @@
   [tanks]="tanks"
 ></app-tank-info>
 
-<app-fish-tank></app-fish-tank>
+<div *ngIf="tankUserIsViewing">
+  <app-fish-tank [tank]="tankUserIsViewing"></app-fish-tank>
+</div>
