@@ -3,4 +3,11 @@
 <div *ngIf="!isAuth">
   <app-login-or-sign-up></app-login-or-sign-up>
 </div>
+
+<div *ngIf="isAuth">
+  <app-tank-info
+    [userEmail]="authService.userEmail"
+    [userId]="authService.userId"
+  ></app-tank-info>
+</div>
 <app-goldfish></app-goldfish>

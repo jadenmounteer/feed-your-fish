@@ -14,6 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { LoginOrSignUpComponent } from './components/login-or-sign-up/login-or-sign-up.component';
 import { AuthService } from './services/auth.service';
+import { TankInfoComponent } from './components/tank-info/tank-info.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthService } from './services/auth.service';
     GoogleButtonComponent,
 
     LoginOrSignUpComponent,
+     TankInfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class AppComponent {
   private authSubscription!: Subscription;
   public isAuth: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(protected authService: AuthService) {}
   ngOnInit(): void {
     this.authService.iniAuthListener();
 
