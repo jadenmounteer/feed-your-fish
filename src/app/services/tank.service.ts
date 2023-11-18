@@ -40,11 +40,8 @@ export class TankService {
     return from(this.firestore.doc(`tanks/${tankId}`).update(changes));
   }
 
-  public updateUserData(
-    userId: string,
-    changes: Partial<User>
-  ): Observable<any> {
-    return from(this.firestore.doc(`users/${userId}`).update(changes));
+  public updateTankUserIsCurrentlyViewing(tankId: string): void {
+    localStorage.setItem('tankCurrentlyViewing', tankId);
   }
 
   public getUserData(userId: string): Observable<User[]> {

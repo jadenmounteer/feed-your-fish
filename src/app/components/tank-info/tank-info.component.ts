@@ -62,17 +62,8 @@ export class TankInfoComponent implements OnInit, OnDestroy {
     if (!this.userId) {
       return;
     }
-
-    // TODO
-
-    // this.tankService
-    //   .updateUserData(this.userId, {
-    //     currentlyWatchingTank: tank.id,
-    //   })
-    //   .subscribe();
-
-    // console.log('Just changed to ', tank.id);
-    // this.tankUserIsViewing = tank;
+    this.tankService.updateTankUserIsCurrentlyViewing(tank.id);
+    this.tankUserIsViewing = tank;
   }
 
   ngOnDestroy(): void {
