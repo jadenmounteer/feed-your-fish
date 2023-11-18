@@ -1,1 +1,57 @@
-<p>create-tank-modal works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Add New Fish Tank</h4>
+
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+
+<form #f="ngForm">
+  <div class="modal-body">
+    <span
+      ><ngb-alert
+        class="danger-alert"
+        [dismissible]="true"
+        [animation]="true"
+        type="danger"
+        *ngIf="displayErrorMsg"
+      >
+        {{ errorMessage }}
+      </ngb-alert></span
+    >
+
+    <label>Name your new tank</label>
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Crazy fish tank name"
+        [ngModel]="newTank.tankName"
+        name="fishTankName"
+        required
+        #fish="ngModel"
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="onCreateTank()"
+      [disabled]="!f.valid"
+    >
+      Create
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="activeModal.close('No')"
+    >
+      Cancel
+    </button>
+  </div>
+</form>
