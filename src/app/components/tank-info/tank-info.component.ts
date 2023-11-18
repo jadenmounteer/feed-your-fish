@@ -47,8 +47,8 @@ export class TankInfoComponent implements OnInit, OnDestroy {
         }
 
         this.userDataSubscription$ = this.tankService
-          .fetchTanksByUser(this.userId)
-          .subscribe((tanks: Tank[]) => {
+          .getUserData(this.userId)
+          .subscribe((userData) => {
             this.tanks = tanks;
 
             if (!this.userId) {
@@ -56,7 +56,7 @@ export class TankInfoComponent implements OnInit, OnDestroy {
             }
 
             this.tankUserIsViewing = this.tankService.getTankUserIsViewing(
-              this.userId,
+              userData[0].currentlyWatchingTank,
               tanks
             );
 
@@ -84,6 +84,9 @@ export class TankInfoComponent implements OnInit, OnDestroy {
         currentlyWatchingTank: tank.id,
       })
       .subscribe();
+
+    console.log('Just changed to ', tank.id);
+    this.tankUserIsViewing = tank;
   }
 
   ngOnDestroy(): void {

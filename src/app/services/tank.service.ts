@@ -49,13 +49,13 @@ export class TankService {
 
   public getUserData(userId: string): Observable<User[]> {
     return this.firestore
-      .collection('users', (ref) => ref.where('uId', '==', userId))
+      .collection('users', (ref) => ref.where('uid', '==', userId))
       .get()
       .pipe(map((result) => convertSnaps<User>(result)));
   }
 
-  public getTankUserIsViewing(userId: string, tanks: Tank[]): Tank {
-    return tanks.filter((tank) => tank.createdById === userId)[0];
+  public getTankUserIsViewing(idOfTankViewing: string, tanks: Tank[]): Tank {
+    return tanks.filter((tank) => tank.id === idOfTankViewing)[0];
   }
 
   public deleteReview(tankId: string): Observable<void> {
