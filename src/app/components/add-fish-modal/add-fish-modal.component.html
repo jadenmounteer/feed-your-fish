@@ -85,5 +85,37 @@
     </div>
   </div>
 
-  <!-- Name the fish -->
+  <!-- How will you feed your fish? -->
+  <div class="name-fish-section" *ngIf="fishChosen && nameChosen">
+    <h5>Almost done. How will you feed {{ fishName }}?</h5>
+
+    <div class="fish-image-wrapper">
+      <img src="assets/goldfish-image.png" class="fish-image" />
+    </div>
+
+    <br />
+
+    <br />
+
+    <div class="buttons-section">
+      <div class="back-button">
+        <button
+          (click)="nameChosen = false; showAlert = false"
+          class="btn btn-secondary"
+        >
+          Back
+          <fa-icon
+            class="accept-button"
+            [icon]="iconService.faArrowLeft"
+          ></fa-icon>
+        </button>
+      </div>
+      <div class="next-button">
+        <button (click)="nameFish()" class="btn btn-primary">
+          Add to tank
+          <fa-icon class="accept-button" [icon]="iconService.faAdd"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
