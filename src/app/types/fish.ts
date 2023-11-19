@@ -6,6 +6,7 @@ export interface Fish {
   fishName: string;
   fishType: FishType;
   feedingSteps: string[];
+  fishStatus: FishStatus;
 }
 
 export type FishType =
@@ -17,3 +18,5 @@ export type FishType =
   | 'shark'
   | 'mermaid'
   | 'octopus';
+
+export type FishStatus = 'Happy' | 'Hungry';
