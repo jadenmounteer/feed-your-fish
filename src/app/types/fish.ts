@@ -3,8 +3,9 @@ import { GoldfishComponent } from '../components/fish/goldfish/goldfish.componen
 export interface Fish {
   id: string;
   userId: string | undefined;
-  name: string;
+  fishName: string;
   fishType: FishType;
+  feedingSteps: string[];
 }
 
 export type FishType =
