@@ -5,6 +5,6 @@
   margin-right: auto;
   border: 2px solid;
   height: 400px;
-  background-color: $secondaryColor;
+  background-image: linear-gradient($secondaryLighterColor, $secondaryColor);
   width: 90%;
 }
