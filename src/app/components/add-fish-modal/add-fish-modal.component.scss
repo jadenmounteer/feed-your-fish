@@ -23,3 +23,10 @@
 .fish-name {
   text-align: center;
 }
+
+.buttons-section {
+  display: flex;
+  column-gap: 4px;
+  flex-direction: row;
+  justify-content: center;
+}

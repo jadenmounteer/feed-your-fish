@@ -18,6 +18,7 @@ export class AddFishModalComponent {
   protected fishName: string = '';
   protected alertMessage: string = '';
   protected showAlert: boolean = false;
+  protected nameChosen: boolean = false;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -36,6 +37,8 @@ export class AddFishModalComponent {
     if (this.fishName === '') {
       this.showAlert = true;
       this.alertMessage = 'Please enter a name for your fish.';
+      return;
     }
+    this.nameChosen = true;
   }
 }

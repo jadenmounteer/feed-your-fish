@@ -40,7 +40,7 @@
   </div>
 
   <!-- Name the fish -->
-  <div class="name-fish-section" *ngIf="fishChosen">
+  <div class="name-fish-section" *ngIf="fishChosen && !nameChosen">
     <h5>Name your {{ fishType }}</h5>
 
     <div class="fish-image-wrapper">
@@ -56,8 +56,18 @@
     />
     <br />
 
-    <div class="next-button">
-      <button (click)="nameFish()" class="btn btn-primary">Next</button>
+    <div class="buttons-section">
+      <div class="back-button">
+        <button
+          (click)="fishChosen = false; showAlert = false"
+          class="btn btn-secondary"
+        >
+          Back
+        </button>
+      </div>
+      <div class="next-button">
+        <button (click)="nameFish()" class="btn btn-primary">Next</button>
+      </div>
     </div>
   </div>
 
