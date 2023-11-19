@@ -8,6 +8,8 @@ export interface Fish {
   feedingSteps: string[];
   fishStatus: FishStatus;
   daysUntilStatusChange: number;
+  createdDate: Date;
+  dateOfLastFeeding: Date;
 }
 
 export type FishType =
