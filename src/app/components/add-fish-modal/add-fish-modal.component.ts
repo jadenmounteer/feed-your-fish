@@ -15,6 +15,9 @@ export class AddFishModalComponent {
   protected contentLoaded: boolean = false;
   protected fishChosen: boolean = false;
   protected fishType: FishType | undefined;
+  protected fishName: string = '';
+  protected alertMessage: string = '';
+  protected showAlert: boolean = false;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -26,5 +29,13 @@ export class AddFishModalComponent {
   protected onSelectFishType(fishType: FishType): void {
     this.fishChosen = true;
     this.fishType = fishType;
+  }
+
+  protected nameFish() {
+    this.showAlert = false;
+    if (this.fishName === '') {
+      this.showAlert = true;
+      this.alertMessage = 'Please enter a name for your fish.';
+    }
   }
 }
