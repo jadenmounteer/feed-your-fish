@@ -7,6 +7,7 @@ export interface Fish {
   fishType: FishType;
   feedingSteps: string[];
   fishStatus: FishStatus;
+  daysUntilStatusChange: number;
 }
 
 export type FishType =
@@ -19,4 +20,4 @@ export type FishType =
   | 'mermaid'
   | 'octopus';
 
-export type FishStatus = 'Happy' | 'Hungry';
+export type FishStatus = 'Happy' | 'Hungry' | 'Dead';
