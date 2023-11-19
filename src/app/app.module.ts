@@ -20,6 +20,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AuthGuard } from './services/auth.guard';
 import { FishTankComponent } from './components/fish-tank/fish-tank.component';
+import { FishStatsSectionComponent } from './components/fish-stats-section/fish-stats-section.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FishTankComponent } from './components/fish-tank/fish-tank.component';
     LandingPageComponent,
     HomePageComponent,
     FishTankComponent,
+    FishStatsSectionComponent,
   ],
   imports: [
     BrowserModule,
