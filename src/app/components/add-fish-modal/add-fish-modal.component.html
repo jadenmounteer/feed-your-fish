@@ -9,15 +9,15 @@
   ></button>
 </div>
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="contentLoaded">
-  <div class="modal-body"></div>
-  <div class="modal-footer">
-    <!-- Submit button -->
-    <button [disabled]="!f.valid" type="submit" class="btn btn-primary">
-      Submit
-    </button>
+<div class="modal-body">
+  <span class="loading-icon" *ngIf="!contentLoaded">
+    <app-loading-spinner></app-loading-spinner>
+  </span>
+  <div class="select-fish-section">
+    <h3>Choose a fish</h3>
+
+    <div class="next-button">
+      <button (click)="onSelectFishType()" class="btn btn-primary">Next</button>
+    </div>
   </div>
-</form>
-<span class="loading-icon" *ngIf="!contentLoaded">
-  <app-loading-spinner></app-loading-spinner>
-</span>
+</div>

@@ -20,5 +20,5 @@ export class AddFishModalComponent {
     this.contentLoaded = true;
   }
 
-  protected onSubmit(form: NgForm): void {}
+  protected onSelectFishType(): void {}
 }
