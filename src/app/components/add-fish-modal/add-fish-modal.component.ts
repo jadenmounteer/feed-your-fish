@@ -7,6 +7,7 @@ import { IconService } from 'src/app/services/icon.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FishService } from 'src/app/services/fish.service';
 import { catchError, tap, throwError } from 'rxjs';
+import { TankService } from 'src/app/services/tank.service';
 
 @Component({
   selector: 'app-add-fish-modal',
@@ -29,7 +30,8 @@ export class AddFishModalComponent {
     private angularFirestore: AngularFirestore,
     protected iconService: IconService,
     private authService: AuthService,
-    private fishService: FishService
+    private fishService: FishService,
+    private tankService: TankService
   ) {
     this.contentLoaded = true;
   }
@@ -58,9 +60,11 @@ export class AddFishModalComponent {
       return;
     }
 
-    const newFishId = this.angularFirestore.createId();
+    if (!this.fishType) {
+      return;
+    }
 
-    const newFish: Partial<Fish> = {
+    const newFish: Fish = {
       fishName: this.fishName,
       fishType: this.fishType,
       feedingSteps: [this.step1],
@@ -71,11 +75,15 @@ export class AddFishModalComponent {
       userId: this.authService.userId,
     };
 
-    this.fishService
-      .createFish(newFish, newFishId)
+    this.tank.fishes.push(newFish);
+
+    this.tankService
+      .updateTank(this.tank.id, this.tank)
       .pipe(
-        tap((fish) => {
-          this.activeModal.close(fish);
+        tap((tank) => {
+          this.tankService.tankViewingChanged.next(this.tank);
+
+          this.activeModal.close(tank);
         }),
         catchError((err) => {
           this.showAlert = true;

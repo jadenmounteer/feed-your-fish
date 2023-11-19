@@ -23,12 +23,5 @@ export class FishStatsSectionComponent {
   protected addFish(): void {
     const modalRef = this.modalService.open(AddFishModalComponent);
     modalRef.componentInstance.tank = this.tank;
-
-    modalRef.result.then((result) => {
-      if (result.fisName) {
-        this.tank.fishes.push(result);
-        this.tankService.tankViewingChanged.next(this.tank);
-      }
-    });
   }
 }
