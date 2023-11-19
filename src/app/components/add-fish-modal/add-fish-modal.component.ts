@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
+import { Tank } from 'src/app/types/tank';
 
 @Component({
   selector: 'app-add-fish-modal',
@@ -9,6 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-fish-modal.component.scss'],
 })
 export class AddFishModalComponent {
+  @Input() tank!: Tank;
   protected contentLoaded: boolean = false;
 
   constructor(
