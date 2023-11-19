@@ -1,3 +1,5 @@
 <div class="fish-tank">
-  <app-goldfish></app-goldfish>
+  <div *ngFor="let fish of tank.fishes" [ngSwitch]="fish.fishType">
+    <app-goldfish *ngSwitchCase="'goldfish'"></app-goldfish>
+  </div>
 </div>
