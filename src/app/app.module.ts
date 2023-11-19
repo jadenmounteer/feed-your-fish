@@ -21,6 +21,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { AuthGuard } from './services/auth.guard';
 import { FishTankComponent } from './components/fish-tank/fish-tank.component';
 import { FishStatsSectionComponent } from './components/fish-stats-section/fish-stats-section.component';
+import { AddFishModalComponent } from './components/add-fish-modal/add-fish-modal.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FishStatsSectionComponent } from './components/fish-stats-section/fish-
     HomePageComponent,
     FishTankComponent,
     FishStatsSectionComponent,
+    AddFishModalComponent,
   ],
   imports: [
     BrowserModule,
