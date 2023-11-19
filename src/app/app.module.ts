@@ -23,6 +23,7 @@ import { FishTankComponent } from './components/fish-tank/fish-tank.component';
 import { FishStatsSectionComponent } from './components/fish-stats-section/fish-stats-section.component';
 import { AddFishModalComponent } from './components/add-fish-modal/add-fish-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { FishStatsComponent } from './components/fish-stats/fish-stats.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     FishStatsSectionComponent,
     AddFishModalComponent,
     LoadingSpinnerComponent,
+    FishStatsComponent,
   ],
   imports: [
     BrowserModule,
