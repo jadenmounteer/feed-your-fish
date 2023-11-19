@@ -2,8 +2,11 @@ import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Tank } from 'src/app/types/tank';
-import { FishType } from 'src/app/types/fish';
+import { Fish, FishType } from 'src/app/types/fish';
 import { IconService } from 'src/app/services/icon.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { FishService } from 'src/app/services/fish.service';
+import { catchError, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-add-fish-modal',
@@ -24,7 +27,9 @@ export class AddFishModalComponent {
   constructor(
     public activeModal: NgbActiveModal,
     private angularFirestore: AngularFirestore,
-    protected iconService: IconService
+    protected iconService: IconService,
+    private authService: AuthService,
+    private fishService: FishService
   ) {
     this.contentLoaded = true;
   }
@@ -52,5 +57,32 @@ export class AddFishModalComponent {
       this.alertMessage = 'Please fill out step 1.';
       return;
     }
+
+    const newFishId = this.angularFirestore.createId();
+
+    const newFish: Partial<Fish> = {
+      fishName: this.fishName,
+      fishType: this.fishType,
+      feedingSteps: [this.step1],
+      fishStatus: 'Happy',
+      daysUntilStatusChange: 1,
+      createdDate: new Date(),
+      dateOfLastFeeding: new Date(),
+      userId: this.authService.userId,
+    };
+
+    this.fishService
+      .createFish(newFish, newFishId)
+      .pipe(
+        tap((fish) => {
+          this.activeModal.close(fish);
+        }),
+        catchError((err) => {
+          this.showAlert = true;
+          this.alertMessage = err;
+          return throwError(err);
+        })
+      )
+      .subscribe();
   }
 }
