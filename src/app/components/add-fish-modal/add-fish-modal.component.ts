@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { NgForm } from '@angular/forms';
 import { Tank } from 'src/app/types/tank';
 import { FishType } from 'src/app/types/fish';
 import { IconService } from 'src/app/services/icon.service';
@@ -47,5 +46,11 @@ export class AddFishModalComponent {
 
   protected addToTank(): void {
     this.showAlert = false;
+
+    if (!this.step1) {
+      this.showAlert = true;
+      this.alertMessage = 'Please fill out step 1.';
+      return;
+    }
   }
 }
