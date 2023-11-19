@@ -20,6 +20,7 @@ export class AddFishModalComponent {
   protected alertMessage: string = '';
   protected showAlert: boolean = false;
   protected nameChosen: boolean = false;
+  protected step1: string = '';
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -42,5 +43,9 @@ export class AddFishModalComponent {
       return;
     }
     this.nameChosen = true;
+  }
+
+  protected addToTank(): void {
+    this.showAlert = false;
   }
 }

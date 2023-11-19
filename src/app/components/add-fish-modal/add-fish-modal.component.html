@@ -51,14 +51,14 @@
       <img src="assets/goldfish-image.png" class="fish-image" />
     </div>
 
-    <br />
-    <input
-      class="form-control"
-      type="text"
-      placeholder="Gerald"
-      [(ngModel)]="fishName"
-    />
-    <br />
+    <div class="inputs-section">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Gerald"
+        [(ngModel)]="fishName"
+      />
+    </div>
 
     <div class="buttons-section">
       <div class="back-button">
@@ -93,9 +93,15 @@
       <img src="assets/goldfish-image.png" class="fish-image" />
     </div>
 
-    <br />
-
-    <br />
+    <div class="inputs-section">
+      <label>Step 1</label>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Exercise for 30 minutes..."
+        [(ngModel)]="step1"
+      />
+    </div>
 
     <div class="buttons-section">
       <div class="back-button">
@@ -111,7 +117,7 @@
         </button>
       </div>
       <div class="next-button">
-        <button (click)="nameFish()" class="btn btn-primary">
+        <button (click)="addToTank()" class="btn btn-primary">
           Add to tank
           <fa-icon class="accept-button" [icon]="iconService.faAdd"></fa-icon>
         </button>
