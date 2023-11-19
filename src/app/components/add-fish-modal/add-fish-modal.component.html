@@ -35,6 +35,10 @@
     <div class="next-button">
       <button (click)="onSelectFishType('goldfish')" class="btn btn-primary">
         Next
+        <fa-icon
+          class="accept-button"
+          [icon]="iconService.faArrowRight"
+        ></fa-icon>
       </button>
     </div>
   </div>
@@ -63,10 +67,20 @@
           class="btn btn-secondary"
         >
           Back
+          <fa-icon
+            class="accept-button"
+            [icon]="iconService.faArrowLeft"
+          ></fa-icon>
         </button>
       </div>
       <div class="next-button">
-        <button (click)="nameFish()" class="btn btn-primary">Next</button>
+        <button (click)="nameFish()" class="btn btn-primary">
+          Next
+          <fa-icon
+            class="accept-button"
+            [icon]="iconService.faArrowRight"
+          ></fa-icon>
+        </button>
       </div>
     </div>
   </div>

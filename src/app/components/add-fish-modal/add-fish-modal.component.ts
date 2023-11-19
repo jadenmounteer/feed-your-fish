@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
 import { Tank } from 'src/app/types/tank';
 import { FishType } from 'src/app/types/fish';
+import { IconService } from 'src/app/services/icon.service';
 
 @Component({
   selector: 'app-add-fish-modal',
@@ -22,7 +23,8 @@ export class AddFishModalComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private angularFirestore: AngularFirestore
+    private angularFirestore: AngularFirestore,
+    protected iconService: IconService
   ) {
     this.contentLoaded = true;
   }

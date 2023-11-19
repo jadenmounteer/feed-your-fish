@@ -10,6 +10,7 @@ import {
   faArrowLeft,
   faGamepad,
   faAdd,
+  faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
@@ -28,6 +29,7 @@ export class IconService {
   public faArrowLeft = faArrowLeft;
   public faGamepad = faGamepad;
   public faAdd = faAdd;
+  public faArrowRight = faArrowRight;
 
   constructor() {}
 }
