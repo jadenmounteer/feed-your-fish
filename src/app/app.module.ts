@@ -22,6 +22,7 @@ import { AuthGuard } from './services/auth.guard';
 import { FishTankComponent } from './components/fish-tank/fish-tank.component';
 import { FishStatsSectionComponent } from './components/fish-stats-section/fish-stats-section.component';
 import { AddFishModalComponent } from './components/add-fish-modal/add-fish-modal.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddFishModalComponent } from './components/add-fish-modal/add-fish-moda
     FishTankComponent,
     FishStatsSectionComponent,
     AddFishModalComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

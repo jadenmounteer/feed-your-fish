@@ -1,1 +1,23 @@
-<p>add-fish-modal works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Add Fish</h4>
+
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="contentLoaded">
+  <div class="modal-body"></div>
+  <div class="modal-footer">
+    <!-- Submit button -->
+    <button [disabled]="!f.valid" type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+</form>
+<span class="loading-icon" *ngIf="!contentLoaded">
+  <app-loading-spinner></app-loading-spinner>
+</span>
