@@ -13,16 +13,22 @@
   <span class="loading-icon" *ngIf="!contentLoaded">
     <app-loading-spinner></app-loading-spinner>
   </span>
-  <div class="select-fish-section">
-    <h3>Choose a fish</h3>
+
+  <!-- Select a fish -->
+  <div class="select-fish-section" *ngIf="!fishChosen">
+    <h5>Choose a fish</h5>
 
     <div class="fish-image-wrapper">
       <img src="assets/goldfish-image.png" class="fish-image" />
     </div>
-    <h3 class="fish-name">Goldfish</h3>
+    <h5 class="fish-name">Goldfish</h5>
 
     <div class="next-button">
-      <button (click)="onSelectFishType()" class="btn btn-primary">Next</button>
+      <button (click)="onSelectFishType('goldfish')" class="btn btn-primary">
+        Next
+      </button>
     </div>
   </div>
+
+  <!-- Name the fish -->
 </div>
