@@ -1,14 +1,16 @@
-<app-tank-info
-  [userEmail]="authService.userEmail"
-  [userId]="authService.userId"
-  [tankUserIsViewing]="tankUserIsViewing"
-  [tanks]="tanks"
-></app-tank-info>
+<div class="content">
+  <app-tank-info
+    [userEmail]="authService.userEmail"
+    [userId]="authService.userId"
+    [tankUserIsViewing]="tankUserIsViewing"
+    [tanks]="tanks"
+  ></app-tank-info>
 
-<div *ngIf="tankUserIsViewing">
-  <app-fish-tank [tank]="tankUserIsViewing"></app-fish-tank>
-</div>
+  <div *ngIf="tankUserIsViewing">
+    <app-fish-tank [tank]="tankUserIsViewing"></app-fish-tank>
+  </div>
 
-<div *ngIf="tankUserIsViewing">
-  <app-fish-stats-section></app-fish-stats-section>
+  <div *ngIf="tankUserIsViewing">
+    <app-fish-stats-section></app-fish-stats-section>
+  </div>
 </div>
