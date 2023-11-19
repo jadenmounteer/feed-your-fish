@@ -31,4 +31,22 @@
   </div>
 
   <!-- Name the fish -->
+  <div class="name-fish-section" *ngIf="fishChosen">
+    <h5>Name your {{ fishType }}</h5>
+
+    <div class="fish-image-wrapper">
+      <img src="assets/goldfish-image.png" class="fish-image" />
+    </div>
+
+    <input class="form-control" type="text" placeholder="Gerald" />
+    <br />
+
+    <div class="next-button">
+      <button (click)="onSelectFishType('goldfish')" class="btn btn-primary">
+        Next
+      </button>
+    </div>
+  </div>
+
+  <!-- Name the fish -->
 </div>
