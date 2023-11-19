@@ -1,9 +1,12 @@
 <div class="content">
   <div *ngFor="let fish of tank.fishes">
-    <app-fish-stats> </app-fish-stats>
+    <app-fish-stats *ngIf="fish.userId === authService.userId">
+    </app-fish-stats>
   </div>
-  <button class="btn btn-primary" (click)="addFish()">
-    Add Fish
-    <fa-icon class="accept-button" [icon]="iconService.faAdd"></fa-icon>
-  </button>
+  <div>
+    <button class="btn btn-primary" (click)="addFish()">
+      Add Fish
+      <fa-icon class="accept-button" [icon]="iconService.faAdd"></fa-icon>
+    </button>
+  </div>
 </div>

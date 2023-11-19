@@ -5,6 +5,7 @@ import { AddFishModalComponent } from '../add-fish-modal/add-fish-modal.componen
 import { Tank } from 'src/app/types/tank';
 import { TankService } from 'src/app/services/tank.service';
 import { Fish } from 'src/app/types/fish';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-fish-stats-section',
@@ -17,7 +18,8 @@ export class FishStatsSectionComponent {
   constructor(
     protected iconService: IconService,
     private modalService: NgbModal,
-    private tankService: TankService
+    private tankService: TankService,
+    protected authService: AuthService
   ) {}
 
   protected addFish(): void {
