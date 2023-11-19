@@ -9,6 +9,7 @@ import {
   faTrashAlt,
   faArrowLeft,
   faGamepad,
+  faAdd,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 
@@ -26,6 +27,7 @@ export class IconService {
   public faTrashAlt = faTrashAlt;
   public faArrowLeft = faArrowLeft;
   public faGamepad = faGamepad;
+  public faAdd = faAdd;
 
   constructor() {}
 }
