@@ -12,7 +12,6 @@ export class FishService {
   public updateFishStatus(fishes: Fish[]): void {
     fishes.forEach((fish) => {
       if (this.timeForStatusChange(fish)) {
-        // TODO update the fish status
         fish.fishStatus = this.getNewFishStatus(fish);
         fish.dateOfLastFeeding = new Date();
       }
@@ -21,7 +20,9 @@ export class FishService {
 
   private timeForStatusChange(fish: Fish): boolean {
     const today = new Date();
-    const lastStatusChange = fish.dateOfLastFeeding;
+    const lastStatusChange = this.convertFirestoreTimestampToDate(
+      fish.dateOfLastFeeding
+    );
     const timeSinceLastStatusChange =
       today.getTime() - lastStatusChange.getTime();
     const daysSinceLastStatusChange =
@@ -37,5 +38,9 @@ export class FishService {
       return 'Hungry';
     }
     return 'Dead';
+  }
+
+  private convertFirestoreTimestampToDate(firestoreTimestamp: any): Date {
+    return firestoreTimestamp.toDate();
   }
 }
