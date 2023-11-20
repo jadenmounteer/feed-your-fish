@@ -1,6 +1,11 @@
 <div class="card fish-stats-bubble">
   <div class="header">
     <h5>{{ fish.fishName }}</h5>
+    <span [ngSwitch]="fish.fishStatus">
+      <span *ngSwitchCase="'Happy'">{{ happyEmoji }}</span>
+      <span *ngSwitchCase="'Hungry'">{{ hungryEmoji }}</span>
+      <span *ngSwitchCase="'Dead'">☠️</span>
+    </span>
     <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
     <div class="fish-image-wrapper">
       <img src="assets/goldfish-image.png" class="fish-image" />
@@ -10,9 +15,7 @@
   <div class="content">
     <span [ngSwitch]="fish.fishStatus"
       >Status:
-      <span *ngSwitchCase="'Happy'">😁</span>
-      <span *ngSwitchCase="'Hungry'">😟</span>
-      <span *ngSwitchCase="'Dead'">☠️</span>
+      <span [ngClass]="fish.fishStatus">{{ fish.fishStatus }}</span>
     </span>
   </div>
 

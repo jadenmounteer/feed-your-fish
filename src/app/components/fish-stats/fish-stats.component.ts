@@ -11,6 +11,8 @@ export class FishStatsComponent {
   @Input() fish!: Fish;
   @Output() fishFed: EventEmitter<Fish> = new EventEmitter();
   protected foodEmoji: string = '🍔';
+  protected hungryEmoji: string = this.generateRandomHungryEmoji();
+  protected happyEmoji: string = this.generateRandomHappyEmoji();
 
   constructor(private fishService: FishService) {
     this.foodEmoji = this.generateRandomFoodEmoji();
@@ -95,5 +97,46 @@ export class FishStatsComponent {
     ];
     const randomIndex: number = Math.floor(Math.random() * foodEmojis.length);
     return foodEmojis[randomIndex];
+  }
+
+  private generateRandomHungryEmoji(): string {
+    const hungryEmojis: string[] = [
+      '🥺',
+      '😒',
+      '😞',
+      '😟',
+      '😠',
+      '😡',
+      '🤬',
+      '😔',
+      '😕',
+      '🙁',
+      '🤒',
+    ];
+    const randomIndex: number = Math.floor(Math.random() * hungryEmojis.length);
+    return hungryEmojis[randomIndex];
+  }
+
+  private generateRandomHappyEmoji(): string {
+    const happyEmojis: string[] = [
+      '🥰',
+      '😍',
+      '😁',
+      '😃',
+      '😄',
+      '😆',
+      '😊',
+      '😎',
+      '🤪',
+      '🤩',
+      '🥳',
+      '😏',
+      '😌',
+      '😛',
+      '😇',
+      '🤠',
+    ];
+    const randomIndex: number = Math.floor(Math.random() * happyEmojis.length);
+    return happyEmojis[randomIndex];
   }
 }
