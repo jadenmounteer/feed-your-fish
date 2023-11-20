@@ -1,6 +1,10 @@
 <div class="content">
   <div *ngFor="let fish of tank.fishes" class="fish-stats-section">
-    <app-fish-stats *ngIf="fish.userId === authService.userId" [fish]="fish">
+    <app-fish-stats
+      *ngIf="fish.userId === authService.userId"
+      [fish]="fish"
+      (fishFed)="onFishFed($event)"
+    >
     </app-fish-stats>
   </div>
   <div>

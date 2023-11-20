@@ -26,4 +26,8 @@ export class FishStatsSectionComponent {
     const modalRef = this.modalService.open(AddFishModalComponent);
     modalRef.componentInstance.tank = this.tank;
   }
+
+  protected onFishFed(fish: Fish): void {
+    this.tankService.updateTank(this.tank.id, this.tank);
+  }
 }
