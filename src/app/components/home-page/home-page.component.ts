@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';
 import { Tank } from 'src/app/types/tank';
 
@@ -20,7 +21,8 @@ export class HomePageComponent {
 
   constructor(
     protected authService: AuthService,
-    private tankService: TankService
+    private tankService: TankService,
+    private fishService: FishService
   ) {}
   ngOnInit(): void {
     this.loadTanks();
@@ -38,6 +40,8 @@ export class HomePageComponent {
       .fetchTanksByUser(this.authService.userId)
       .subscribe((tanks: Tank[]) => {
         this.tanks = tanks;
+
+        // Check fish status. This can be moved elsewhere in the future
 
         this.tankUserIsViewing = this.tankService.setTankUserIsViewing(tanks);
       });
