@@ -12,8 +12,8 @@
     <span [ngSwitch]="fish.fishStatus">
       <span *ngSwitchCase="'Happy'">{{ happyEmoji }}</span>
       <span *ngSwitchCase="'Hungry'">{{ hungryEmoji }}</span>
-      <span *ngSwitchCase="'Dead'">☠️</span> </span
-    ><br />
+      <span *ngSwitchCase="'Dead'">☠️</span>
+    </span>
     <span [ngSwitch]="fish.fishStatus">
       <span [ngClass]="fish.fishStatus">{{ fish.fishStatus }}</span>
     </span>
