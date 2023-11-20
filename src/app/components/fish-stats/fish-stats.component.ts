@@ -10,8 +10,11 @@ import { Fish } from 'src/app/types/fish';
 export class FishStatsComponent {
   @Input() fish!: Fish;
   @Output() fishFed: EventEmitter<Fish> = new EventEmitter();
+  protected foodEmoji: string = '🍔';
 
-  constructor(private fishService: FishService) {}
+  constructor(private fishService: FishService) {
+    this.foodEmoji = this.generateRandomFoodEmoji();
+  }
 
   protected feed(): void {
     // TODO show the modal and things
@@ -20,5 +23,77 @@ export class FishStatsComponent {
     this.fishService.feedFish(this.fish);
     console.log(this.fish);
     this.fishFed.emit(this.fish);
+  }
+
+  private generateRandomFoodEmoji(): string {
+    const foodEmojis: string[] = [
+      '🍔',
+      '🍕',
+      '🍟',
+      '🍗',
+      '🥩',
+      '🥓',
+      '🍖',
+      '🌭',
+      '🍿',
+      '🍱',
+      '🍛',
+      '🍜',
+      '🍝',
+      '🍣',
+      '🍤',
+      '🍙',
+      '🍚',
+      '🍘',
+      '🥮',
+      '🥟',
+      '🍢',
+      '🍡',
+      '🍧',
+      '🍨',
+      '🍦',
+      '🥧',
+      '🧁',
+      '🍰',
+      '🎂',
+      '🍮',
+      '🍭',
+      '🍬',
+      '🍫',
+      '🍩',
+      '🥥',
+      '🥝',
+      '🍇',
+      '🍉',
+      '🍊',
+      '🍋',
+      '🍌',
+      '🍍',
+      '🍎',
+      '🍏',
+      '🍐',
+      '🍑',
+      '🍒',
+      '🍓',
+      '🥭',
+      '🍅',
+      '🥑',
+      '🥦',
+      '🥬',
+      '🥒',
+      '🌶',
+      '🌽',
+      '🥕',
+      '🥔',
+      '🍠',
+      '🥐',
+      '🥯',
+      '🍞',
+      '🥖',
+      '🍳',
+      '🥗',
+    ];
+    const randomIndex: number = Math.floor(Math.random() * foodEmojis.length);
+    return foodEmojis[randomIndex];
   }
 }

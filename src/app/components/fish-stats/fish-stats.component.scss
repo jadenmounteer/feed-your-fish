@@ -24,3 +24,13 @@
   margin-top: 16px;
   margin-bottom: 16px;
 }
+
+.Happy::after {
+  color: green;
+  // Insert content
+  content: "Test";
+}
+
+.Hungry {
+  color: orange;
+}

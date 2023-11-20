@@ -8,10 +8,24 @@
   </div>
 
   <div class="content">
-    <span>Status: {{ fish.fishStatus }}</span>
+    <span [ngSwitch]="fish.fishStatus"
+      >Status:
+      <span *ngSwitchCase="'Happy'">😁</span>
+      <span *ngSwitchCase="'Hungry'">😟</span>
+      <span *ngSwitchCase="'Dead'">☠️</span>
+    </span>
   </div>
 
   <div class="button-section">
-    <button class="btn btn-primary" (click)="feed()">Feed</button>
+    <button class="btn btn-primary" *ngIf="fish.fishStatus === 'Dead'">
+      Remove Fish
+    </button>
+    <button
+      class="btn btn-primary"
+      (click)="feed()"
+      *ngIf="fish.fishStatus === 'Happy' || fish.fishStatus === 'Hungry'"
+    >
+      Feed {{ foodEmoji }}
+    </button>
   </div>
 </div>
