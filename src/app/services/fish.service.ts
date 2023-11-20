@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Fish, FishStatus } from '../types/fish';
 import { Observable, from, map } from 'rxjs';
+import { convertFirestoreTimestampToDate } from './db-utils';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class FishService {
 
   private timeForStatusChange(fish: Fish): boolean {
     const today = new Date();
-    const lastStatusChange = this.convertFirestoreTimestampToDate(
+    const lastStatusChange = convertFirestoreTimestampToDate(
       fish.dateOfLastFeeding
     );
     const timeSinceLastStatusChange =
@@ -38,10 +39,6 @@ export class FishService {
       return 'Hungry';
     }
     return 'Dead';
-  }
-
-  private convertFirestoreTimestampToDate(firestoreTimestamp: any): Date {
-    return firestoreTimestamp.toDate();
   }
 
   public feedFish(fish: Fish): void {

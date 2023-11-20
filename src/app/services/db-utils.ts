@@ -6,3 +6,7 @@ export function convertSnaps<T>(results: { docs: any[] }) {
     };
   });
 }
+
+export function convertFirestoreTimestampToDate(firestoreTimestamp: any): Date {
+  return firestoreTimestamp.toDate();
+}
