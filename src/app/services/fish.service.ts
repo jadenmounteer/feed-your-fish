@@ -43,4 +43,9 @@ export class FishService {
   private convertFirestoreTimestampToDate(firestoreTimestamp: any): Date {
     return firestoreTimestamp.toDate();
   }
+
+  public feedFish(fish: Fish): void {
+    fish.dateOfLastFeeding = new Date();
+    fish.fishStatus = 'Happy';
+  }
 }
