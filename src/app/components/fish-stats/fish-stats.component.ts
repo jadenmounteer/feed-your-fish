@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { FishService } from 'src/app/services/fish.service';
 import { Fish } from 'src/app/types/fish';
 
@@ -7,15 +8,20 @@ import { Fish } from 'src/app/types/fish';
   templateUrl: './fish-stats.component.html',
   styleUrls: ['./fish-stats.component.scss'],
 })
-export class FishStatsComponent {
+export class FishStatsComponent implements OnInit {
   @Input() fish!: Fish;
   @Output() fishFed: EventEmitter<Fish> = new EventEmitter();
   protected foodEmoji: string = '🍔';
   protected hungryEmoji: string = this.generateRandomHungryEmoji();
   protected happyEmoji: string = this.generateRandomHappyEmoji();
+  protected daysOld: number = 0;
 
   constructor(private fishService: FishService) {
     this.foodEmoji = this.generateRandomFoodEmoji();
+  }
+
+  ngOnInit(): void {
+    this.daysOld = this.calculateDaysOld();
   }
 
   protected feed(): void {
@@ -138,5 +144,14 @@ export class FishStatsComponent {
     ];
     const randomIndex: number = Math.floor(Math.random() * happyEmojis.length);
     return happyEmojis[randomIndex];
+  }
+
+  private calculateDaysOld(): number {
+    console.log(this.fish);
+    const today = new Date();
+    const birthday = convertFirestoreTimestampToDate(this.fish.createdDate);
+    const timeSinceBirthday = today.getTime() - birthday.getTime();
+    const daysSinceBirthday = timeSinceBirthday / (1000 * 3600 * 24);
+    return daysSinceBirthday;
   }
 }
