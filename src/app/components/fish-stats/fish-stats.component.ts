@@ -147,11 +147,10 @@ export class FishStatsComponent implements OnInit {
   }
 
   private calculateDaysOld(): number {
-    console.log(this.fish);
     const today = new Date();
     const birthday = convertFirestoreTimestampToDate(this.fish.createdDate);
     const timeSinceBirthday = today.getTime() - birthday.getTime();
-    const daysSinceBirthday = timeSinceBirthday / (1000 * 3600 * 24);
+    let daysSinceBirthday = Math.round(timeSinceBirthday / (1000 * 3600 * 24));
     return daysSinceBirthday;
   }
 }
