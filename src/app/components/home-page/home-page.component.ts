@@ -41,7 +41,11 @@ export class HomePageComponent {
       .subscribe((tanks: Tank[]) => {
         this.tanks = tanks;
 
-        // Check fish status. This can be moved elsewhere in the future
+        // Update fish status. This can be done on the backend or elsewhere in the future.
+        tanks.forEach((tank) => {
+          this.fishService.updateFishStatus(tank.fishes);
+          this.tankService.updateTank(tank.id, tank);
+        });
 
         this.tankUserIsViewing = this.tankService.setTankUserIsViewing(tanks);
       });
