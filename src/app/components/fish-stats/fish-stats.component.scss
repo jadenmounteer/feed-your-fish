@@ -37,3 +37,9 @@
 .Dead {
   color: grey;
 }
+
+.fish-info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+}
