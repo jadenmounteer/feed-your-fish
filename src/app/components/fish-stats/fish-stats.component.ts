@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FeedFishModalComponent } from 'src/app/feed-fish-modal/feed-fish-modal.component';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { FishService } from 'src/app/services/fish.service';
 import { Fish } from 'src/app/types/fish';
@@ -16,7 +18,10 @@ export class FishStatsComponent implements OnInit {
   protected happyEmoji: string = this.generateRandomHappyEmoji();
   protected daysOld: number = 0;
 
-  constructor(private fishService: FishService) {
+  constructor(
+    private fishService: FishService,
+    private modalService: NgbModal
+  ) {
     this.foodEmoji = this.generateRandomFoodEmoji();
   }
 
@@ -26,11 +31,12 @@ export class FishStatsComponent implements OnInit {
 
   protected feed(): void {
     // TODO show the modal and things
+    const modalRef = this.modalService.open(FeedFishModalComponent);
+    modalRef.componentInstance.fish = this.fish;
 
     // Update the data
-    this.fishService.feedFish(this.fish);
-    console.log(this.fish);
-    this.fishFed.emit(this.fish);
+    // this.fishService.feedFish(this.fish);
+    // this.fishFed.emit(this.fish);
   }
 
   private generateRandomFoodEmoji(): string {
