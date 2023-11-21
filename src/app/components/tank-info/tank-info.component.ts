@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tank } from 'src/app/types/tank';
 import { CreateTankModalComponent } from '../create-tank-modal/create-tank-modal.component';
@@ -15,6 +15,10 @@ export class TankInfoComponent implements OnInit {
 
   @Input() tanks: Tank[] = [];
   @Input() tankUserIsViewing: Tank | undefined;
+
+  @Output() toggleFishControls = new EventEmitter<boolean>();
+
+  private showFishControls = false;
 
   constructor(
     private modalService: NgbModal,
@@ -41,5 +45,10 @@ export class TankInfoComponent implements OnInit {
     this.tankService.updateTankUserIsCurrentlyViewing(tank.id);
     this.tankUserIsViewing = tank;
     this.tankService.tankViewingChanged.next(tank);
+  }
+
+  protected onToggleFishControls(): void {
+    this.showFishControls = !this.showFishControls;
+    this.toggleFishControls.emit(this.showFishControls);
   }
 }

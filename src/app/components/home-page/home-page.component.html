@@ -4,9 +4,10 @@
     [userId]="authService.userId"
     [tankUserIsViewing]="tankUserIsViewing"
     [tanks]="tanks"
+    (toggleFishControls)="showFishControls = $event"
   ></app-tank-info>
 
-  <div *ngIf="tankUserIsViewing">
+  <div *ngIf="tankUserIsViewing && showFishControls">
     <app-fish-stats-section [tank]="tankUserIsViewing"></app-fish-stats-section>
   </div>
 

@@ -8,6 +8,7 @@
     >
       {{ tankUserIsViewing?.tankName || "Choose a tank" }}
     </button>
+
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
       <div *ngFor="let tank of tanks">
         <button ngbDropdownItem (click)="setUserCurrentlyViewingTank(tank)">
@@ -18,4 +19,9 @@
       <button ngbDropdownItem (click)="onCreateTank()">Create a tank +</button>
     </div>
   </div>
+
+  <!-- Replace this with a fish image or something -->
+  <button class="btn btn-primary" (click)="onToggleFishControls()">
+    Toggle Fish Controls
+  </button>
 </div>

@@ -18,6 +18,7 @@ export class HomePageComponent {
   protected loading: boolean = true;
   protected tanks: Tank[] = [];
   private tankViewingSubscription$ = new Subscription();
+  protected showFishControls = false;
 
   constructor(
     protected authService: AuthService,
