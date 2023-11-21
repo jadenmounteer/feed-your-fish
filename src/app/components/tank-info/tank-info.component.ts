@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tank } from 'src/app/types/tank';
 import { CreateTankModalComponent } from '../create-tank-modal/create-tank-modal.component';
