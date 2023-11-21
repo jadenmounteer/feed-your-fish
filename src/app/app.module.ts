@@ -25,6 +25,7 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { FishStatsComponent } from './components/fish-stats/fish-stats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeedFishModalComponent } from './feed-fish-modal/feed-fish-modal.component';
+import { RemoveFishModalComponent } from './remove-fish-modal/remove-fish-modal.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FeedFishModalComponent } from './feed-fish-modal/feed-fish-modal.compon
     LoadingSpinnerComponent,
     FishStatsComponent,
     FeedFishModalComponent,
+    RemoveFishModalComponent,
   ],
   imports: [
     BrowserModule,

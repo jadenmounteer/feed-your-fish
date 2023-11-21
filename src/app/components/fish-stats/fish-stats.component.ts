@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FeedFishModalComponent } from 'src/app/feed-fish-modal/feed-fish-modal.component';
+import { RemoveFishModalComponent } from 'src/app/remove-fish-modal/remove-fish-modal.component';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { FishService } from 'src/app/services/fish.service';
 import { Fish } from 'src/app/types/fish';
@@ -37,6 +38,19 @@ export class FishStatsComponent implements OnInit {
       if (result === 'fed') {
         this.fishService.feedFish(this.fish);
         this.fishFed.emit(this.fish);
+      }
+    });
+  }
+
+  protected removeFish(): void {
+    const modalRef = this.modalService.open(RemoveFishModalComponent);
+    modalRef.componentInstance.fish = this.fish;
+
+    modalRef.result.then((result) => {
+      if (result === 'flushed') {
+        // TODO remove the fish
+        // this.fishService.feedFish(this.fish);
+        // this.fishFed.emit(this.fish);
       }
     });
   }
