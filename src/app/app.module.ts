@@ -23,6 +23,7 @@ import { FishStatsSectionComponent } from './components/fish-stats-section/fish-
 import { AddFishModalComponent } from './components/add-fish-modal/add-fish-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { FishStatsComponent } from './components/fish-stats/fish-stats.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { FishStatsComponent } from './components/fish-stats/fish-stats.component
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    BrowserAnimationsModule,
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],

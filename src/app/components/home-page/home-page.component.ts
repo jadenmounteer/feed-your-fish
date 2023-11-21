@@ -4,11 +4,41 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';
 import { Tank } from 'src/app/types/tank';
+import { transition, style, animate, trigger } from '@angular/animations';
+
+const enterTransition = transition(':enter', [
+  style({
+    opacity: 0,
+  }),
+  animate(
+    '.05s ease-in',
+    style({
+      opacity: 0.1,
+    })
+  ),
+]);
+
+const leaveTrans = transition(':leave', [
+  style({
+    opacity: 1,
+  }),
+  animate(
+    '.05s ease-out',
+    style({
+      opacity: 0,
+    })
+  ),
+]);
+
+const fadeIn = trigger('fadeIn', [enterTransition]);
+
+const fadeOut = trigger('fadeOut', [leaveTrans]);
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  animations: [fadeIn, fadeOut],
 })
 export class HomePageComponent {
   private authSubscription!: Subscription;
