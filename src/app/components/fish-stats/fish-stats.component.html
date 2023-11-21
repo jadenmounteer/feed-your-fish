@@ -23,7 +23,11 @@
   </div>
 
   <div class="button-section">
-    <button class="btn btn-primary" *ngIf="fish.fishStatus === 'Dead'">
+    <button
+      class="btn btn-primary"
+      *ngIf="fish.fishStatus === 'Dead'"
+      (click)="removeFish()"
+    >
       Remove Fish 🚽
     </button>
     <button
