@@ -19,7 +19,6 @@ import { CreateTankModalComponent } from './components/create-tank-modal/create-
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AuthGuard } from './services/auth.guard';
-import { FishTankComponent } from './components/fish-tank/fish-tank.component';
 import { FishStatsSectionComponent } from './components/fish-stats-section/fish-stats-section.component';
 import { AddFishModalComponent } from './components/add-fish-modal/add-fish-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
@@ -37,7 +36,6 @@ import { FishStatsComponent } from './components/fish-stats/fish-stats.component
     CreateTankModalComponent,
     LandingPageComponent,
     HomePageComponent,
-    FishTankComponent,
     FishStatsSectionComponent,
     AddFishModalComponent,
     LoadingSpinnerComponent,
