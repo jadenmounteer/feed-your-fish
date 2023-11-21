@@ -30,13 +30,15 @@ export class FishStatsComponent implements OnInit {
   }
 
   protected feed(): void {
-    // TODO show the modal and things
     const modalRef = this.modalService.open(FeedFishModalComponent);
     modalRef.componentInstance.fish = this.fish;
 
-    // Update the data
-    // this.fishService.feedFish(this.fish);
-    // this.fishFed.emit(this.fish);
+    modalRef.result.then((result) => {
+      if (result === 'fed') {
+        this.fishService.feedFish(this.fish);
+        this.fishFed.emit(this.fish);
+      }
+    });
   }
 
   private generateRandomFoodEmoji(): string {

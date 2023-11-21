@@ -9,9 +9,9 @@ import { Fish } from '../types/fish';
 })
 export class FeedFishModalComponent {
   @Input() fish!: Fish;
-  protected contentLoaded: boolean = false;
+  protected contentLoaded: boolean = true;
   protected showAlert: boolean = false;
   protected alertMessage: string = '';
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(protected activeModal: NgbActiveModal) {}
 }

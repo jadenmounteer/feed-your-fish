@@ -22,4 +22,12 @@
   <span class="loading-icon" *ngIf="!contentLoaded">
     <app-loading-spinner></app-loading-spinner>
   </span>
+
+  <div *ngFor="let step of fish.feedingSteps">
+    {{ step }}
+  </div>
+
+  <button class="btn btn-primary" (click)="activeModal.close('fed')">
+    Feed
+  </button>
 </div>
