@@ -11,7 +11,7 @@ const enterTransition = transition(':enter', [
     opacity: 0,
   }),
   animate(
-    '.05s ease-in',
+    '.08s ease-in',
     style({
       opacity: 0.1,
     })
@@ -23,7 +23,7 @@ const leaveTrans = transition(':leave', [
     opacity: 1,
   }),
   animate(
-    '.05s ease-out',
+    '.08s ease-out',
     style({
       opacity: 0,
     })
