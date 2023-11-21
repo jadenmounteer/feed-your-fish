@@ -17,11 +17,21 @@ export class RemoveFishModalComponent implements OnInit {
   constructor(protected activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
-    this.eulogy = this.generateEulogyForDeadFish();
+    this.eulogy = this.generateRandomEulogyForDeadFish();
     this.contentLoaded = true;
   }
 
-  private generateEulogyForDeadFish(): string {
-    return `Here lies ${this.fish.fishName}. They were a good fish. They will be missed.`;
+  private generateRandomEulogyForDeadFish(): string {
+    const string = `RIP ${this.fish.fishName}...`;
+    const eulogies: string[] = [
+      `${this.fish.fishName} the ${this.fish.fishType}, You were a good fish. You will be missed.`,
+      `RIP ${this.fish.fishName} the ${this.fish.fishType}, you were a good fish. You will be missed.`,
+      `What can be said about ${this.fish.fishName} the ${this.fish.fishType}? They were a good fish. They will be missed.`,
+      `${this.fish.fishName} was about the best ${this.fish.fishType} you could ever own. They will be missed.`,
+      `${this.fish.fishName} was a ${this.fish.fishType} of few words, but they were a good fish. They will be missed.`,
+      `${this.fish.fishName} lived a long and happy life as a ${this.fish.fishType}. They will be missed.`,
+    ];
+    const randomIndex = Math.floor(Math.random() * eulogies.length);
+    return eulogies[randomIndex];
   }
 }
