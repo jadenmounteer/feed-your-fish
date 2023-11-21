@@ -48,6 +48,11 @@ export class FishStatsComponent implements OnInit {
 
     modalRef.result.then((result) => {
       if (result === 'flushed') {
+        // Play the audio sound
+        const audio = new Audio();
+        audio.src = 'assets/sounds/toilet-flush.m4a';
+        audio.load();
+        audio.play();
         // TODO remove the fish
         // this.fishService.feedFish(this.fish);
         // this.fishFed.emit(this.fish);
