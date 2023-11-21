@@ -1,5 +1,8 @@
+@import "../../../styles.scss";
+
 .content {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  background-image: linear-gradient($secondaryLighterColor, $secondaryColor);
 }
