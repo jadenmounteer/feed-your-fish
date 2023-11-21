@@ -8,11 +8,14 @@
 }
 
 .tank-info-section {
-  position: relative;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  right: 50%;
   z-index: 2;
 }
 
 .fish {
-  position: relative;
+  // position: relative;
   z-index: 1;
 }
