@@ -7,7 +7,12 @@
     (toggleFishControls)="showFishControls = $event"
   ></app-tank-info>
 
-  <div *ngIf="tankUserIsViewing && showFishControls" @fadeIn @fadeOut>
+  <div
+    *ngIf="tankUserIsViewing && showFishControls"
+    @fadeIn
+    @fadeOut
+    class="tank-info-section"
+  >
     <app-fish-stats-section [tank]="tankUserIsViewing"></app-fish-stats-section>
   </div>
 
@@ -16,7 +21,7 @@
       *ngFor="let fish of tankUserIsViewing.fishes"
       [ngSwitch]="fish.fishType"
     >
-      <app-goldfish *ngSwitchCase="'goldfish'"></app-goldfish>
+      <app-goldfish *ngSwitchCase="'goldfish'" class="fish"></app-goldfish>
     </div>
   </div>
 </div>

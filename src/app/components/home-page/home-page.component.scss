@@ -6,3 +6,13 @@
   gap: 16px;
   background-image: linear-gradient($secondaryLighterColor, $secondaryColor);
 }
+
+.tank-info-section {
+  position: relative;
+  z-index: 2;
+}
+
+.fish {
+  position: relative;
+  z-index: 1;
+}
