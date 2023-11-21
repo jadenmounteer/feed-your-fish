@@ -7,15 +7,15 @@
   ></app-tank-info>
 
   <div *ngIf="tankUserIsViewing">
+    <app-fish-stats-section [tank]="tankUserIsViewing"></app-fish-stats-section>
+  </div>
+
+  <div *ngIf="tankUserIsViewing">
     <div
       *ngFor="let fish of tankUserIsViewing.fishes"
       [ngSwitch]="fish.fishType"
     >
       <app-goldfish *ngSwitchCase="'goldfish'"></app-goldfish>
     </div>
-  </div>
-
-  <div *ngIf="tankUserIsViewing">
-    <app-fish-stats-section [tank]="tankUserIsViewing"></app-fish-stats-section>
   </div>
 </div>
