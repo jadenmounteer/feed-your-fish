@@ -1,1 +1,29 @@
-<p>remove-fish-modal works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Remove {{ fish.fishName }} 🪦</h4>
+
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+
+<div class="modal-body">
+  <ngb-alert
+    class="danger-alert"
+    [dismissible]="true"
+    [animation]="true"
+    type="danger"
+    *ngIf="showAlert"
+  >
+    {{ alertMessage }}
+  </ngb-alert>
+  <span class="loading-icon" *ngIf="!contentLoaded">
+    <app-loading-spinner></app-loading-spinner>
+  </span>
+
+  <button class="btn btn-primary" (click)="activeModal.close('flushed')">
+    Flush 🚽
+  </button>
+</div>
