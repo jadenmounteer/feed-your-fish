@@ -83,10 +83,6 @@ export class LoginOrSignUpComponent implements OnInit {
     this.newUser = !this.newUser;
   }
 
-  protected navigateToRequestAccessPage(): void {
-    this.router.navigate(['request-to-create-account-page']);
-  }
-
   protected toggleForgotPassword(): void {
     this.forgotPassword = !this.forgotPassword;
   }
