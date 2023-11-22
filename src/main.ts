@@ -6,10 +6,7 @@ import { environment } from './environments/environment';
 import { enableProdMode } from '@angular/core';
 
 if (environment.production) {
-  console.log('In prod');
   enableProdMode();
-} else {
-  console.log('In dev');
 }
 
 platformBrowserDynamic()
