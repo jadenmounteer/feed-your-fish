@@ -9,8 +9,6 @@ import { GoldfishComponent } from './components/fish/goldfish/goldfish.component
 import { NavComponent } from './components/nav/nav.component';
 import { GoogleButtonComponent } from './components/google-button/google-button.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { LoginOrSignUpComponent } from './components/login-or-sign-up/login-or-sign-up.component';
 import { AuthService } from './services/auth.service';
@@ -52,9 +50,7 @@ import { RemoveFishModalComponent } from './remove-fish-modal/remove-fish-modal.
     NgbModule,
     FormsModule,
     FontAwesomeModule,
-    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
     BrowserAnimationsModule,
   ],
   providers: [AuthService, AuthGuard],
