@@ -1,8 +1,9 @@
-<canvas
-  #sprite
-  [ngClass]="canvasQuery"
+<div
+  class="fish"
   [class]="swimmingDirection"
   style="--swimming-speed: {{ swimmingVelocity }}"
-></canvas>
+>
+  <canvas #sprite [ngClass]="canvasQuery"></canvas>
 
-<h4 *ngIf="fishName">{{ fishName }}</h4>
+  <h4 *ngIf="fishName">{{ fishName }}</h4>
+</div>
