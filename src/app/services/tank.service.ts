@@ -69,7 +69,7 @@ export class TankService {
     return tanks.filter((tank) => tank.id === idOfTankViewing)[0];
   }
 
-  public deleteReview(tankId: string): Observable<void> {
+  public deleteTank(tankId: string): Observable<void> {
     return from(this.firestore.doc(`tanks/${tankId}`).delete());
   }
 }
