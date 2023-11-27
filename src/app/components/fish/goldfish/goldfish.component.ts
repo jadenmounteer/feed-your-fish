@@ -34,6 +34,9 @@ export class GoldfishComponent
   private currentInterval: NodeJS.Timer | undefined;
   private currentAnimation: string = 'standStill';
   protected swimmingDirection: SwimmingDirection = 'swim-right';
+  protected currentXPosition: number = 0;
+  protected currentYPosition: number = 0;
+  protected swimmingVelocity: string = '5s';
 
   @Input() canvasQuery: any;
 

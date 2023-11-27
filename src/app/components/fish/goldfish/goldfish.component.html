@@ -1,1 +1,6 @@
-<canvas #sprite [ngClass]="canvasQuery" [class]="swimmingDirection"></canvas>
+<canvas
+  #sprite
+  [ngClass]="canvasQuery"
+  [class]="swimmingDirection"
+  style="--swimming-speed: {{ swimmingVelocity }}"
+></canvas>

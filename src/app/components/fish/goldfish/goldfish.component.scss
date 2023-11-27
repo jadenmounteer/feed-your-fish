@@ -1,16 +1,15 @@
 $fish-width: 256px;
-$swimming-speed: 5s;
 
 canvas {
   position: absolute;
 }
 
 .swim-right {
-  animation: swim-right $swimming-speed linear forwards;
+  animation: swim-right var(--swimming-speed) linear forwards;
 }
 
 .swim-left {
-  animation: swim-left $swimming-speed linear forwards;
+  animation: swim-left var(--swimming-speed) linear forwards;
 }
 
 // Make the fish swim the entire width of the screen, change direction, and come back
