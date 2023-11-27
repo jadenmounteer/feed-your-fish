@@ -1,4 +1,18 @@
 canvas {
-  width: 10%;
-  height: 10%;
+  position: absolute;
+  // Make the fish swim around
+  animation: swim 30s linear infinite;
+}
+
+// Make the fish swim the entire width of the screen, change direction, and come back
+@keyframes swim {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(100vw - 100px));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
