@@ -21,7 +21,11 @@
       *ngFor="let fish of tankUserIsViewing.fishes"
       [ngSwitch]="fish.fishType"
     >
-      <app-goldfish *ngSwitchCase="'goldfish'" class="fish"></app-goldfish>
+      <app-goldfish
+        *ngSwitchCase="'goldfish'"
+        class="fish"
+        [fishName]="fish.fishName"
+      ></app-goldfish>
     </div>
   </div>
 </div>

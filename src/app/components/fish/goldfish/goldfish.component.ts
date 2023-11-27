@@ -33,12 +33,15 @@ export class GoldfishComponent
   public override image = new Image();
   private currentInterval: NodeJS.Timer | undefined;
   private currentAnimation: string = 'standStill';
+
+  // TODO These properties should be in their own class
   protected swimmingDirection: SwimmingDirection = 'swim-right';
   protected currentXPosition: number = 0;
   protected currentYPosition: number = 0;
   protected swimmingVelocity: SwimmingSpeed = '5s';
 
   @Input() canvasQuery: any;
+  @Input() fishName: string | undefined = undefined;
 
   @ViewChild('sprite', { static: true }) goldfish: ElementRef | undefined;
 
@@ -102,6 +105,8 @@ export class GoldfishComponent
       this.animate(this.blinkingCycle);
     }, this.swimmingSpeed);
   }
+
+  // TODO these methods should be in their own class
 
   private chooseRandomDirectionToSwimIn(): SwimmingDirection {
     const randomNumber = Math.floor(Math.random() * 2);
