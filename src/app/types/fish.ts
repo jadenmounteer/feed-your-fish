@@ -22,3 +22,14 @@ export type FishType =
   | 'octopus';
 
 export type FishStatus = 'Happy' | 'Hungry' | 'Dead';
+
+export type SwimmingDirection =
+  | 'swim-left'
+  | 'swim-right'
+  | 'stand-still'
+  | 'swim-up'
+  | 'swim-down'
+  | 'swim-up-left'
+  | 'swim-up-right'
+  | 'swim-down-left'
+  | 'swim-down-right';

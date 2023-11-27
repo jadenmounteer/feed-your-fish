@@ -1,18 +1,42 @@
+$fish-width: 256px;
+$swimming-speed: 5s;
+
 canvas {
   position: absolute;
-  // Make the fish swim around
-  animation: swim 30s linear infinite;
+}
+
+.swim-right {
+  animation: swim-right $swimming-speed linear forwards;
+}
+
+.swim-left {
+  animation: swim-left $swimming-speed linear forwards;
 }
 
 // Make the fish swim the entire width of the screen, change direction, and come back
-@keyframes swim {
+@keyframes swim-right {
   0% {
     transform: translateX(0);
   }
-  50% {
-    transform: translateX(calc(100vw - 100px));
+  100% {
+    transform: translateX(calc(100vw - $fish-width));
+  }
+}
+
+@keyframes swim-left {
+  0% {
+    transform: translateX(calc(100vw - $fish-width));
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes swim-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100vh - $fish-width));
   }
 }

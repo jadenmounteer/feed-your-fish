@@ -7,6 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SpriteComponent } from '../../sprite/sprite.component';
+import { SwimmingDirection } from 'src/app/types/fish';
 
 @Component({
   selector: 'app-goldfish',
@@ -32,6 +33,7 @@ export class GoldfishComponent
   public override image = new Image();
   private currentInterval: NodeJS.Timer | undefined;
   private currentAnimation: string = 'standStill';
+  protected swimmingDirection: SwimmingDirection = 'swim-right';
 
   @Input() canvasQuery: any;
 
@@ -72,6 +74,7 @@ export class GoldfishComponent
   }
 
   ngOnInit(): void {
+    this.swimmingDirection = this.chooseRandomDirectionToSwimIn();
     this.justKeepSwimming();
     // this.blink();
   }
@@ -94,5 +97,10 @@ export class GoldfishComponent
     this.currentInterval = setInterval(() => {
       this.animate(this.blinkingCycle);
     }, this.swimmingSpeed);
+  }
+
+  private chooseRandomDirectionToSwimIn(): SwimmingDirection {
+    const randomNumber = Math.floor(Math.random() * 2);
+    return randomNumber === 0 ? 'swim-left' : 'swim-right';
   }
 }
