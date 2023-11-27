@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 16px;
   background-image: linear-gradient($secondaryLighterColor, $secondaryColor);
+  min-height: calc(100vh - $nav-bar-height);
 }
 
 .tank-info-section {
