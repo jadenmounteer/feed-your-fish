@@ -4,6 +4,7 @@ import { FeedFishModalComponent } from 'src/app/feed-fish-modal/feed-fish-modal.
 import { RemoveFishModalComponent } from 'src/app/remove-fish-modal/remove-fish-modal.component';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { FishService } from 'src/app/services/fish.service';
+import { TankService } from 'src/app/services/tank.service';
 import { Fish } from 'src/app/types/fish';
 
 @Component({
@@ -14,6 +15,7 @@ import { Fish } from 'src/app/types/fish';
 export class FishStatsComponent implements OnInit {
   @Input() fish!: Fish;
   @Output() fishFed: EventEmitter<Fish> = new EventEmitter();
+  @Output() fishFlushed: EventEmitter<Fish> = new EventEmitter();
   protected foodEmoji: string = '🍔';
   protected hungryEmoji: string = this.generateRandomHungryEmoji();
   protected happyEmoji: string = this.generateRandomHappyEmoji();
@@ -21,7 +23,8 @@ export class FishStatsComponent implements OnInit {
 
   constructor(
     private fishService: FishService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private tankService: TankService
   ) {
     this.foodEmoji = this.generateRandomFoodEmoji();
   }
@@ -53,9 +56,7 @@ export class FishStatsComponent implements OnInit {
         audio.src = 'assets/sounds/toilet-flush.m4a';
         audio.load();
         audio.play();
-        // TODO remove the fish
-        // this.fishService.feedFish(this.fish);
-        // this.fishFed.emit(this.fish);
+        this.fishFlushed.emit(this.fish);
       }
     });
   }

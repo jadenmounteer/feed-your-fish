@@ -4,6 +4,7 @@
       *ngIf="fish.userId === authService.userId"
       [fish]="fish"
       (fishFed)="onFishFed($event)"
+      (fishFlushed)="onFishFlushed($event)"
     >
     </app-fish-stats>
   </div>

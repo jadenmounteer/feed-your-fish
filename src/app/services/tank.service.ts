@@ -5,6 +5,7 @@ import { Observable, Subject, from, map } from 'rxjs';
 import { Tank } from '../types/tank';
 import { convertSnaps } from './db-utils';
 import { User } from '../types/user';
+import { Fish } from '../types/fish';
 
 @Injectable({
   providedIn: 'root',
@@ -71,5 +72,11 @@ export class TankService {
 
   public deleteTank(tankId: string): Observable<void> {
     return from(this.firestore.doc(`tanks/${tankId}`).delete());
+  }
+
+  public deleteFishFromTank(fishToDelete: Fish, listOfFishes: Fish[]): Fish[] {
+    return listOfFishes.filter(
+      (fish) => fish.fishName !== fishToDelete.fishName
+    );
   }
 }

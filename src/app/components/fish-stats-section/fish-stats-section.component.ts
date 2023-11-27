@@ -30,4 +30,13 @@ export class FishStatsSectionComponent {
   protected onFishFed(fish: Fish): void {
     this.tankService.updateTank(this.tank.id, this.tank);
   }
+
+  protected onFishFlushed(fish: Fish): void {
+    this.tank.fishes = this.tankService.deleteFishFromTank(
+      fish,
+      this.tank.fishes
+    );
+
+    this.tankService.updateTank(this.tank.id, this.tank);
+  }
 }
