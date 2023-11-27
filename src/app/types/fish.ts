@@ -33,3 +33,5 @@ export type SwimmingDirection =
   | 'swim-up-right'
   | 'swim-down-left'
   | 'swim-down-right';
+
+export type SwimmingSpeed = '5s' | '30s';
