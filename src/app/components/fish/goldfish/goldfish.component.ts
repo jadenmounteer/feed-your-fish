@@ -82,6 +82,7 @@ export class GoldfishComponent
   ngOnInit(): void {
     this.swimmingDirection = this.chooseRandomDirectionToSwimIn();
     this.swimmingVelocity = this.chooseRandomSpeed();
+    this.initializeXAndWhyPositions();
     this.justKeepSwimming();
     // this.blink();
   }
@@ -116,5 +117,27 @@ export class GoldfishComponent
   private chooseRandomSpeed(): SwimmingSpeed {
     const randomNumber = Math.floor(Math.random() * 2);
     return randomNumber === 0 ? '5s' : '30s';
+  }
+
+  private initializeXAndWhyPositions(): void {
+    const maxDirectionRight = 100;
+    const maxDirectionLeft = 0;
+    if (this.swimmingDirection === 'swim-left') {
+      this.currentXPosition = this.getRandomNumberBetween(
+        maxDirectionRight / 2,
+        maxDirectionRight
+      );
+      this.currentYPosition = this.getRandomNumberBetween(0, maxDirectionRight);
+    } else if (this.swimmingDirection === 'swim-right') {
+      this.currentXPosition = this.getRandomNumberBetween(
+        maxDirectionLeft,
+        maxDirectionRight / 2
+      );
+      this.currentYPosition = this.getRandomNumberBetween(0, maxDirectionRight);
+    }
+  }
+
+  private getRandomNumberBetween(min: number, max: number): number {
+    return Math.floor(Math.random() * max) + min;
   }
 }
