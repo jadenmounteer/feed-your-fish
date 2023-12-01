@@ -16,10 +16,11 @@
     <app-fish-stats-section [tank]="tankUserIsViewing"></app-fish-stats-section>
   </div>
 
-  <div *ngIf="tankUserIsViewing">
+  <ng-container *ngIf="tankUserIsViewing">
     <div
       *ngFor="let fish of tankUserIsViewing.fishes"
       [ngSwitch]="fish.fishType"
+      class="fish-container"
     >
       <app-goldfish
         *ngSwitchCase="'goldfish'"
@@ -27,5 +28,5 @@
         [fishName]="fish.fishName"
       ></app-goldfish>
     </div>
-  </div>
+  </ng-container>
 </div>

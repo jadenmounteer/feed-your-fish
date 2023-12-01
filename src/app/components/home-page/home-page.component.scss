@@ -7,7 +7,7 @@
   background-image: linear-gradient($secondaryLighterColor, $secondaryColor);
   height: calc(100vh - $nav-bar-height);
   width: 100vw;
-  position: absolute;
+  position: relative;
 }
 
 .tank-info-section {
@@ -18,7 +18,8 @@
   z-index: 2;
 }
 
-.fish {
-  // position: relative;
+.fish-container {
   z-index: 1;
+  border: 2px solid red;
+  position: absolute;
 }
