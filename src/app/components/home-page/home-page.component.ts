@@ -82,6 +82,20 @@ export class HomePageComponent {
       });
   }
 
+  private makeFishSwimAround(): void {
+    this.tankUserIsViewing?.fishes.forEach((fish) => {
+      if (fish.fishStatus !== 'Dead') {
+        const swimmingDirection =
+          this.fishService.chooseRandomDirectionToSwimIn();
+
+        const swimmingSpeed = this.fishService.chooseRandomSpeed();
+
+        // fish.xPosition = Math.random() * 100;
+        // fish.yPosition = Math.random() * 100;
+      }
+    });
+  }
+
   ngOnDestroy(): void {
     this.tankSubscription$.unsubscribe();
     this.tankViewingSubscription$.unsubscribe();
