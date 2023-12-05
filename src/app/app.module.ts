@@ -24,6 +24,7 @@ import { FishStatsComponent } from './components/fish-stats/fish-stats.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeedFishModalComponent } from './components/feed-fish-modal/feed-fish-modal.component';
 import { RemoveFishModalComponent } from './components/remove-fish-modal/remove-fish-modal.component';
+import { FishTankHeaderComponent } from './components/fish-tank-header/fish-tank-header.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RemoveFishModalComponent } from './components/remove-fish-modal/remove-
     FishStatsComponent,
     FeedFishModalComponent,
     RemoveFishModalComponent,
+    FishTankHeaderComponent,
   ],
   imports: [
     BrowserModule,
