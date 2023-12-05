@@ -36,12 +36,12 @@ const fadeIn = trigger('fadeIn', [enterTransition]);
 const fadeOut = trigger('fadeOut', [leaveTrans]);
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss'],
+  selector: 'app-fish-tank',
+  templateUrl: './fish-tank.component.html',
+  styleUrls: ['./fish-tank.component.scss'],
   animations: [fadeIn, fadeOut],
 })
-export class HomePageComponent {
+export class FishTankComponent {
   private authSubscription!: Subscription;
   public isAuth: boolean = false;
   protected tankUserIsViewing: Tank | undefined;
