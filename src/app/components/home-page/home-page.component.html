@@ -17,9 +17,14 @@
   </div>
 
   <ng-container *ngIf="tankUserIsViewing">
+    <!-- TODO I can possibly do a rotation like this: 'transform': 'rotate(' + fish.rotation + 'deg)' -->
     <div
       *ngFor="let fish of tankUserIsViewing.fishes"
       [ngSwitch]="fish.fishType"
+      [ngStyle]="{
+        'left.%': fish.xPosition,
+        'top.%': fish.yPosition,
+      }"
       class="fish-container"
     >
       <app-goldfish
