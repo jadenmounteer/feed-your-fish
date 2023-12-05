@@ -88,6 +88,8 @@ export class HomePageComponent {
   private makeFishSwimAround(): void {
     this.tankUserIsViewing?.fishes.forEach((fish) => {
       if (fish.fishStatus !== 'Dead') {
+        this.changeDirection(fish);
+
         fish.xPosition = this.fishService.initializeXPosition(
           fish.swimmingDirection
         );
@@ -97,7 +99,6 @@ export class HomePageComponent {
         );
 
         let intervalSpeed: number = this.getRandomIntervalSpeed();
-        this.changeDirection(fish);
 
         // Make the fish swim
         setInterval(() => {

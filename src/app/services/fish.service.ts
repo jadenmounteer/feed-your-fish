@@ -104,7 +104,22 @@ export class FishService {
       return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
     } else if (swimmingDirection === 'swim-right') {
       this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'swim-up') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'swim-down') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'swim-up-left') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'swim-up-right') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'swim-down-left') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'swim-down-right') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+    } else if (swimmingDirection === 'stand-still') {
+      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
     }
+
     return 0;
   }
 
