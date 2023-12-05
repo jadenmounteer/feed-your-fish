@@ -5,6 +5,7 @@ import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';
 import { Tank } from 'src/app/types/tank';
 import { transition, style, animate, trigger } from '@angular/animations';
+import { Fish } from 'src/app/types/fish';
 
 const enterTransition = transition(':enter', [
   style({
@@ -85,30 +86,36 @@ export class HomePageComponent {
   }
 
   private makeFishSwimAround(): void {
-    this.changeDirection();
-    const intervalSpeed = 5000;
-    setInterval(() => {
-      this.changeDirection();
-    }, intervalSpeed);
-  }
-
-  private changeDirection(): void {
     this.tankUserIsViewing?.fishes.forEach((fish) => {
       if (fish.fishStatus !== 'Dead') {
-        fish.swimmingDirection =
-          this.fishService.chooseRandomDirectionToSwimIn();
+        let intervalSpeed: number = this.getRandomIntervalSpeed();
+        this.changeDirection(fish);
 
-        fish.swimmingSpeed = this.fishService.chooseRandomSpeed();
-
-        fish.xPosition = this.fishService.initializeXPosition(
-          fish.swimmingDirection
-        );
-
-        fish.yPosition = this.fishService.initializeYPosition(
-          fish.swimmingDirection
-        );
+        setInterval(() => {
+          intervalSpeed = this.getRandomIntervalSpeed();
+          this.changeDirection(fish);
+        }, intervalSpeed);
       }
     });
+  }
+
+  private getRandomIntervalSpeed(): number {
+    return Math.floor(Math.random() * 10000) + 5000;
+  }
+
+  private changeDirection(fish: Fish): void {
+    fish.swimmingDirection = this.fishService.chooseRandomDirectionToSwimIn();
+
+    fish.swimmingSpeed = this.fishService.chooseRandomSpeed();
+
+    // TODO the x and y positions will not be updated in the interval. Just initialized at first.
+    fish.xPosition = this.fishService.initializeXPosition(
+      fish.swimmingDirection
+    );
+
+    fish.yPosition = this.fishService.initializeYPosition(
+      fish.swimmingDirection
+    );
   }
 
   ngOnDestroy(): void {
