@@ -85,6 +85,14 @@ export class HomePageComponent {
   }
 
   private makeFishSwimAround(): void {
+    this.changeDirection();
+    const intervalSpeed = 5000;
+    setInterval(() => {
+      this.changeDirection();
+    }, intervalSpeed);
+  }
+
+  private changeDirection(): void {
     this.tankUserIsViewing?.fishes.forEach((fish) => {
       if (fish.fishStatus !== 'Dead') {
         fish.swimmingDirection =
