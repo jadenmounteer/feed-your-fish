@@ -88,9 +88,27 @@ export class HomePageComponent {
   private makeFishSwimAround(): void {
     this.tankUserIsViewing?.fishes.forEach((fish) => {
       if (fish.fishStatus !== 'Dead') {
+        fish.xPosition = this.fishService.initializeXPosition(
+          fish.swimmingDirection
+        );
+
+        fish.yPosition = this.fishService.initializeYPosition(
+          fish.swimmingDirection
+        );
+
         let intervalSpeed: number = this.getRandomIntervalSpeed();
         this.changeDirection(fish);
 
+        // Make the fish swim
+        setInterval(() => {
+          if (fish.swimmingDirection === 'swim-left') {
+            this.fishService.swimLeft(fish);
+          } else if (fish.swimmingDirection === 'swim-right') {
+            this.fishService.swimRight(fish);
+          }
+        }, 1);
+
+        // Randomly change directions
         setInterval(() => {
           intervalSpeed = this.getRandomIntervalSpeed();
           this.changeDirection(fish);
@@ -107,15 +125,6 @@ export class HomePageComponent {
     fish.swimmingDirection = this.fishService.chooseRandomDirectionToSwimIn();
 
     fish.swimmingSpeed = this.fishService.chooseRandomSpeed();
-
-    // TODO the x and y positions will not be updated in the interval. Just initialized at first.
-    fish.xPosition = this.fishService.initializeXPosition(
-      fish.swimmingDirection
-    );
-
-    fish.yPosition = this.fishService.initializeYPosition(
-      fish.swimmingDirection
-    );
   }
 
   ngOnDestroy(): void {

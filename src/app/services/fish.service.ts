@@ -90,4 +90,12 @@ export class FishService {
   private getRandomNumberBetween(min: number, max: number): number {
     return Math.floor(Math.random() * max) + min;
   }
+
+  public swimLeft(fish: Fish) {
+    fish.xPosition -= 0.01;
+  }
+
+  public swimRight(fish: Fish) {
+    fish.xPosition += 0.01;
+  }
 }
