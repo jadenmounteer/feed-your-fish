@@ -79,6 +79,8 @@ export class HomePageComponent {
         });
 
         this.tankUserIsViewing = this.tankService.setTankUserIsViewing(tanks);
+
+        this.makeFishSwimAround();
       });
   }
 
@@ -90,8 +92,11 @@ export class HomePageComponent {
 
         const swimmingSpeed = this.fishService.chooseRandomSpeed();
 
-        // fish.xPosition = Math.random() * 100;
-        // fish.yPosition = Math.random() * 100;
+        const xPosition =
+          this.fishService.initializeXPosition(swimmingDirection);
+
+        const yPosition =
+          this.fishService.initializeYPosition(swimmingDirection);
       }
     });
   }

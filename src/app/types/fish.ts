@@ -9,6 +9,10 @@ export interface Fish {
   daysUntilStatusChange: number;
   createdDate: Date;
   dateOfLastFeeding: Date;
+  swimmingSpeed: SwimmingSpeed;
+  swimmingDirection: SwimmingDirection;
+  xPosition: number;
+  yPosition: number;
 }
 
 export type FishType =

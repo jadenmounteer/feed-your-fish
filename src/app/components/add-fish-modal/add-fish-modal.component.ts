@@ -188,6 +188,10 @@ export class AddFishModalComponent {
       createdDate: new Date(),
       dateOfLastFeeding: new Date(),
       userId: this.authService.userId,
+      swimmingSpeed: '5s',
+      swimmingDirection: 'stand-still',
+      xPosition: 0,
+      yPosition: 0,
     };
 
     this.tank.fishes.push(newFish);
