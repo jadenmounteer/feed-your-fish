@@ -34,12 +34,6 @@ export class GoldfishComponent
   private currentInterval: NodeJS.Timer | undefined;
   private currentAnimation: string = 'standStill';
 
-  // TODO These properties should be in their own class
-  protected swimmingDirection: SwimmingDirection = 'swim-right';
-  protected currentXPosition: number = 0;
-  protected currentYPosition: number = 0;
-  protected swimmingVelocity: SwimmingSpeed = '5s';
-
   @Input() canvasQuery: any;
   @Input() fishName: string | undefined = undefined;
 
@@ -80,9 +74,6 @@ export class GoldfishComponent
   }
 
   ngOnInit(): void {
-    this.swimmingDirection = this.chooseRandomDirectionToSwimIn();
-    this.swimmingVelocity = this.chooseRandomSpeed();
-    this.initializeXAndWhyPositions();
     this.justKeepSwimming();
     // this.blink();
   }
@@ -105,39 +96,5 @@ export class GoldfishComponent
     this.currentInterval = setInterval(() => {
       this.animate(this.blinkingCycle);
     }, this.swimmingSpeed);
-  }
-
-  // TODO these methods should be in their own class
-
-  private chooseRandomDirectionToSwimIn(): SwimmingDirection {
-    const randomNumber = Math.floor(Math.random() * 2);
-    return randomNumber === 0 ? 'swim-left' : 'swim-right';
-  }
-
-  private chooseRandomSpeed(): SwimmingSpeed {
-    const randomNumber = Math.floor(Math.random() * 2);
-    return randomNumber === 0 ? '5s' : '30s';
-  }
-
-  private initializeXAndWhyPositions(): void {
-    const maxDirectionRight = 100;
-    const maxDirectionLeft = 0;
-    if (this.swimmingDirection === 'swim-left') {
-      this.currentXPosition = this.getRandomNumberBetween(
-        maxDirectionRight / 2,
-        maxDirectionRight
-      );
-      this.currentYPosition = this.getRandomNumberBetween(0, maxDirectionRight);
-    } else if (this.swimmingDirection === 'swim-right') {
-      this.currentXPosition = this.getRandomNumberBetween(
-        maxDirectionLeft,
-        maxDirectionRight / 2
-      );
-      this.currentYPosition = this.getRandomNumberBetween(0, maxDirectionRight);
-    }
-  }
-
-  private getRandomNumberBetween(min: number, max: number): number {
-    return Math.floor(Math.random() * max) + min;
   }
 }
