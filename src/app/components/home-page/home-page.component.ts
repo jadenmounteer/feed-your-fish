@@ -87,16 +87,18 @@ export class HomePageComponent {
   private makeFishSwimAround(): void {
     this.tankUserIsViewing?.fishes.forEach((fish) => {
       if (fish.fishStatus !== 'Dead') {
-        const swimmingDirection =
+        fish.swimmingDirection =
           this.fishService.chooseRandomDirectionToSwimIn();
 
-        const swimmingSpeed = this.fishService.chooseRandomSpeed();
+        fish.swimmingSpeed = this.fishService.chooseRandomSpeed();
 
-        const xPosition =
-          this.fishService.initializeXPosition(swimmingDirection);
+        fish.xPosition = this.fishService.initializeXPosition(
+          fish.swimmingDirection
+        );
 
-        const yPosition =
-          this.fishService.initializeYPosition(swimmingDirection);
+        fish.yPosition = this.fishService.initializeYPosition(
+          fish.swimmingDirection
+        );
       }
     });
   }
