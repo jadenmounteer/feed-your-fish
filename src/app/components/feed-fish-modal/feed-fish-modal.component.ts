@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Fish } from '../types/fish';
+import { Fish } from '../../types/fish';
 
 @Component({
   selector: 'app-feed-fish-modal',

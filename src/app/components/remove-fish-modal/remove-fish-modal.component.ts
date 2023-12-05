@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Fish } from '../types/fish';
+import { Fish } from '../../types/fish';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

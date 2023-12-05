@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FeedFishModalComponent } from 'src/app/feed-fish-modal/feed-fish-modal.component';
-import { RemoveFishModalComponent } from 'src/app/remove-fish-modal/remove-fish-modal.component';
+import { FeedFishModalComponent } from 'src/app/components/feed-fish-modal/feed-fish-modal.component';
+import { RemoveFishModalComponent } from 'src/app/components/remove-fish-modal/remove-fish-modal.component';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';

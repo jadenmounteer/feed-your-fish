@@ -22,8 +22,8 @@ import { AddFishModalComponent } from './components/add-fish-modal/add-fish-moda
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { FishStatsComponent } from './components/fish-stats/fish-stats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FeedFishModalComponent } from './feed-fish-modal/feed-fish-modal.component';
-import { RemoveFishModalComponent } from './remove-fish-modal/remove-fish-modal.component';
+import { FeedFishModalComponent } from './components/feed-fish-modal/feed-fish-modal.component';
+import { RemoveFishModalComponent } from './components/remove-fish-modal/remove-fish-modal.component';
 
 @NgModule({
   declarations: [
