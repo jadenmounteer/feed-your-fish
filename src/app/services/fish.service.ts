@@ -16,6 +16,8 @@ export class FishService {
   constructor(private firestore: AngularFirestore) {}
   private MAXDIRECTIONRIGHT = 100;
   private MAXDIRECTIONLEFT = 0;
+  // TODO Replace this with the fish's swimming speed
+  private swimmingSpeed = 0.02;
 
   public updateFishStatus(fishes: Fish[]): void {
     fishes.forEach((fish) => {
@@ -128,19 +130,19 @@ export class FishService {
   }
 
   public swimLeft(fish: Fish) {
-    fish.xPosition -= 0.01;
+    fish.xPosition -= this.swimmingSpeed;
   }
 
   public swimRight(fish: Fish) {
-    fish.xPosition += 0.01;
+    fish.xPosition += this.swimmingSpeed;
   }
 
   public swimUp(fish: Fish) {
-    fish.yPosition -= 0.01;
+    fish.yPosition -= this.swimmingSpeed;
   }
 
   public swimDown(fish: Fish) {
-    fish.yPosition += 0.01;
+    fish.yPosition += this.swimmingSpeed;
   }
 
   public standStill(fish: Fish) {
@@ -149,22 +151,22 @@ export class FishService {
   }
 
   public swimUpLeft(fish: Fish) {
-    fish.xPosition -= 0.01;
-    fish.yPosition -= 0.01;
+    fish.xPosition -= this.swimmingSpeed;
+    fish.yPosition -= this.swimmingSpeed;
   }
 
   public swimUpRight(fish: Fish) {
-    fish.xPosition += 0.01;
-    fish.yPosition -= 0.01;
+    fish.xPosition += this.swimmingSpeed;
+    fish.yPosition -= this.swimmingSpeed;
   }
 
   public swimDownLeft(fish: Fish) {
-    fish.xPosition -= 0.01;
-    fish.yPosition += 0.01;
+    fish.xPosition -= this.swimmingSpeed;
+    fish.yPosition += this.swimmingSpeed;
   }
 
   public swimDownRight(fish: Fish) {
-    fish.xPosition += 0.01;
-    fish.yPosition += 0.01;
+    fish.xPosition += this.swimmingSpeed;
+    fish.yPosition += this.swimmingSpeed;
   }
 }
