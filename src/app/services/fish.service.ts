@@ -54,8 +54,29 @@ export class FishService {
   }
 
   public chooseRandomDirectionToSwimIn(): SwimmingDirection {
-    const randomNumber = Math.floor(Math.random() * 2);
-    return randomNumber === 0 ? 'swim-left' : 'swim-right';
+    const randomNumber = Math.floor(Math.random() * 9);
+    switch (randomNumber) {
+      case 0:
+        return 'swim-left';
+      case 1:
+        return 'swim-right';
+      case 2:
+        return 'stand-still';
+      case 3:
+        return 'swim-up';
+      case 4:
+        return 'swim-down';
+      case 5:
+        return 'swim-up-left';
+      case 6:
+        return 'swim-up-right';
+      case 7:
+        return 'swim-down-left';
+      case 8:
+        return 'swim-down-right';
+      default:
+        return 'stand-still';
+    }
   }
 
   public chooseRandomSpeed(): SwimmingSpeed {
@@ -97,5 +118,38 @@ export class FishService {
 
   public swimRight(fish: Fish) {
     fish.xPosition += 0.01;
+  }
+
+  public swimUp(fish: Fish) {
+    fish.yPosition -= 0.01;
+  }
+
+  public swimDown(fish: Fish) {
+    fish.yPosition += 0.01;
+  }
+
+  public standStill(fish: Fish) {
+    fish.xPosition = fish.xPosition;
+    fish.yPosition = fish.yPosition;
+  }
+
+  public swimUpLeft(fish: Fish) {
+    fish.xPosition -= 0.01;
+    fish.yPosition -= 0.01;
+  }
+
+  public swimUpRight(fish: Fish) {
+    fish.xPosition += 0.01;
+    fish.yPosition -= 0.01;
+  }
+
+  public swimDownLeft(fish: Fish) {
+    fish.xPosition -= 0.01;
+    fish.yPosition += 0.01;
+  }
+
+  public swimDownRight(fish: Fish) {
+    fish.xPosition += 0.01;
+    fish.yPosition += 0.01;
   }
 }

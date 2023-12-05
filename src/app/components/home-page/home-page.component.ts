@@ -105,6 +105,20 @@ export class HomePageComponent {
             this.fishService.swimLeft(fish);
           } else if (fish.swimmingDirection === 'swim-right') {
             this.fishService.swimRight(fish);
+          } else if (fish.swimmingDirection === 'stand-still') {
+            this.fishService.standStill(fish);
+          } else if (fish.swimmingDirection === 'swim-up') {
+            this.fishService.swimUp(fish);
+          } else if (fish.swimmingDirection === 'swim-down') {
+            this.fishService.swimDown(fish);
+          } else if (fish.swimmingDirection === 'swim-up-left') {
+            this.fishService.swimUpLeft(fish);
+          } else if (fish.swimmingDirection === 'swim-up-right') {
+            this.fishService.swimUpRight(fish);
+          } else if (fish.swimmingDirection === 'swim-down-left') {
+            this.fishService.swimDownLeft(fish);
+          } else if (fish.swimmingDirection === 'swim-down-right') {
+            this.fishService.swimDownRight(fish);
           }
         }, 1);
 
