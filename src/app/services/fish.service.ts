@@ -169,4 +169,36 @@ export class FishService {
     fish.xPosition += this.swimmingSpeed;
     fish.yPosition += this.swimmingSpeed;
   }
+
+  public fishTooFarLeft(fish: Fish, screenWidth: number): boolean {
+    // TODO return true if fish.xPosition <= 0
+    if (fish.xPosition < 0) {
+      return true;
+    }
+    return false;
+  }
+
+  public fishTooFarRight(fish: Fish, screenWidth: number): boolean {
+    // TODO return true if fish.xPosition >= screenWidth - fishWidth
+    if (fish.xPosition > screenWidth) {
+      return true;
+    }
+    return false;
+  }
+
+  public fishTooFarUp(fish: Fish, screenHeight: number): boolean {
+    // TODO return true if fish.yPosition <= 0
+    if (fish.yPosition < 0) {
+      return true;
+    }
+    return false;
+  }
+
+  public fishTooFarDown(fish: Fish, screenHeight: number): boolean {
+    // TODO return true if fish.yPosition >= screenHeight - fishHeight
+    if (fish.yPosition > screenHeight) {
+      return true;
+    }
+    return false;
+  }
 }

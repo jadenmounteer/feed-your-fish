@@ -36,6 +36,8 @@ export class GoldfishComponent
 
   @Input() canvasQuery: any;
   @Input() fishName: string | undefined = undefined;
+  @Input() xPosition: number = 0;
+  @Input() yPosition: number = 0;
 
   @ViewChild('sprite', { static: true }) goldfish: ElementRef | undefined;
 

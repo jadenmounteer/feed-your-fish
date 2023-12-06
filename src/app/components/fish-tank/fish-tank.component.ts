@@ -50,8 +50,8 @@ export class FishTankComponent {
   protected tanks: Tank[] = [];
   private tankViewingSubscription$ = new Subscription();
   protected showFishControls = false;
-  private screenHeight!: number;
-  private screenWidth!: number;
+  protected screenHeight!: number;
+  protected screenWidth!: number;
 
   constructor(
     protected authService: AuthService,
@@ -105,25 +105,70 @@ export class FishTankComponent {
         let intervalSpeed: number = this.getRandomIntervalSpeed();
 
         // Make the fish swim
+        let fishTooFarLeft = false;
+        let fishTooFarRight = false;
+        let fishTooFarUp = false;
+        let fishTooFarDown = false;
+
+        let pixelsTraveledLeft = 0;
+        let pixelsTraveledRight = 0;
+        let pixelsTraveledUp = 0;
+        let pixelsTraveledDown = 0;
         setInterval(() => {
-          if (fish.swimmingDirection === 'swim-left') {
+          fishTooFarLeft = this.fishService.fishTooFarLeft(
+            fish,
+            this.screenWidth
+          );
+          fishTooFarRight = this.fishService.fishTooFarRight(
+            fish,
+            this.screenWidth
+          );
+          fishTooFarUp = this.fishService.fishTooFarUp(fish, this.screenHeight);
+          fishTooFarDown = this.fishService.fishTooFarDown(
+            fish,
+            this.screenHeight
+          );
+
+          if (fish.swimmingDirection === 'swim-left' && !fishTooFarLeft) {
             this.fishService.swimLeft(fish);
-          } else if (fish.swimmingDirection === 'swim-right') {
+          } else if (
+            fish.swimmingDirection === 'swim-right' &&
+            !fishTooFarRight
+          ) {
             this.fishService.swimRight(fish);
-          } else if (fish.swimmingDirection === 'stand-still') {
-            this.fishService.standStill(fish);
-          } else if (fish.swimmingDirection === 'swim-up') {
+          } else if (fish.swimmingDirection === 'swim-up' && !fishTooFarUp) {
             this.fishService.swimUp(fish);
-          } else if (fish.swimmingDirection === 'swim-down') {
+          } else if (
+            fish.swimmingDirection === 'swim-down' &&
+            !fishTooFarDown
+          ) {
             this.fishService.swimDown(fish);
-          } else if (fish.swimmingDirection === 'swim-up-left') {
+          } else if (
+            fish.swimmingDirection === 'swim-up-left' &&
+            !fishTooFarLeft &&
+            !fishTooFarUp
+          ) {
             this.fishService.swimUpLeft(fish);
-          } else if (fish.swimmingDirection === 'swim-up-right') {
+          } else if (
+            fish.swimmingDirection === 'swim-up-right' &&
+            !fishTooFarRight &&
+            !fishTooFarUp
+          ) {
             this.fishService.swimUpRight(fish);
-          } else if (fish.swimmingDirection === 'swim-down-left') {
+          } else if (
+            fish.swimmingDirection === 'swim-down-left' &&
+            !fishTooFarLeft &&
+            !fishTooFarDown
+          ) {
             this.fishService.swimDownLeft(fish);
-          } else if (fish.swimmingDirection === 'swim-down-right') {
+          } else if (
+            fish.swimmingDirection === 'swim-down-right' &&
+            !fishTooFarRight &&
+            !fishTooFarDown
+          ) {
             this.fishService.swimDownRight(fish);
+          } else {
+            this.fishService.standStill(fish);
           }
         }, 1);
 
@@ -153,8 +198,6 @@ export class FishTankComponent {
 
   @HostListener('window:resize', ['$event'])
   private onResize(event: any) {
-    console.log('resizing');
-    console.log(event);
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
     console.log(this.screenHeight);
