@@ -17,7 +17,11 @@ export class FishService {
   private MAXDIRECTIONRIGHT = 100;
   private MAXDIRECTIONLEFT = 0;
   // TODO Replace this with the fish's swimming speed
-  private swimmingSpeed = 0.02;
+  private swimmingSpeed = 1;
+
+  // TODO These will be dynamic
+  private fishHeight = 300;
+  private fishWidth = 300;
 
   public updateFishStatus(fishes: Fish[]): void {
     fishes.forEach((fish) => {
@@ -171,16 +175,14 @@ export class FishService {
   }
 
   public fishTooFarLeft(fish: Fish, screenWidth: number): boolean {
-    // TODO return true if fish.xPosition <= 0
-    if (fish.xPosition < 0) {
+    if (fish.xPosition <= 0) {
       return true;
     }
     return false;
   }
 
   public fishTooFarRight(fish: Fish, screenWidth: number): boolean {
-    // TODO return true if fish.xPosition >= screenWidth - fishWidth
-    if (fish.xPosition > screenWidth) {
+    if (fish.xPosition >= screenWidth - this.fishWidth) {
       return true;
     }
     return false;
@@ -188,15 +190,14 @@ export class FishService {
 
   public fishTooFarUp(fish: Fish, screenHeight: number): boolean {
     // TODO return true if fish.yPosition <= 0
-    if (fish.yPosition < 0) {
+    if (fish.yPosition <= 0) {
       return true;
     }
     return false;
   }
 
   public fishTooFarDown(fish: Fish, screenHeight: number): boolean {
-    // TODO return true if fish.yPosition >= screenHeight - fishHeight
-    if (fish.yPosition > screenHeight) {
+    if (fish.yPosition >= screenHeight - this.fishHeight) {
       return true;
     }
     return false;
