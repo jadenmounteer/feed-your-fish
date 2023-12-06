@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { FishService } from 'src/app/services/fish.service';
@@ -50,12 +50,16 @@ export class FishTankComponent {
   protected tanks: Tank[] = [];
   private tankViewingSubscription$ = new Subscription();
   protected showFishControls = false;
+  private screenHeight!: number;
+  private screenWidth!: number;
 
   constructor(
     protected authService: AuthService,
     private tankService: TankService,
     private fishService: FishService
-  ) {}
+  ) {
+    this.onResize(event);
+  }
   ngOnInit(): void {
     this.loadTanks();
     this.tankViewingSubscription$ =
@@ -145,5 +149,15 @@ export class FishTankComponent {
   ngOnDestroy(): void {
     this.tankSubscription$.unsubscribe();
     this.tankViewingSubscription$.unsubscribe();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private onResize(event: any) {
+    console.log('resizing');
+    console.log(event);
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    console.log(this.screenHeight);
+    console.log(this.screenWidth);
   }
 }
