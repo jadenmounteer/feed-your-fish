@@ -1,5 +1,22 @@
 <div class="header-container">
-  <div class="user-button">
-    <fa-icon [icon]="icon.faUser"></fa-icon>
-  </div>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <div ngbDropdown>
+        <div class="user-button">
+          <fa-icon [icon]="icon.faUser" ngbDropdownToggle></fa-icon>
+        </div>
+
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <span
+            style="cursor: pointer"
+            *ngIf="authService.user$ | async as user"
+          >
+            {{ user.email }}
+          </span>
+
+          <a ngbDropdownItem (click)="authService.logout()">Sign Out</a>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>

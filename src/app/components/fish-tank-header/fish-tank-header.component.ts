@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { IconService } from 'src/app/services/icon.service';
 
 @Component({
@@ -7,5 +8,5 @@ import { IconService } from 'src/app/services/icon.service';
   styleUrls: ['./fish-tank-header.component.scss'],
 })
 export class FishTankHeaderComponent {
-  constructor(public icon: IconService) {}
+  constructor(public icon: IconService, protected authService: AuthService) {}
 }
