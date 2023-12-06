@@ -1,6 +1,4 @@
 <div class="tank">
-  <p>Height: {{ screenHeight }}</p>
-  <p>Width: {{ screenWidth }}</p>
   <app-fish-tank-header></app-fish-tank-header>
   <app-tank-info
     [userEmail]="authService.userEmail"
@@ -34,8 +32,6 @@
         *ngSwitchCase="'goldfish'"
         class="fish"
         [fishName]="fish.fishName"
-        [xPosition]="fish.xPosition"
-        [yPosition]="fish.yPosition"
       ></app-goldfish>
     </div>
   </ng-container>

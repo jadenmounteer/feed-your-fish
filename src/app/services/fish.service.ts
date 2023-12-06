@@ -17,7 +17,7 @@ export class FishService {
   private MAXDIRECTIONRIGHT = 100;
   private MAXDIRECTIONLEFT = 0;
   // TODO Replace this with the fish's swimming speed
-  private swimmingSpeed = 1;
+  private swimmingSpeed = 0.5;
 
   // TODO These will be dynamic
   private fishHeight = 300;
