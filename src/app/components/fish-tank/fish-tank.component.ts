@@ -109,11 +109,6 @@ export class FishTankComponent {
         let fishTooFarRight = false;
         let fishTooFarUp = false;
         let fishTooFarDown = false;
-
-        let pixelsTraveledLeft = 0;
-        let pixelsTraveledRight = 0;
-        let pixelsTraveledUp = 0;
-        let pixelsTraveledDown = 0;
         setInterval(() => {
           fishTooFarLeft = this.fishService.fishTooFarLeft(
             fish,
