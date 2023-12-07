@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 export class SpriteComponent {
   public BORDER_WIDTH: number = 1;
   public SPACING_WIDTH: number = 1;
-  public SPRITE_WIDTH = 228; // The total width in px divided by the number of columns
-  public SPRITE_HEIGHT = 228; // The total height in px divided by the total rows
+  public SPRITE_WIDTH = 96; // The total width in px divided by the number of columns
+  public SPRITE_HEIGHT = 96; // The total height in px divided by the total rows
 
   frameIndex = 0;
   frame: any;

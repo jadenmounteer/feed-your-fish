@@ -18,8 +18,8 @@ export class GoldfishComponent
   extends SpriteComponent
   implements AfterViewInit, OnInit
 {
-  public override SPRITE_WIDTH = 256; // The total width in px divided by the number of columns
-  public override SPRITE_HEIGHT = 256; // The total height in px divided by the total rows
+  public override SPRITE_WIDTH = 96; // The total width in px divided by the number of columns
+  public override SPRITE_HEIGHT = 96; // The total height in px divided by the total rows
 
   // Spritesheets from Piskel seem to not have a border or spacing
   public override BORDER_WIDTH: number = 0;
