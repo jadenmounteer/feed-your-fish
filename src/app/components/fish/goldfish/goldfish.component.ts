@@ -40,30 +40,47 @@ export class GoldfishComponent
   @ViewChild('sprite', { static: true }) goldfish: ElementRef | undefined;
 
   /*** Images ***/
-  private goldfishSwimming1: any = this.spritePositionToImagePosition(0, 0);
-  private goldfishSwimming2: any = this.spritePositionToImagePosition(0, 1);
-  private goldfishSwimming3: any = this.spritePositionToImagePosition(0, 2);
-  private goldfishSwimming4: any = this.spritePositionToImagePosition(0, 3);
 
-  private goldfishBlinking1: any = this.spritePositionToImagePosition(1, 0);
-  private goldfishBlinking2: any = this.spritePositionToImagePosition(1, 1);
-  private goldfishBlinking3: any = this.spritePositionToImagePosition(1, 2);
-  private goldfishBlinking4: any = this.spritePositionToImagePosition(1, 3);
+  // Swimming left
+  private goldfishSwimmingLeftTaleOut: any = this.spritePositionToImagePosition(
+    0,
+    0
+  );
+  private goldfishSwimmingLeftTaleTuckedIn: any =
+    this.spritePositionToImagePosition(0, 1);
+  private goldfishSwimmingLeftBlinkingTaleOut: any =
+    this.spritePositionToImagePosition(0, 2);
+  private goldfishSwimmingLeftBlinkingTaleIn: any =
+    this.spritePositionToImagePosition(0, 3);
+  private goldfishSwimmingLeftBubbles1: any =
+    this.spritePositionToImagePosition(0, 4);
+  private goldfishSwimmingLeftBubbles2: any =
+    this.spritePositionToImagePosition(1, 0);
+  private goldfishSwimmingLeftBubbles3: any =
+    this.spritePositionToImagePosition(1, 1);
+
+  // Swimming Right
+  private goldfishSwimmingRightTaleOut: any =
+    this.spritePositionToImagePosition(1, 0);
+  private goldfishSwimmingRightTaleTuckedIn: any =
+    this.spritePositionToImagePosition(1, 1);
+  private goldfishSwimmingRightBlinkingTaleOut: any =
+    this.spritePositionToImagePosition(1, 2);
+  private goldfishSwimmingRightBlinkingTaleIn: any =
+    this.spritePositionToImagePosition(1, 3);
 
   /*** ANIMATIONS ***/
 
-  private swimmingCycle: any = [
-    this.goldfishSwimming1,
-    this.goldfishSwimming2,
-    this.goldfishSwimming3,
-    this.goldfishSwimming4,
-  ];
-
-  private blinkingCycle: any = [
-    this.goldfishBlinking1,
-    this.goldfishBlinking2,
-    this.goldfishBlinking3,
-    this.goldfishBlinking4,
+  private swimmingLeftCycle: any = [
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftTaleTuckedIn,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftTaleTuckedIn,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftBlinkingTaleIn,
+    this.goldfishSwimmingLeftBlinkingTaleOut,
+    this.goldfishSwimmingLeftTaleTuckedIn,
   ];
 
   /*** SPEEDS ***/
@@ -88,13 +105,13 @@ export class GoldfishComponent
 
   public justKeepSwimming(): void {
     this.currentInterval = setInterval(() => {
-      this.animate(this.swimmingCycle);
+      this.animate(this.swimmingLeftCycle);
     }, this.swimmingSpeed);
   }
 
   public blink(): void {
     this.currentInterval = setInterval(() => {
-      this.animate(this.blinkingCycle);
+      // this.animate(this.blinkingCycle);
     }, this.swimmingSpeed);
   }
 }
