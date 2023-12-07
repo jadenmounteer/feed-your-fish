@@ -39,3 +39,11 @@ export type SwimmingDirection =
   | 'swim-down-right';
 
 export type SwimmingSpeed = '5s' | '30s';
+
+// TODO I will need to add the fish to their own collections so they have their own ID, but for now I compare by name
+export type FishAnimationData = {
+  fishName: string;
+  fishAnimation: FishAnimation;
+};
+
+export type FishAnimation = 'swimLeft' | 'swimRight' | 'swimUp' | 'swimDown';

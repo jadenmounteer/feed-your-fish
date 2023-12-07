@@ -3,11 +3,19 @@ import {
   Component,
   ElementRef,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { SpriteComponent } from '../../sprite/sprite.component';
-import { SwimmingDirection, SwimmingSpeed } from 'src/app/types/fish';
+import {
+  FishAnimation,
+  FishAnimationData,
+  SwimmingDirection,
+  SwimmingSpeed,
+} from 'src/app/types/fish';
+import { FishService } from 'src/app/services/fish.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-goldfish',
@@ -16,7 +24,7 @@ import { SwimmingDirection, SwimmingSpeed } from 'src/app/types/fish';
 })
 export class GoldfishComponent
   extends SpriteComponent
-  implements AfterViewInit, OnInit
+  implements AfterViewInit, OnInit, OnDestroy
 {
   public override SPRITE_WIDTH = 96; // The total width in px divided by the number of columns
   public override SPRITE_HEIGHT = 96; // The total height in px divided by the total rows
@@ -31,8 +39,9 @@ export class GoldfishComponent
   public override frameIndex: number = 0;
   public override frame: any;
   public override image = new Image();
-  private currentInterval: NodeJS.Timer | undefined;
+  private currentInterval: any;
   private currentAnimation: string = 'standStill';
+  private fishAnimationSub$!: Subscription;
 
   @Input() canvasQuery: any;
   @Input() fishName: string | undefined = undefined;
@@ -196,12 +205,55 @@ export class GoldfishComponent
   /*** SPEEDS ***/
   private swimmingSpeed: number = 200;
 
-  constructor() {
+  constructor(private fishService: FishService) {
     super();
+  }
+  ngOnDestroy(): void {
+    this.fishAnimationSub$.unsubscribe();
   }
 
   ngOnInit(): void {
     this.swimLeft();
+
+    // TODO All of this animation logic can be in the Sprite class to be shareable by each fish type.
+    this.fishAnimationSub$ = this.fishService.animationChangeEmitter.subscribe(
+      (animationData: FishAnimationData) => {
+        if (!this.handleNewAnimation(animationData)) {
+          return;
+        }
+        this.currentAnimation = animationData.fishAnimation;
+        switch (animationData.fishAnimation) {
+          case 'swimLeft':
+            this.swimLeft();
+            break;
+          case 'swimRight':
+            this.swimRight();
+            break;
+          case 'swimUp':
+            this.swimUp();
+            break;
+          case 'swimDown':
+            this.swimDown();
+            break;
+          default:
+            this.swimLeft();
+        }
+      }
+    );
+  }
+
+  private handleNewAnimation(animationData: FishAnimationData): boolean {
+    // TODO In the future I want to move fish to their own collection so they have an ID. Then we can compare by ID rather tha name
+    if (
+      animationData.fishAnimation != this.currentAnimation &&
+      this.fishName === animationData.fishName
+    ) {
+      this.stopCurrentAnimation();
+
+      this.currentAnimation = animationData.fishAnimation;
+      return true;
+    }
+    return false;
   }
 
   ngAfterViewInit(): void {
@@ -234,5 +286,9 @@ export class GoldfishComponent
     this.currentInterval = setInterval(() => {
       this.animate(this.swimmingDownCycle);
     }, this.swimmingSpeed);
+  }
+
+  private stopCurrentAnimation() {
+    clearInterval(this.currentInterval);
   }
 }

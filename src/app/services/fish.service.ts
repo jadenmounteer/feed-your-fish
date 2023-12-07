@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   Fish,
+  FishAnimationData,
   FishStatus,
   SwimmingDirection,
   SwimmingSpeed,
 } from '../types/fish';
-import { Observable, from, map } from 'rxjs';
+import { Observable, Subject, from, map } from 'rxjs';
 import { convertFirestoreTimestampToDate } from './db-utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FishService {
+  public animationChangeEmitter = new Subject<FishAnimationData>();
   constructor(private firestore: AngularFirestore) {}
   private MAXDIRECTIONRIGHT = 100;
   private MAXDIRECTIONLEFT = 0;
@@ -134,42 +136,96 @@ export class FishService {
   }
 
   public swimLeft(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimLeft',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition -= this.swimmingSpeed;
   }
 
   public swimRight(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimRight',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition += this.swimmingSpeed;
   }
 
   public swimUp(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimUp',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.yPosition -= this.swimmingSpeed;
   }
 
   public swimDown(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimDown',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.yPosition += this.swimmingSpeed;
   }
 
   public standStill(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimLeft',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition = fish.xPosition;
     fish.yPosition = fish.yPosition;
   }
 
   public swimUpLeft(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimUp',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition -= this.swimmingSpeed;
     fish.yPosition -= this.swimmingSpeed;
   }
 
   public swimUpRight(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimUp',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition += this.swimmingSpeed;
     fish.yPosition -= this.swimmingSpeed;
   }
 
   public swimDownLeft(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimDown',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition -= this.swimmingSpeed;
     fish.yPosition += this.swimmingSpeed;
   }
 
   public swimDownRight(fish: Fish) {
+    const fishAnimationData: FishAnimationData = {
+      fishName: fish.fishName,
+      fishAnimation: 'swimDown',
+    };
+
+    this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition += this.swimmingSpeed;
     fish.yPosition += this.swimmingSpeed;
   }
