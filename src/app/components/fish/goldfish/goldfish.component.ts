@@ -75,6 +75,30 @@ export class GoldfishComponent
   private goldfishSwimmingRightBubbles3: any =
     this.spritePositionToImagePosition(2, 3);
 
+  // Swimming Up
+  private goldfishSwimmingUpTaleOut: any = this.spritePositionToImagePosition(
+    2,
+    4
+  );
+  private goldfishSwimmingUpTaleTuckedIn: any =
+    this.spritePositionToImagePosition(3, 0);
+  private goldfishSwimmingUpBlinkingTaleOut: any =
+    this.spritePositionToImagePosition(3, 1);
+  private goldfishSwimmingUpBlinkingTaleIn: any =
+    this.spritePositionToImagePosition(3, 2);
+
+  // Swimming down
+  private goldfishSwimmingDownTaleOut: any = this.spritePositionToImagePosition(
+    3,
+    3
+  );
+  private goldfishSwimmingDownTaleTuckedIn: any =
+    this.spritePositionToImagePosition(3, 4);
+  private goldfishSwimmingDownBlinkingTaleOut: any =
+    this.spritePositionToImagePosition(4, 0);
+  private goldfishSwimmingDownBlinkingTaleIn: any =
+    this.spritePositionToImagePosition(4, 1);
+
   /*** ANIMATIONS ***/
 
   private swimmingLeftCycle: any = [
@@ -127,6 +151,48 @@ export class GoldfishComponent
     this.goldfishSwimmingRightTaleTuckedIn,
   ];
 
+  private swimmingUpCycle: any = [
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpTaleTuckedIn,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpTaleTuckedIn,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpBlinkingTaleIn,
+    this.goldfishSwimmingUpBlinkingTaleOut,
+    this.goldfishSwimmingUpTaleTuckedIn,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpTaleTuckedIn,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpTaleTuckedIn,
+    this.goldfishSwimmingUpTaleOut,
+    this.goldfishSwimmingUpBlinkingTaleIn,
+    this.goldfishSwimmingUpBlinkingTaleOut,
+    this.goldfishSwimmingUpTaleTuckedIn,
+  ];
+
+  private swimmingDownCycle: any = [
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownTaleTuckedIn,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownTaleTuckedIn,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownBlinkingTaleIn,
+    this.goldfishSwimmingDownBlinkingTaleOut,
+    this.goldfishSwimmingDownTaleTuckedIn,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownTaleTuckedIn,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownTaleTuckedIn,
+    this.goldfishSwimmingDownTaleOut,
+    this.goldfishSwimmingDownBlinkingTaleIn,
+    this.goldfishSwimmingDownBlinkingTaleOut,
+    this.goldfishSwimmingDownTaleTuckedIn,
+  ];
+
   /*** SPEEDS ***/
   private swimmingSpeed: number = 200;
 
@@ -135,8 +201,7 @@ export class GoldfishComponent
   }
 
   ngOnInit(): void {
-    this.justKeepSwimming();
-    // this.blink();
+    this.swimLeft();
   }
 
   ngAfterViewInit(): void {
@@ -147,15 +212,27 @@ export class GoldfishComponent
     this.canvasQuery = this.canvasQuery;
   }
 
-  public justKeepSwimming(): void {
+  public swimLeft(): void {
+    this.currentInterval = setInterval(() => {
+      this.animate(this.swimmingLeftCycle);
+    }, this.swimmingSpeed);
+  }
+
+  public swimRight(): void {
     this.currentInterval = setInterval(() => {
       this.animate(this.swimmingRightCycle);
     }, this.swimmingSpeed);
   }
 
-  public blink(): void {
+  public swimUp(): void {
     this.currentInterval = setInterval(() => {
-      // this.animate(this.blinkingCycle);
+      this.animate(this.swimmingUpCycle);
+    }, this.swimmingSpeed);
+  }
+
+  public swimDown(): void {
+    this.currentInterval = setInterval(() => {
+      this.animate(this.swimmingDownCycle);
     }, this.swimmingSpeed);
   }
 }
