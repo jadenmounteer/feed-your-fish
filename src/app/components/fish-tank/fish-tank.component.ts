@@ -177,7 +177,8 @@ export class FishTankComponent {
   }
 
   private getRandomIntervalSpeed(): number {
-    return Math.floor(Math.random() * 10000) + 5000;
+    // return random number between 1 and 5 seconds
+    return Math.floor(Math.random() * 5000) + 1000;
   }
 
   private changeDirection(fish: Fish): void {
