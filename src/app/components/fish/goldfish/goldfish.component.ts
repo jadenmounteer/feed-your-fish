@@ -81,6 +81,19 @@ export class GoldfishComponent
     this.goldfishSwimmingLeftBlinkingTaleIn,
     this.goldfishSwimmingLeftBlinkingTaleOut,
     this.goldfishSwimmingLeftTaleTuckedIn,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftTaleTuckedIn,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftTaleTuckedIn,
+    this.goldfishSwimmingLeftTaleOut,
+    this.goldfishSwimmingLeftBlinkingTaleIn,
+    this.goldfishSwimmingLeftBlinkingTaleOut,
+    this.goldfishSwimmingLeftTaleTuckedIn,
+    this.goldfishSwimmingLeftBubbles1,
+    this.goldfishSwimmingLeftBubbles2,
+    this.goldfishSwimmingLeftBubbles3,
+    this.goldfishSwimmingLeftTaleTuckedIn,
   ];
 
   /*** SPEEDS ***/
