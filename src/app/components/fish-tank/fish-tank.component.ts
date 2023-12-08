@@ -131,13 +131,6 @@ export class FishTankComponent {
             !fishTooFarRight
           ) {
             this.fishService.swimRight(fish);
-          } else if (fish.swimmingDirection === 'swim-up' && !fishTooFarUp) {
-            this.fishService.swimUp(fish);
-          } else if (
-            fish.swimmingDirection === 'swim-down' &&
-            !fishTooFarDown
-          ) {
-            this.fishService.swimDown(fish);
           } else if (
             fish.swimmingDirection === 'swim-up-left' &&
             !fishTooFarLeft &&

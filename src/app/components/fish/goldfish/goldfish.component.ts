@@ -229,12 +229,7 @@ export class GoldfishComponent
           case 'swimRight':
             this.swimRight();
             break;
-          case 'swimUp':
-            this.swimUp();
-            break;
-          case 'swimDown':
-            this.swimDown();
-            break;
+
           default:
             this.swimLeft();
         }
@@ -273,18 +268,6 @@ export class GoldfishComponent
   public swimRight(): void {
     this.currentInterval = setInterval(() => {
       this.animate(this.swimmingRightCycle);
-    }, this.swimmingSpeed);
-  }
-
-  public swimUp(): void {
-    this.currentInterval = setInterval(() => {
-      this.animate(this.swimmingUpCycle);
-    }, this.swimmingSpeed);
-  }
-
-  public swimDown(): void {
-    this.currentInterval = setInterval(() => {
-      this.animate(this.swimmingDownCycle);
     }, this.swimmingSpeed);
   }
 

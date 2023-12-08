@@ -16,10 +16,10 @@ import { convertFirestoreTimestampToDate } from './db-utils';
 export class FishService {
   public animationChangeEmitter = new Subject<FishAnimationData>();
   constructor(private firestore: AngularFirestore) {}
-  private MAXDIRECTIONRIGHT = 100;
+  private MAXDIRECTIONRIGHT = 200;
   private MAXDIRECTIONLEFT = 0;
   // TODO Replace this with the fish's swimming speed
-  private swimmingSpeed = 0.5;
+  private swimmingSpeed = 0.3;
 
   // TODO These will be dynamic
   private fishHeight = 300;
@@ -62,25 +62,19 @@ export class FishService {
   }
 
   public chooseRandomDirectionToSwimIn(): SwimmingDirection {
-    const randomNumber = Math.floor(Math.random() * 9);
+    const randomNumber = Math.floor(Math.random() * 6);
     switch (randomNumber) {
       case 0:
         return 'swim-left';
       case 1:
         return 'swim-right';
       case 2:
-        return 'stand-still';
-      case 3:
-        return 'swim-up';
-      case 4:
-        return 'swim-down';
-      case 5:
         return 'swim-up-left';
-      case 6:
-        return 'swim-up-right';
-      case 7:
+      case 3:
         return 'swim-down-left';
-      case 8:
+      case 4:
+        return 'swim-up-right';
+      case 5:
         return 'swim-down-right';
       default:
         return 'stand-still';
@@ -103,7 +97,28 @@ export class FishService {
         this.MAXDIRECTIONLEFT / 2,
         this.MAXDIRECTIONRIGHT
       );
+    } else if (swimmingDirection === 'swim-up-left') {
+      return this.getRandomNumberBetween(
+        this.MAXDIRECTIONLEFT / 2,
+        this.MAXDIRECTIONRIGHT
+      );
+    } else if (swimmingDirection === 'swim-up-right') {
+      return this.getRandomNumberBetween(
+        this.MAXDIRECTIONLEFT / 2,
+        this.MAXDIRECTIONRIGHT
+      );
+    } else if (swimmingDirection === 'swim-down-left') {
+      return this.getRandomNumberBetween(
+        this.MAXDIRECTIONLEFT / 2,
+        this.MAXDIRECTIONRIGHT
+      );
+    } else if (swimmingDirection === 'swim-down-right') {
+      return this.getRandomNumberBetween(
+        this.MAXDIRECTIONLEFT / 2,
+        this.MAXDIRECTIONRIGHT
+      );
     }
+
     return 0;
   }
 
@@ -112,10 +127,6 @@ export class FishService {
       return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
     } else if (swimmingDirection === 'swim-right') {
       this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
-    } else if (swimmingDirection === 'swim-up') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
-    } else if (swimmingDirection === 'swim-down') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
     } else if (swimmingDirection === 'swim-up-left') {
       return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
     } else if (swimmingDirection === 'swim-up-right') {
@@ -153,26 +164,6 @@ export class FishService {
 
     this.animationChangeEmitter.next(fishAnimationData);
     fish.xPosition += this.swimmingSpeed;
-  }
-
-  public swimUp(fish: Fish) {
-    const fishAnimationData: FishAnimationData = {
-      fishName: fish.fishName,
-      fishAnimation: 'swimUp',
-    };
-
-    this.animationChangeEmitter.next(fishAnimationData);
-    fish.yPosition -= this.swimmingSpeed;
-  }
-
-  public swimDown(fish: Fish) {
-    const fishAnimationData: FishAnimationData = {
-      fishName: fish.fishName,
-      fishAnimation: 'swimDown',
-    };
-
-    this.animationChangeEmitter.next(fishAnimationData);
-    fish.yPosition += this.swimmingSpeed;
   }
 
   public standStill(fish: Fish) {
