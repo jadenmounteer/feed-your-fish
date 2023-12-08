@@ -189,7 +189,7 @@ export class FishService {
   public swimUpLeft(fish: Fish) {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
-      fishAnimation: 'swimUp',
+      fishAnimation: 'swimLeft',
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -200,7 +200,7 @@ export class FishService {
   public swimUpRight(fish: Fish) {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
-      fishAnimation: 'swimUp',
+      fishAnimation: 'swimRight',
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -211,7 +211,7 @@ export class FishService {
   public swimDownLeft(fish: Fish) {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
-      fishAnimation: 'swimDown',
+      fishAnimation: 'swimLeft',
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -222,7 +222,7 @@ export class FishService {
   public swimDownRight(fish: Fish) {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
-      fishAnimation: 'swimDown',
+      fishAnimation: 'swimRight',
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
