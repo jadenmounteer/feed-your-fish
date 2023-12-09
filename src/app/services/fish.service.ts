@@ -86,57 +86,45 @@ export class FishService {
     return randomNumber === 0 ? '5s' : '30s';
   }
 
-  public initializeXPosition(swimmingDirection: SwimmingDirection): number {
+  public initializeXPosition(
+    swimmingDirection: SwimmingDirection,
+    screenWidth: number
+  ): number {
     if (swimmingDirection === 'swim-left') {
-      return this.getRandomNumberBetween(
-        this.MAXDIRECTIONLEFT / 2,
-        this.MAXDIRECTIONRIGHT
-      );
+      return this.getRandomNumberBetween(0, screenWidth);
     } else if (swimmingDirection === 'swim-right') {
-      return this.getRandomNumberBetween(
-        this.MAXDIRECTIONLEFT / 2,
-        this.MAXDIRECTIONRIGHT
-      );
+      return this.getRandomNumberBetween(0, screenWidth);
     } else if (swimmingDirection === 'swim-up-left') {
-      return this.getRandomNumberBetween(
-        this.MAXDIRECTIONLEFT / 2,
-        this.MAXDIRECTIONRIGHT
-      );
+      return this.getRandomNumberBetween(0, screenWidth);
     } else if (swimmingDirection === 'swim-up-right') {
-      return this.getRandomNumberBetween(
-        this.MAXDIRECTIONLEFT / 2,
-        this.MAXDIRECTIONRIGHT
-      );
+      return this.getRandomNumberBetween(0, screenWidth);
     } else if (swimmingDirection === 'swim-down-left') {
-      return this.getRandomNumberBetween(
-        this.MAXDIRECTIONLEFT / 2,
-        this.MAXDIRECTIONRIGHT
-      );
+      return this.getRandomNumberBetween(0, screenWidth);
     } else if (swimmingDirection === 'swim-down-right') {
-      return this.getRandomNumberBetween(
-        this.MAXDIRECTIONLEFT / 2,
-        this.MAXDIRECTIONRIGHT
-      );
+      return this.getRandomNumberBetween(0, screenWidth);
     }
 
     return 0;
   }
 
-  public initializeYPosition(swimmingDirection: SwimmingDirection): number {
+  public initializeYPosition(
+    swimmingDirection: SwimmingDirection,
+    screenHeight: number
+  ): number {
     if (swimmingDirection === 'swim-left') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      return this.getRandomNumberBetween(0, screenHeight);
     } else if (swimmingDirection === 'swim-right') {
-      this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      this.getRandomNumberBetween(0, screenHeight);
     } else if (swimmingDirection === 'swim-up-left') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      return this.getRandomNumberBetween(0, screenHeight);
     } else if (swimmingDirection === 'swim-up-right') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      return this.getRandomNumberBetween(0, screenHeight);
     } else if (swimmingDirection === 'swim-down-left') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      return this.getRandomNumberBetween(0, screenHeight);
     } else if (swimmingDirection === 'swim-down-right') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      return this.getRandomNumberBetween(0, screenHeight);
     } else if (swimmingDirection === 'stand-still') {
-      return this.getRandomNumberBetween(0, this.MAXDIRECTIONRIGHT);
+      return this.getRandomNumberBetween(0, screenHeight);
     }
 
     return 0;

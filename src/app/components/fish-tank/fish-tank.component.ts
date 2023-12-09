@@ -95,11 +95,13 @@ export class FishTankComponent {
         this.changeDirection(fish);
 
         fish.xPosition = this.fishService.initializeXPosition(
-          fish.swimmingDirection
+          fish.swimmingDirection,
+          this.screenWidth
         );
 
         fish.yPosition = this.fishService.initializeYPosition(
-          fish.swimmingDirection
+          fish.swimmingDirection,
+          this.screenHeight
         );
 
         let intervalSpeed: number = this.getRandomIntervalSpeed();
