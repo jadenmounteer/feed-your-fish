@@ -204,6 +204,8 @@ export class FishService {
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
+
+    // Make the fish swim down right
     fish.xPosition += this.swimmingSpeed;
     fish.yPosition += this.swimmingSpeed;
   }
