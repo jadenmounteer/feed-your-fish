@@ -16,14 +16,13 @@ import { convertFirestoreTimestampToDate } from './db-utils';
 export class FishService {
   public animationChangeEmitter = new Subject<FishAnimationData>();
   constructor(private firestore: AngularFirestore) {}
-  private MAXDIRECTIONRIGHT = 200;
-  private MAXDIRECTIONLEFT = 0;
+
   // TODO Replace this with the fish's swimming speed
   private swimmingSpeed = 0.3;
 
   // TODO These will be dynamic
-  private fishHeight = 300;
-  private fishWidth = 300;
+  private fishHeight = 150;
+  private fishWidth = 150;
 
   public updateFishStatus(fishes: Fish[]): void {
     fishes.forEach((fish) => {
@@ -91,17 +90,17 @@ export class FishService {
     screenWidth: number
   ): number {
     if (swimmingDirection === 'swim-left') {
-      return this.getRandomNumberBetween(0, screenWidth);
+      return this.getRandomNumberBetween(0, screenWidth - this.fishWidth);
     } else if (swimmingDirection === 'swim-right') {
-      return this.getRandomNumberBetween(0, screenWidth);
+      return this.getRandomNumberBetween(0, screenWidth - this.fishWidth);
     } else if (swimmingDirection === 'swim-up-left') {
-      return this.getRandomNumberBetween(0, screenWidth);
+      return this.getRandomNumberBetween(0, screenWidth - this.fishWidth);
     } else if (swimmingDirection === 'swim-up-right') {
-      return this.getRandomNumberBetween(0, screenWidth);
+      return this.getRandomNumberBetween(0, screenWidth - this.fishWidth);
     } else if (swimmingDirection === 'swim-down-left') {
-      return this.getRandomNumberBetween(0, screenWidth);
+      return this.getRandomNumberBetween(0, screenWidth - this.fishWidth);
     } else if (swimmingDirection === 'swim-down-right') {
-      return this.getRandomNumberBetween(0, screenWidth);
+      return this.getRandomNumberBetween(0, screenWidth - this.fishWidth);
     }
 
     return 0;
