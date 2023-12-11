@@ -11,6 +11,7 @@ import { SpriteComponent } from '../../sprite/sprite.component';
 import {
   FishAnimation,
   FishAnimationData,
+  FishStatus,
   SwimmingDirection,
   SwimmingSpeed,
 } from 'src/app/types/fish';
@@ -45,6 +46,7 @@ export class GoldfishComponent
 
   @Input() canvasQuery: any;
   @Input() fishName: string | undefined = undefined;
+  @Input() fishStatus!: FishStatus;
 
   @ViewChild('sprite', { static: true }) goldfish: ElementRef | undefined;
 
@@ -213,7 +215,12 @@ export class GoldfishComponent
   }
 
   ngOnInit(): void {
-    this.swimLeft();
+    if (this.fishStatus === 'Dead') {
+      // TODO add dead animation
+      this.swimRight();
+    } else {
+      this.swimLeft();
+    }
 
     // TODO All of this animation logic can be in the Sprite class to be shareable by each fish type.
     this.fishAnimationSub$ = this.fishService.animationChangeEmitter.subscribe(
@@ -222,6 +229,9 @@ export class GoldfishComponent
           return;
         }
         this.currentAnimation = animationData.fishAnimation;
+        console.log(
+          `Making ${animationData.fishName} swim ${this.currentAnimation}`
+        );
         switch (animationData.fishAnimation) {
           case 'swimLeft':
             this.swimLeft();

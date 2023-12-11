@@ -170,11 +170,6 @@ export class FishTankComponent {
       } else {
         fish.xPosition = this.screenWidth / 2;
         fish.yPosition = 0;
-        const animationData: FishAnimationData = {
-          fishName: fish.fishName,
-          fishAnimation: 'dead',
-        };
-        this.fishService.animationChangeEmitter.next(animationData);
       }
     });
   }
