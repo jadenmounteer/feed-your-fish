@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { SpriteComponent } from '../../sprite/sprite.component';
 import {
+  Fish,
   FishAnimation,
   FishAnimationData,
   FishStatus,
@@ -45,8 +46,7 @@ export class GoldfishComponent
   private fishAnimationSub$!: Subscription;
 
   @Input() canvasQuery: any;
-  @Input() fishName: string | undefined = undefined;
-  @Input() fishStatus!: FishStatus;
+  @Input() fish!: Fish;
 
   @ViewChild('sprite', { static: true }) goldfish: ElementRef | undefined;
 
@@ -215,7 +215,7 @@ export class GoldfishComponent
   }
 
   ngOnInit(): void {
-    if (this.fishStatus === 'Dead') {
+    if (this.fish.fishStatus === 'Dead') {
       // TODO add dead animation
       this.swimRight();
     } else {
@@ -251,7 +251,7 @@ export class GoldfishComponent
     // TODO In the future I want to move fish to their own collection so they have an ID. Then we can compare by ID rather tha name
     if (
       animationData.fishAnimation != this.currentAnimation &&
-      this.fishName === animationData.fishName
+      this.fish.fishName === animationData.fishName
     ) {
       this.stopCurrentAnimation();
 
