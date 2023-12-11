@@ -46,4 +46,4 @@ export type FishAnimationData = {
   fishAnimation: FishAnimation;
 };
 
-export type FishAnimation = 'swimLeft' | 'swimRight';
+export type FishAnimation = 'swimLeft' | 'swimRight' | 'dead';

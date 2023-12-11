@@ -5,7 +5,7 @@ import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';
 import { Tank } from 'src/app/types/tank';
 import { transition, style, animate, trigger } from '@angular/animations';
-import { Fish } from 'src/app/types/fish';
+import { Fish, FishAnimationData } from 'src/app/types/fish';
 
 const enterTransition = transition(':enter', [
   style({
@@ -167,6 +167,14 @@ export class FishTankComponent {
           intervalSpeed = this.getRandomIntervalSpeed();
           this.changeDirection(fish);
         }, intervalSpeed);
+      } else {
+        fish.xPosition = this.screenWidth / 2;
+        fish.yPosition = 0;
+        const animationData: FishAnimationData = {
+          fishName: fish.fishName,
+          fishAnimation: 'dead',
+        };
+        this.fishService.animationChangeEmitter.next(animationData);
       }
     });
   }
