@@ -229,9 +229,7 @@ export class GoldfishComponent
           return;
         }
         this.currentAnimation = animationData.fishAnimation;
-        console.log(
-          `Making ${animationData.fishName} swim ${this.currentAnimation}`
-        );
+
         switch (animationData.fishAnimation) {
           case 'swimLeft':
             this.swimLeft();
