@@ -64,51 +64,27 @@ export class GoldfishComponent
   private goldfishSwimmingLeftBlinkingTaleIn: any =
     this.spritePositionToImagePosition(0, 3);
   private goldfishSwimmingLeftBubbles1: any =
-    this.spritePositionToImagePosition(0, 4);
-  private goldfishSwimmingLeftBubbles2: any =
     this.spritePositionToImagePosition(1, 0);
-  private goldfishSwimmingLeftBubbles3: any =
+  private goldfishSwimmingLeftBubbles2: any =
     this.spritePositionToImagePosition(1, 1);
+  private goldfishSwimmingLeftBubbles3: any =
+    this.spritePositionToImagePosition(1, 2);
 
   // Swimming Right
   private goldfishSwimmingRightTaleOut: any =
-    this.spritePositionToImagePosition(1, 2);
-  private goldfishSwimmingRightTaleTuckedIn: any =
     this.spritePositionToImagePosition(1, 3);
-  private goldfishSwimmingRightBlinkingTaleOut: any =
-    this.spritePositionToImagePosition(1, 4);
-  private goldfishSwimmingRightBlinkingTaleIn: any =
+  private goldfishSwimmingRightTaleTuckedIn: any =
     this.spritePositionToImagePosition(2, 0);
-  private goldfishSwimmingRightBubbles1: any =
+  private goldfishSwimmingRightBlinkingTaleOut: any =
     this.spritePositionToImagePosition(2, 1);
-  private goldfishSwimmingRightBubbles2: any =
+  private goldfishSwimmingRightBlinkingTaleIn: any =
     this.spritePositionToImagePosition(2, 2);
-  private goldfishSwimmingRightBubbles3: any =
+  private goldfishSwimmingRightBubbles1: any =
     this.spritePositionToImagePosition(2, 3);
-
-  // Swimming Up
-  private goldfishSwimmingUpTaleOut: any = this.spritePositionToImagePosition(
-    2,
-    4
-  );
-  private goldfishSwimmingUpTaleTuckedIn: any =
+  private goldfishSwimmingRightBubbles2: any =
     this.spritePositionToImagePosition(3, 0);
-  private goldfishSwimmingUpBlinkingTaleOut: any =
+  private goldfishSwimmingRightBubbles3: any =
     this.spritePositionToImagePosition(3, 1);
-  private goldfishSwimmingUpBlinkingTaleIn: any =
-    this.spritePositionToImagePosition(3, 2);
-
-  // Swimming down
-  private goldfishSwimmingDownTaleOut: any = this.spritePositionToImagePosition(
-    3,
-    3
-  );
-  private goldfishSwimmingDownTaleTuckedIn: any =
-    this.spritePositionToImagePosition(3, 4);
-  private goldfishSwimmingDownBlinkingTaleOut: any =
-    this.spritePositionToImagePosition(4, 0);
-  private goldfishSwimmingDownBlinkingTaleIn: any =
-    this.spritePositionToImagePosition(4, 1);
 
   /*** ANIMATIONS ***/
 
@@ -160,48 +136,6 @@ export class GoldfishComponent
     this.goldfishSwimmingRightBubbles2,
     this.goldfishSwimmingRightBubbles3,
     this.goldfishSwimmingRightTaleTuckedIn,
-  ];
-
-  private swimmingUpCycle: any = [
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpTaleTuckedIn,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpTaleTuckedIn,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpBlinkingTaleIn,
-    this.goldfishSwimmingUpBlinkingTaleOut,
-    this.goldfishSwimmingUpTaleTuckedIn,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpTaleTuckedIn,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpTaleTuckedIn,
-    this.goldfishSwimmingUpTaleOut,
-    this.goldfishSwimmingUpBlinkingTaleIn,
-    this.goldfishSwimmingUpBlinkingTaleOut,
-    this.goldfishSwimmingUpTaleTuckedIn,
-  ];
-
-  private swimmingDownCycle: any = [
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownTaleTuckedIn,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownTaleTuckedIn,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownBlinkingTaleIn,
-    this.goldfishSwimmingDownBlinkingTaleOut,
-    this.goldfishSwimmingDownTaleTuckedIn,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownTaleTuckedIn,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownTaleTuckedIn,
-    this.goldfishSwimmingDownTaleOut,
-    this.goldfishSwimmingDownBlinkingTaleIn,
-    this.goldfishSwimmingDownBlinkingTaleOut,
-    this.goldfishSwimmingDownTaleTuckedIn,
   ];
 
   /*** SPEEDS ***/
