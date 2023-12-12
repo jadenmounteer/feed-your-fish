@@ -86,6 +86,10 @@ export class GoldfishComponent
   private goldfishSwimmingRightBubbles3: any =
     this.spritePositionToImagePosition(3, 1);
 
+  // Dead
+  private goldfishDead1: any = this.spritePositionToImagePosition(3, 2);
+  private goldfishDead2: any = this.spritePositionToImagePosition(3, 3);
+
   /*** ANIMATIONS ***/
 
   private swimmingLeftCycle: any = [
@@ -138,6 +142,14 @@ export class GoldfishComponent
     this.goldfishSwimmingRightTaleTuckedIn,
   ];
 
+  private deadCycle: any = [
+    this.goldfishDead1,
+    this.goldfishDead1,
+    this.goldfishDead1,
+    this.goldfishDead2,
+    this.goldfishDead2,
+  ];
+
   /*** SPEEDS ***/
   private swimmingSpeed: number = 200;
 
@@ -151,7 +163,7 @@ export class GoldfishComponent
   ngOnInit(): void {
     if (this.fish.fishStatus === 'Dead') {
       // TODO add dead animation
-      this.swimRight();
+      this.beDead();
     } else {
       this.swimLeft();
     }
@@ -211,6 +223,12 @@ export class GoldfishComponent
     this.currentInterval = setInterval(() => {
       this.animate(this.swimmingRightCycle);
     }, this.swimmingSpeed);
+  }
+
+  public beDead(): void {
+    this.currentInterval = setInterval(() => {
+      this.animate(this.deadCycle);
+    }, 500);
   }
 
   private stopCurrentAnimation() {
