@@ -41,8 +41,6 @@ export class GoldfishComponent
   public override frameIndex: number = 0;
   public override frame: any;
   public override image = new Image();
-  private currentInterval: any;
-  private currentAnimation: string = 'standStill';
   private fishAnimationSub$!: Subscription;
 
   @Input() canvasQuery: any;
@@ -168,41 +166,11 @@ export class GoldfishComponent
       this.swimLeft();
     }
 
-    // TODO All of this animation logic can be in the Sprite class to be shareable by each fish type.
     this.fishAnimationSub$ = this.fishService.animationChangeEmitter.subscribe(
       (animationData: FishAnimationData) => {
-        if (!this.handleNewAnimation(animationData)) {
-          return;
-        }
-        this.currentAnimation = animationData.fishAnimation;
-
-        switch (animationData.fishAnimation) {
-          case 'swimLeft':
-            this.swimLeft();
-            break;
-          case 'swimRight':
-            this.swimRight();
-            break;
-
-          default:
-            this.swimLeft();
-        }
+        this.processAnimation(animationData, this.fish);
       }
     );
-  }
-
-  private handleNewAnimation(animationData: FishAnimationData): boolean {
-    // TODO In the future I want to move fish to their own collection so they have an ID. Then we can compare by ID rather tha name
-    if (
-      animationData.fishAnimation != this.currentAnimation &&
-      this.fish.fishName === animationData.fishName
-    ) {
-      this.stopCurrentAnimation();
-
-      this.currentAnimation = animationData.fishAnimation;
-      return true;
-    }
-    return false;
   }
 
   ngAfterViewInit(): void {
@@ -213,13 +181,13 @@ export class GoldfishComponent
     this.canvasQuery = this.canvasQuery;
   }
 
-  public swimLeft(): void {
+  public override swimLeft(): void {
     this.currentInterval = setInterval(() => {
       this.animate(this.swimmingLeftCycle);
     }, this.swimmingSpeed);
   }
 
-  public swimRight(): void {
+  public override swimRight(): void {
     this.currentInterval = setInterval(() => {
       this.animate(this.swimmingRightCycle);
     }, this.swimmingSpeed);
@@ -229,9 +197,5 @@ export class GoldfishComponent
     this.currentInterval = setInterval(() => {
       this.animate(this.deadCycle);
     }, 500);
-  }
-
-  private stopCurrentAnimation() {
-    clearInterval(this.currentInterval);
   }
 }

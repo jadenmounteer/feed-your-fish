@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Fish, FishAnimationData } from 'src/app/types/fish';
 
 @Component({
   template: '',
@@ -8,6 +9,8 @@ export class SpriteComponent {
   public SPACING_WIDTH: number = 1;
   public SPRITE_WIDTH = 96; // The total width in px divided by the number of columns
   public SPRITE_HEIGHT = 96; // The total height in px divided by the total rows
+  private currentAnimation: string = 'standStill';
+  public currentInterval: any;
 
   frameIndex = 0;
   frame: any;
@@ -50,4 +53,47 @@ export class SpriteComponent {
   public getYCoordinate() {
     return this.canvas.getYCoordinate().y;
   }
+
+  public processAnimation(animationData: FishAnimationData, fish: Fish) {
+    if (!this.handleNewAnimation(animationData, fish)) {
+      return;
+    }
+    this.currentAnimation = animationData.fishAnimation;
+
+    switch (animationData.fishAnimation) {
+      case 'swimLeft':
+        this.swimLeft();
+        break;
+      case 'swimRight':
+        this.swimRight();
+        break;
+
+      default:
+        this.swimLeft();
+    }
+  }
+
+  private handleNewAnimation(
+    animationData: FishAnimationData,
+    fish: Fish
+  ): boolean {
+    // TODO In the future I want to move fish to their own collection so they have an ID. Then we can compare by ID rather tha name
+    if (
+      animationData.fishAnimation != this.currentAnimation &&
+      fish.fishName === animationData.fishName
+    ) {
+      this.stopCurrentAnimation();
+
+      this.currentAnimation = animationData.fishAnimation;
+      return true;
+    }
+    return false;
+  }
+
+  private stopCurrentAnimation() {
+    clearInterval(this.currentInterval);
+  }
+
+  public swimRight(): void {}
+  public swimLeft(): void {}
 }
