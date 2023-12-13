@@ -24,7 +24,29 @@ export type FishType =
   | 'catfish'
   | 'shark'
   | 'mermaid'
-  | 'octopus';
+  | 'octopus'
+  | 'shrimp'
+  | 'crab'
+  | 'lobster'
+  | 'squid'
+  | 'seahorse'
+  | 'jellyfish'
+  | 'starfish'
+  | 'seaturtle'
+  | 'whale'
+  | 'dolphin'
+  | 'blobfish'
+  | 'nessie'
+  | 'pufferfish'
+  | 'anglerfish'
+  | 'piranha'
+  | 'swordfish'
+  | 'clownfish'
+  | 'salmon'
+  | 'tuna'
+  | 'marlin'
+  | 'stingray'
+  | 'eel';
 
 export type FishStatus = 'Happy' | 'Hungry' | 'Dead';
 
