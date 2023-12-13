@@ -13,6 +13,7 @@ type FishDetails = {
   name: string;
   imageURL: string;
   feedingInformation: string;
+  fishType: FishType;
 };
 @Component({
   selector: 'app-add-fish-modal',
@@ -23,7 +24,6 @@ export class AddFishModalComponent {
   @Input() tank!: Tank;
   protected contentLoaded: boolean = false;
   protected fishChosen: boolean = false;
-  protected fishType: FishType | undefined;
   protected fishName: string = '';
   protected alertMessage: string = '';
   protected showAlert: boolean = false;
@@ -35,12 +35,14 @@ export class AddFishModalComponent {
     name: 'Goldfish',
     imageURL: 'assets/goldfish-image.png',
     feedingInformation: 'Feed every 24 hours to keep your goldfish happy.',
+    fishType: 'goldfish',
   };
 
   protected mermaidType: FishDetails = {
     name: 'Mermaid',
     imageURL: 'assets/mermaid-image.png',
     feedingInformation: 'Feed every 24 hours to keep your mermaid happy.',
+    fishType: 'mermaid',
   };
 
   protected listOfFishes: FishDetails[] = [this.goldfishType, this.mermaidType];
@@ -71,11 +73,6 @@ export class AddFishModalComponent {
   protected viewPreviousFish(): void {
     this.indexOfFishViewing--;
     this.setSelectedFishType();
-  }
-
-  protected onSelectFishType(fishType: FishType): void {
-    this.fishChosen = true;
-    this.fishType = fishType;
   }
 
   protected generateRandomName(): void {
@@ -212,14 +209,10 @@ export class AddFishModalComponent {
       return;
     }
 
-    if (!this.fishType) {
-      return;
-    }
-
     const newFish: Fish = {
       fishId: this.angularFirestore.createId(),
       fishName: this.fishName,
-      fishType: this.fishType,
+      fishType: this.selectedFishType.fishType,
       feedingSteps: [this.step1],
       fishStatus: 'Happy',
       daysUntilStatusChange: 1,

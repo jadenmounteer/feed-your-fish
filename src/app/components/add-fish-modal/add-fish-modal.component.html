@@ -54,7 +54,7 @@
     </div>
 
     <div class="next-button">
-      <button (click)="onSelectFishType('goldfish')" class="btn btn-primary">
+      <button (click)="fishChosen = true" class="btn btn-primary">
         Next
         <fa-icon
           class="accept-button"
@@ -66,7 +66,7 @@
 
   <!-- Name the fish -->
   <div class="name-fish-section" *ngIf="fishChosen && !nameChosen">
-    <h5>Name your {{ fishType }}</h5>
+    <h5>Name your {{ selectedFishType.fishType }}</h5>
 
     <div class="fish-image-wrapper">
       <img [src]="selectedFishType.imageURL" class="fish-image" />
