@@ -21,8 +21,8 @@ export class MermaidComponent
   extends SpriteComponent
   implements AfterViewInit, OnInit, OnDestroy
 {
-  public override SPRITE_WIDTH = 32; // The total width in px divided by the number of columns
-  public override SPRITE_HEIGHT = 32; // The total height in px divided by the total rows
+  public override SPRITE_WIDTH = 96; // The total width in px divided by the number of columns
+  public override SPRITE_HEIGHT = 96; // The total height in px divided by the total rows
 
   // Spritesheets from Piskel seem to not have a border or spacing
   public override BORDER_WIDTH: number = 0;
@@ -30,7 +30,7 @@ export class MermaidComponent
 
   public override canvas: any;
   public override context: any;
-  spriteSheetURL = 'assets/sprites/Mermaid.png';
+  spriteSheetURL = 'assets/sprites/mermaid/Mermaid.png';
   public override frameIndex: number = 0;
   public override frame: any;
   public override image = new Image();
