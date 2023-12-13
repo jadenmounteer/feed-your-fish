@@ -28,7 +28,6 @@
     <h5>Choose a fish</h5>
 
     <div class="fish-image-wrapper">
-      <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
       <img [src]="selectedFishType.imageURL" class="fish-image" />
     </div>
     <h5 class="fish-name">{{ selectedFishType.name }}</h5>
@@ -70,7 +69,7 @@
     <h5>Name your {{ fishType }}</h5>
 
     <div class="fish-image-wrapper">
-      <img src="assets/goldfish-image.png" class="fish-image" />
+      <img [src]="selectedFishType.imageURL" class="fish-image" />
     </div>
 
     <div class="inputs-section">
@@ -116,7 +115,7 @@
     <h5>Almost done. How will you feed {{ fishName }}?</h5>
 
     <div class="fish-image-wrapper">
-      <img src="assets/goldfish-image.png" class="fish-image" />
+      <img [src]="selectedFishType.imageURL" class="fish-image" />
     </div>
 
     <div class="inputs-section">
