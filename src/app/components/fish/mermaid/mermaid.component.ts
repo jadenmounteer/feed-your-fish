@@ -21,8 +21,8 @@ export class MermaidComponent
   extends SpriteComponent
   implements AfterViewInit, OnInit, OnDestroy
 {
-  public override SPRITE_WIDTH = 96; // The total width in px divided by the number of columns
-  public override SPRITE_HEIGHT = 96; // The total height in px divided by the total rows
+  public override SPRITE_WIDTH = 32; // The total width in px divided by the number of columns
+  public override SPRITE_HEIGHT = 32; // The total height in px divided by the total rows
 
   // Spritesheets from Piskel seem to not have a border or spacing
   public override BORDER_WIDTH: number = 0;
@@ -30,7 +30,7 @@ export class MermaidComponent
 
   public override canvas: any;
   public override context: any;
-  spriteSheetURL = 'assets/sprites/Goldfish.png';
+  spriteSheetURL = 'assets/sprites/Mermaid.png';
   public override frameIndex: number = 0;
   public override frame: any;
   public override image = new Image();
@@ -39,106 +39,94 @@ export class MermaidComponent
   @Input() canvasQuery: any;
   @Input() fish!: Fish;
 
-  @ViewChild('sprite', { static: true }) goldfish: ElementRef | undefined;
+  @ViewChild('sprite', { static: true }) mermaid: ElementRef | undefined;
 
   /*** Images ***/
 
   // Swimming left
-  private goldfishSwimmingLeftTaleOut: any = this.spritePositionToImagePosition(
+  private swimmingLeftTaleOut: any = this.spritePositionToImagePosition(0, 0);
+  private swimmingLeftTaleTuckedIn: any = this.spritePositionToImagePosition(
     0,
-    0
+    1
   );
-  private goldfishSwimmingLeftTaleTuckedIn: any =
-    this.spritePositionToImagePosition(0, 1);
-  private goldfishSwimmingLeftBlinkingTaleOut: any =
-    this.spritePositionToImagePosition(0, 2);
-  private goldfishSwimmingLeftBlinkingTaleIn: any =
-    this.spritePositionToImagePosition(0, 3);
-  private goldfishSwimmingLeftBubbles1: any =
-    this.spritePositionToImagePosition(1, 0);
-  private goldfishSwimmingLeftBubbles2: any =
-    this.spritePositionToImagePosition(1, 1);
-  private goldfishSwimmingLeftBubbles3: any =
-    this.spritePositionToImagePosition(1, 2);
+  private swimmingLeftBlinkingTaleOut: any = this.spritePositionToImagePosition(
+    0,
+    2
+  );
+
+  private swimmingLeftSinging1: any = this.spritePositionToImagePosition(0, 3);
+  private swimmingLeftSinging2: any = this.spritePositionToImagePosition(1, 0);
+
+  private swimmingLeftSinging3: any = this.spritePositionToImagePosition(1, 1);
 
   // Swimming Right
-  private goldfishSwimmingRightTaleOut: any =
-    this.spritePositionToImagePosition(1, 3);
-  private goldfishSwimmingRightTaleTuckedIn: any =
+  private swimmingRightTaleOut: any = this.spritePositionToImagePosition(1, 2);
+  private swimmingRightTaleTuckedIn: any = this.spritePositionToImagePosition(
+    1,
+    3
+  );
+  private swimmingRightBlinkingTaleOut: any =
     this.spritePositionToImagePosition(2, 0);
-  private goldfishSwimmingRightBlinkingTaleOut: any =
-    this.spritePositionToImagePosition(2, 1);
-  private goldfishSwimmingRightBlinkingTaleIn: any =
-    this.spritePositionToImagePosition(2, 2);
-  private goldfishSwimmingRightBubbles1: any =
-    this.spritePositionToImagePosition(2, 3);
-  private goldfishSwimmingRightBubbles2: any =
-    this.spritePositionToImagePosition(3, 0);
-  private goldfishSwimmingRightBubbles3: any =
-    this.spritePositionToImagePosition(3, 1);
+
+  private swimmingRightSinging1: any = this.spritePositionToImagePosition(2, 1);
+  private swimmingRightSinging2: any = this.spritePositionToImagePosition(2, 2);
+
+  private swimmingRightSinging3: any = this.spritePositionToImagePosition(2, 3);
 
   // Dead
-  private goldfishDead1: any = this.spritePositionToImagePosition(3, 2);
-  private goldfishDead2: any = this.spritePositionToImagePosition(3, 3);
+  private dead1: any = this.spritePositionToImagePosition(3, 0);
+  private dead2: any = this.spritePositionToImagePosition(3, 1);
 
   /*** ANIMATIONS ***/
 
   private swimmingLeftCycle: any = [
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftTaleTuckedIn,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftTaleTuckedIn,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftBlinkingTaleIn,
-    this.goldfishSwimmingLeftBlinkingTaleOut,
-    this.goldfishSwimmingLeftTaleTuckedIn,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftTaleTuckedIn,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftTaleTuckedIn,
-    this.goldfishSwimmingLeftTaleOut,
-    this.goldfishSwimmingLeftBlinkingTaleIn,
-    this.goldfishSwimmingLeftBlinkingTaleOut,
-    this.goldfishSwimmingLeftTaleTuckedIn,
-    this.goldfishSwimmingLeftBubbles1,
-    this.goldfishSwimmingLeftBubbles2,
-    this.goldfishSwimmingLeftBubbles3,
-    this.goldfishSwimmingLeftTaleTuckedIn,
+    this.swimmingLeftTaleOut,
+    this.swimmingLeftTaleTuckedIn,
+    this.swimmingLeftTaleOut,
+    this.swimmingLeftTaleOut,
+    this.swimmingLeftTaleTuckedIn,
+    this.swimmingLeftBlinkingTaleOut,
+    this.swimmingLeftTaleTuckedIn,
+    this.swimmingLeftTaleOut,
+    this.swimmingLeftTaleTuckedIn,
+    this.swimmingLeftTaleOut,
+    this.swimmingLeftTaleOut,
+    this.swimmingLeftTaleTuckedIn,
+    this.swimmingLeftBlinkingTaleOut,
+    this.swimmingLeftTaleTuckedIn,
+    this.swimmingLeftSinging1,
+    this.swimmingLeftSinging2,
+    this.swimmingLeftSinging3,
+    this.swimmingLeftTaleTuckedIn,
   ];
 
   private swimmingRightCycle: any = [
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightTaleTuckedIn,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightTaleTuckedIn,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightBlinkingTaleIn,
-    this.goldfishSwimmingRightBlinkingTaleOut,
-    this.goldfishSwimmingRightTaleTuckedIn,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightTaleTuckedIn,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightTaleTuckedIn,
-    this.goldfishSwimmingRightTaleOut,
-    this.goldfishSwimmingRightBlinkingTaleIn,
-    this.goldfishSwimmingRightBlinkingTaleOut,
-    this.goldfishSwimmingRightTaleTuckedIn,
-    this.goldfishSwimmingRightBubbles1,
-    this.goldfishSwimmingRightBubbles2,
-    this.goldfishSwimmingRightBubbles3,
-    this.goldfishSwimmingRightTaleTuckedIn,
+    this.swimmingRightTaleOut,
+    this.swimmingRightTaleTuckedIn,
+    this.swimmingRightTaleOut,
+    this.swimmingRightTaleOut,
+    this.swimmingRightTaleTuckedIn,
+    this.swimmingRightBlinkingTaleOut,
+    this.swimmingRightTaleTuckedIn,
+    this.swimmingRightTaleOut,
+    this.swimmingRightTaleTuckedIn,
+    this.swimmingRightTaleOut,
+    this.swimmingRightTaleOut,
+    this.swimmingRightTaleTuckedIn,
+    this.swimmingRightBlinkingTaleOut,
+    this.swimmingRightTaleTuckedIn,
+    this.swimmingRightSinging1,
+    this.swimmingRightSinging2,
+    this.swimmingRightSinging3,
+    this.swimmingRightTaleTuckedIn,
   ];
 
   private deadCycle: any = [
-    this.goldfishDead1,
-    this.goldfishDead1,
-    this.goldfishDead1,
-    this.goldfishDead2,
-    this.goldfishDead2,
+    this.dead1,
+    this.dead1,
+    this.dead1,
+    this.dead2,
+    this.dead2,
   ];
 
   /*** SPEEDS ***/
@@ -167,7 +155,7 @@ export class MermaidComponent
   }
 
   ngAfterViewInit(): void {
-    this.canvas = this.goldfish?.nativeElement;
+    this.canvas = this.mermaid?.nativeElement;
     this.context = this.canvas.getContext('2d');
     this.image.src = this.spriteSheetURL;
     this.image.crossOrigin = 'true';
