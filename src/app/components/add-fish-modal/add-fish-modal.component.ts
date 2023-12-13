@@ -45,6 +45,9 @@ export class AddFishModalComponent {
 
   protected listOfFishes: FishDetails[] = [this.goldfishType, this.mermaidType];
 
+  protected selectedFishType: FishDetails =
+    this.listOfFishes[this.indexOfFishViewing];
+
   constructor(
     public activeModal: NgbActiveModal,
     private angularFirestore: AngularFirestore,
@@ -58,10 +61,16 @@ export class AddFishModalComponent {
 
   protected viewNextFish(): void {
     this.indexOfFishViewing++;
+    this.setSelectedFishType();
+  }
+
+  private setSelectedFishType(): void {
+    this.selectedFishType = this.listOfFishes[this.indexOfFishViewing];
   }
 
   protected viewPreviousFish(): void {
     this.indexOfFishViewing--;
+    this.setSelectedFishType();
   }
 
   protected onSelectFishType(fishType: FishType): void {
