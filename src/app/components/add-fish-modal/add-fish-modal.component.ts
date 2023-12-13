@@ -180,6 +180,7 @@ export class AddFishModalComponent {
     }
 
     const newFish: Fish = {
+      fishId: this.angularFirestore.createId(),
       fishName: this.fishName,
       fishType: this.fishType,
       feedingSteps: [this.step1],

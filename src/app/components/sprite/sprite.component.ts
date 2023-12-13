@@ -77,10 +77,9 @@ export class SpriteComponent {
     animationData: FishAnimationData,
     fish: Fish
   ): boolean {
-    // TODO In the future I want to move fish to their own collection so they have an ID. Then we can compare by ID rather tha name
     if (
       animationData.fishAnimation != this.currentAnimation &&
-      fish.fishName === animationData.fishName
+      fish.fishId === animationData.fishId
     ) {
       this.stopCurrentAnimation();
 

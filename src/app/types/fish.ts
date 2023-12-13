@@ -1,6 +1,7 @@
 import { GoldfishComponent } from '../components/fish/goldfish/goldfish.component';
 
 export interface Fish {
+  fishId: string;
   userId: string | undefined;
   fishName: string;
   fishType: FishType;
@@ -40,10 +41,10 @@ export type SwimmingDirection =
 
 export type SwimmingSpeed = '5s' | '30s';
 
-// TODO I will need to add the fish to their own collections so they have their own ID, but for now I compare by name
 export type FishAnimationData = {
   fishName: string;
   fishAnimation: FishAnimation;
+  fishId: string;
 };
 
 export type FishAnimation = 'swimLeft' | 'swimRight' | 'dead';

@@ -7,7 +7,7 @@ import {
   SwimmingDirection,
   SwimmingSpeed,
 } from '../types/fish';
-import { Observable, Subject, from, map } from 'rxjs';
+import { Subject } from 'rxjs';
 import { convertFirestoreTimestampToDate } from './db-utils';
 
 @Injectable({
@@ -137,6 +137,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimLeft',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -147,6 +148,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimRight',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -157,6 +159,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimLeft',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -168,6 +171,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimLeft',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -179,6 +183,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimRight',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -190,6 +195,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimLeft',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
@@ -201,6 +207,7 @@ export class FishService {
     const fishAnimationData: FishAnimationData = {
       fishName: fish.fishName,
       fishAnimation: 'swimRight',
+      fishId: fish.fishId,
     };
 
     this.animationChangeEmitter.next(fishAnimationData);
