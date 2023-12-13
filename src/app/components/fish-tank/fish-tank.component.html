@@ -34,6 +34,12 @@
         [fish]="fish"
       ></app-goldfish>
 
+      <app-mermaid
+        *ngSwitchCase="'mermaid'"
+        class="fish"
+        [fish]="fish"
+      ></app-mermaid>
+
       <span class="fish-info-section">
         <p>{{ fish.fishName }}</p>
       </span>
