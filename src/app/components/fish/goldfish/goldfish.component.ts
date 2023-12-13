@@ -8,14 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SpriteComponent } from '../../sprite/sprite.component';
-import {
-  Fish,
-  FishAnimation,
-  FishAnimationData,
-  FishStatus,
-  SwimmingDirection,
-  SwimmingSpeed,
-} from 'src/app/types/fish';
+import { Fish, FishAnimationData } from 'src/app/types/fish';
 import { FishService } from 'src/app/services/fish.service';
 import { Subscription } from 'rxjs';
 
