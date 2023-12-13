@@ -33,6 +33,24 @@
     </div>
     <h5 class="fish-name">Goldfish</h5>
 
+    <div class="fish-selection-arrows-section">
+      <div
+        class="previous-arrow selection-arrow"
+        *ngIf="indexOfFishViewing > 0"
+        (click)="viewPreviousFish()"
+      >
+        <fa-icon [icon]="iconService.faArrowLeft"></fa-icon>
+      </div>
+
+      <div
+        class="next-arrow selection-arrow"
+        (click)="viewNextFish()"
+        *ngIf="indexOfFishViewing < listOfFishes.length"
+      >
+        <fa-icon [icon]="iconService.faArrowRight"></fa-icon>
+      </div>
+    </div>
+
     <div class="next-button">
       <button (click)="onSelectFishType('goldfish')" class="btn btn-primary">
         Next

@@ -29,6 +29,7 @@ export class AddFishModalComponent {
   protected showAlert: boolean = false;
   protected nameChosen: boolean = false;
   protected step1: string = '';
+  protected indexOfFishViewing: number = 0;
 
   protected goldfishType: FishDetails = {
     name: 'Goldfish',
@@ -42,6 +43,8 @@ export class AddFishModalComponent {
     feedingInformation: 'Feed every 24 hours to keep your mermaid happy.',
   };
 
+  protected listOfFishes: FishDetails[] = [this.goldfishType, this.mermaidType];
+
   constructor(
     public activeModal: NgbActiveModal,
     private angularFirestore: AngularFirestore,
@@ -51,6 +54,14 @@ export class AddFishModalComponent {
     private tankService: TankService
   ) {
     this.contentLoaded = true;
+  }
+
+  protected viewNextFish(): void {
+    this.indexOfFishViewing++;
+  }
+
+  protected viewPreviousFish(): void {
+    this.indexOfFishViewing--;
   }
 
   protected onSelectFishType(fishType: FishType): void {

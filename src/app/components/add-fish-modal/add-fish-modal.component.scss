@@ -41,3 +41,16 @@
   margin-bottom: 16px;
   width: 50%;
 }
+
+.fish-selection-arrows-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  font-size: 2em;
+  color: gold;
+}
+
+.selection-arrow {
+  cursor: pointer;
+}
