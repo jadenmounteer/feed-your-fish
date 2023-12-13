@@ -5,7 +5,7 @@ import { RemoveFishModalComponent } from 'src/app/components/remove-fish-modal/r
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';
-import { Fish } from 'src/app/types/fish';
+import { Fish, FishDetails } from 'src/app/types/fish';
 
 @Component({
   selector: 'app-fish-stats',
@@ -20,6 +20,23 @@ export class FishStatsComponent implements OnInit {
   protected hungryEmoji: string = this.generateRandomHungryEmoji();
   protected happyEmoji: string = this.generateRandomHappyEmoji();
   protected daysOld: number = 0;
+
+  // TODO These were copy and pasted from add-fish-modal.component.ts. Find a way to make these DRY
+  protected goldfishType: FishDetails = {
+    name: 'Goldfish',
+    imageURL: 'assets/goldfish-image.png',
+    feedingInformation: 'Feed every 24 hours to keep your goldfish happy.',
+    fishType: 'goldfish',
+  };
+
+  protected mermaidType: FishDetails = {
+    name: 'Mermaid',
+    imageURL: 'assets/mermaid-image.png',
+    feedingInformation: 'Feed every 24 hours to keep your mermaid happy.',
+    fishType: 'mermaid',
+  };
+
+  protected listOfFishes: FishDetails[] = [this.goldfishType, this.mermaidType];
 
   constructor(
     private fishService: FishService,

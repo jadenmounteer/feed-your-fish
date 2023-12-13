@@ -2,19 +2,13 @@ import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Tank } from 'src/app/types/tank';
-import { Fish, FishType } from 'src/app/types/fish';
+import { Fish, FishDetails, FishType } from 'src/app/types/fish';
 import { IconService } from 'src/app/services/icon.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { FishService } from 'src/app/services/fish.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { TankService } from 'src/app/services/tank.service';
 
-type FishDetails = {
-  name: string;
-  imageURL: string;
-  feedingInformation: string;
-  fishType: FishType;
-};
 @Component({
   selector: 'app-add-fish-modal',
   templateUrl: './add-fish-modal.component.html',

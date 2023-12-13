@@ -6,8 +6,17 @@
     </div>
 
     <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
-    <div class="fish-image-wrapper">
-      <img src="assets/goldfish-image.png" class="fish-image" />
+    <div class="fish-image-wrapper" [ngSwitch]="fish.fishType">
+      <img
+        *ngSwitchCase="'goldfish'"
+        src="assets/goldfish-image.png"
+        class="fish-image"
+      />
+      <img
+        *ngSwitchCase="'mermaid'"
+        src="assets/mermaid-image.png"
+        class="fish-image"
+      />
     </div>
   </div>
 

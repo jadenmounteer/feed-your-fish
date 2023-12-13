@@ -48,3 +48,10 @@ export type FishAnimationData = {
 };
 
 export type FishAnimation = 'swimLeft' | 'swimRight' | 'dead';
+
+export type FishDetails = {
+  name: string;
+  imageURL: string;
+  feedingInformation: string;
+  fishType: FishType;
+};
