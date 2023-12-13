@@ -1,9 +1,15 @@
 .user-button {
-  margin-left: auto;
   width: 30px;
+  cursor: pointer;
 }
 
 .header-container {
   padding: 10px;
   width: 100%;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
