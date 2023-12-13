@@ -9,6 +9,11 @@ import { FishService } from 'src/app/services/fish.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { TankService } from 'src/app/services/tank.service';
 
+type FishDetails = {
+  name: string;
+  imageURL: string;
+  feedingInformation: string;
+};
 @Component({
   selector: 'app-add-fish-modal',
   templateUrl: './add-fish-modal.component.html',
@@ -24,6 +29,18 @@ export class AddFishModalComponent {
   protected showAlert: boolean = false;
   protected nameChosen: boolean = false;
   protected step1: string = '';
+
+  protected goldfishType: FishDetails = {
+    name: 'Goldfish',
+    imageURL: 'assets/goldfish-image.png',
+    feedingInformation: 'Feed every 24 hours to keep your goldfish happy.',
+  };
+
+  protected mermaidType: FishDetails = {
+    name: 'Mermaid',
+    imageURL: 'assets/mermaid-image.png',
+    feedingInformation: 'Feed every 24 hours to keep your mermaid happy.',
+  };
 
   constructor(
     public activeModal: NgbActiveModal,
