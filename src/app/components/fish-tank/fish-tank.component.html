@@ -1,10 +1,11 @@
 <div class="tank">
-  <app-fish-tank-header></app-fish-tank-header>
+  <app-fish-tank-header
+    [tankUserIsViewing]="tankUserIsViewing"
+    [tanks]="tanks"
+  ></app-fish-tank-header>
   <app-tank-info
     [userEmail]="authService.userEmail"
     [userId]="authService.userId"
-    [tankUserIsViewing]="tankUserIsViewing"
-    [tanks]="tanks"
     (toggleFishControls)="showFishControls = $event"
   ></app-tank-info>
 
