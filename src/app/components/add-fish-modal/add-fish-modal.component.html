@@ -29,9 +29,15 @@
 
     <div class="fish-image-wrapper">
       <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
-      <img src="assets/goldfish-image.png" class="fish-image" />
+      <img
+        [src]="listOfFishes[indexOfFishViewing].imageURL"
+        class="fish-image"
+      />
     </div>
-    <h5 class="fish-name">Goldfish</h5>
+    <h5 class="fish-name">{{ listOfFishes[indexOfFishViewing].name }}</h5>
+    <p class="fish-information">
+      {{ listOfFishes[indexOfFishViewing].feedingInformation }}
+    </p>
 
     <div class="fish-selection-arrows-section">
       <div
@@ -45,7 +51,7 @@
       <div
         class="next-arrow selection-arrow"
         (click)="viewNextFish()"
-        *ngIf="indexOfFishViewing < listOfFishes.length"
+        *ngIf="indexOfFishViewing < listOfFishes.length - 1"
       >
         <fa-icon [icon]="iconService.faArrowRight"></fa-icon>
       </div>
