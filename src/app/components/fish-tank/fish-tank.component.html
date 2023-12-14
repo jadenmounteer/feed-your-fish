@@ -28,6 +28,7 @@
         'top.px': fish.yPosition,
       }"
       class="fish-container"
+      (click)="showFishStats(fish)"
     >
       <app-goldfish
         *ngSwitchCase="'goldfish'"
@@ -42,7 +43,7 @@
       ></app-mermaid>
 
       <span class="fish-info-section">
-        <!-- TODO I can make these emojis be different for each fish somehow-->
+        <!-- TODO I can make these emojis be different for each fish somehow. I can do that by componentizing the fish section -->
         <span [ngSwitch]="fish.fishStatus">
           <span *ngSwitchCase="'Happy'">😀</span>
           <span *ngSwitchCase="'Hungry'">🍗</span>

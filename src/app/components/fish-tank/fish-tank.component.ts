@@ -201,4 +201,6 @@ export class FishTankComponent {
     console.log(this.screenHeight);
     console.log(this.screenWidth);
   }
+
+  private showFishStats(fish: Fish): void {}
 }

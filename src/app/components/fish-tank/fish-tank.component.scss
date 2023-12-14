@@ -20,13 +20,15 @@
 
 .fish-container {
   z-index: 1;
-  pointer-events: none;
+
+  // pointer-events: none;
   // border: 2px solid red;
   position: absolute;
   // border: 2px solid red;
   // TODO might want to make this dynamic
   width: 100px;
   height: 100px;
+  cursor: pointer;
 }
 
 // .swimming-diagonal-up-left {
