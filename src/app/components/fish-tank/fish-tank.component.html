@@ -1,15 +1,8 @@
-<div class="tank">
+<div class="tank" (click)="viewingButtons = !viewingButtons">
   <app-fish-tank-header
     [tankUserIsViewing]="tankUserIsViewing"
     [tanks]="tanks"
   ></app-fish-tank-header>
-
-  <div
-    *ngIf="tankUserIsViewing && showFishControls"
-    @fadeIn
-    @fadeOut
-    class="tank-info-section"
-  ></div>
 
   <ng-container *ngIf="tankUserIsViewing">
     <!-- TODO I can possibly do a rotation like this: 'transform': 'rotate(' + fish.rotation + 'deg)' -->
@@ -48,7 +41,13 @@
   </ng-container>
 
   <div class="tank-footer">
-    <button class="btn btn-primary add-fish-button" (click)="addFish()">
+    <button
+      class="btn btn-primary add-fish-button"
+      (click)="addFish()"
+      *ngIf="viewingButtons"
+      @fadeIn
+      @fadeOut
+    >
       Add Fish
       <fa-icon class="accept-button" [icon]="iconService.faAdd"></fa-icon>
     </button>
