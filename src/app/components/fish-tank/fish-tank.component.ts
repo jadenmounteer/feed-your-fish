@@ -7,6 +7,8 @@ import { Tank } from 'src/app/types/tank';
 import { transition, style, animate, trigger } from '@angular/animations';
 import { Fish, FishAnimationData } from 'src/app/types/fish';
 import { EmojiService } from 'src/app/services/emoji.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FishStatsModalComponent } from '../fish-stats-modal/fish-stats-modal.component';
 
 const enterTransition = transition(':enter', [
   style({
@@ -58,6 +60,7 @@ export class FishTankComponent {
 
   constructor(
     protected authService: AuthService,
+    private modalService: NgbModal,
     private tankService: TankService,
     private fishService: FishService,
     private emojiService: EmojiService
@@ -202,7 +205,11 @@ export class FishTankComponent {
     console.log(this.screenWidth);
   }
 
-  protected showFishStats(fish: Fish): void {}
+  // TODO move these methods to their own fish component
+  protected showFishStats(fish: Fish): void {
+    const modalRef = this.modalService.open(FishStatsModalComponent);
+    modalRef.componentInstance.fish = fish;
+  }
 
   protected onFishFlushed(fish: Fish): void {
     if (!this.tankUserIsViewing) {
