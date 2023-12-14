@@ -3,11 +3,6 @@
     [tankUserIsViewing]="tankUserIsViewing"
     [tanks]="tanks"
   ></app-fish-tank-header>
-  <app-tank-info
-    [userEmail]="authService.userEmail"
-    [userId]="authService.userId"
-    (toggleFishControls)="showFishControls = $event"
-  ></app-tank-info>
 
   <div
     *ngIf="tankUserIsViewing && showFishControls"

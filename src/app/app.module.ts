@@ -12,7 +12,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireModule } from '@angular/fire/compat';
 import { LoginOrSignUpComponent } from './components/login-or-sign-up/login-or-sign-up.component';
 import { AuthService } from './services/auth.service';
-import { TankInfoComponent } from './components/tank-info/tank-info.component';
 import { CreateTankModalComponent } from './components/create-tank-modal/create-tank-modal.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FishTankComponent } from './components/fish-tank/fish-tank.component';
@@ -33,7 +32,6 @@ import { FishStatsModalComponent } from './components/fish-stats-modal/fish-stat
     NavComponent,
     GoogleButtonComponent,
     LoginOrSignUpComponent,
-    TankInfoComponent,
     CreateTankModalComponent,
     LandingPageComponent,
     FishTankComponent,
