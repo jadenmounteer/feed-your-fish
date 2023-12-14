@@ -9,6 +9,8 @@ import { Fish, FishAnimationData } from 'src/app/types/fish';
 import { EmojiService } from 'src/app/services/emoji.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FishStatsModalComponent } from '../fish-stats-modal/fish-stats-modal.component';
+import { AddFishModalComponent } from '../add-fish-modal/add-fish-modal.component';
+import { IconService } from 'src/app/services/icon.service';
 
 const enterTransition = transition(':enter', [
   style({
@@ -63,7 +65,8 @@ export class FishTankComponent {
     private modalService: NgbModal,
     private tankService: TankService,
     private fishService: FishService,
-    private emojiService: EmojiService
+    private emojiService: EmojiService,
+    protected iconService: IconService
   ) {
     this.onResize(event);
   }
@@ -203,6 +206,11 @@ export class FishTankComponent {
     this.screenWidth = window.innerWidth;
     console.log(this.screenHeight);
     console.log(this.screenWidth);
+  }
+
+  protected addFish(): void {
+    const modalRef = this.modalService.open(AddFishModalComponent);
+    modalRef.componentInstance.tank = this.tankUserIsViewing;
   }
 
   // TODO move these methods to their own fish component
