@@ -59,6 +59,7 @@ export class FishTankComponent {
   protected screenWidth!: number;
   protected hungryEmoji: string = this.emojiService.generateRandomHungryEmoji();
   protected happyEmoji: string = this.emojiService.generateRandomHappyEmoji();
+  // TODO this can be a directive
   protected viewingButtons: boolean = false;
 
   constructor(

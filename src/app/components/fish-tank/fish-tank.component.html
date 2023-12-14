@@ -2,6 +2,9 @@
   <app-fish-tank-header
     [tankUserIsViewing]="tankUserIsViewing"
     [tanks]="tanks"
+    *ngIf="viewingButtons"
+    @fadeIn
+    @fadeOut
   ></app-fish-tank-header>
 
   <ng-container *ngIf="tankUserIsViewing">
@@ -28,7 +31,7 @@
         [fish]="fish"
       ></app-mermaid>
 
-      <span class="fish-info-section">
+      <span class="fish-info-section" *ngIf="viewingButtons" @fadeIn @fadeOut>
         <!-- TODO I can make these emojis be different for each fish somehow. I can do that by componentizing the fish section -->
         <span [ngSwitch]="fish.fishStatus">
           <span *ngSwitchCase="'Happy'">😀</span>
