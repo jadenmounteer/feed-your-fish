@@ -209,6 +209,23 @@ export class FishTankComponent {
   protected showFishStats(fish: Fish): void {
     const modalRef = this.modalService.open(FishStatsModalComponent);
     modalRef.componentInstance.fish = fish;
+    modalRef.result.then((result) => {
+      if (result === 'fed') {
+        this.onFishFed(fish);
+      } else if (result === 'flushed') {
+        this.onFishFlushed(fish);
+      }
+    });
+  }
+
+  protected onFishFed(fish: Fish): void {
+    if (!this.tankUserIsViewing) {
+      return;
+    }
+    this.tankService.updateTank(
+      this.tankUserIsViewing.id,
+      this.tankUserIsViewing
+    );
   }
 
   protected onFishFlushed(fish: Fish): void {

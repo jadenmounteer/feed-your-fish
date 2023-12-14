@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { EmojiService } from 'src/app/services/emoji.service';
 import { Fish } from 'src/app/types/fish';
 import { RemoveFishModalComponent } from '../remove-fish-modal/remove-fish-modal.component';
+import { FishService } from 'src/app/services/fish.service';
 
 @Component({
   selector: 'app-fish-stats-modal',
@@ -12,7 +13,6 @@ import { RemoveFishModalComponent } from '../remove-fish-modal/remove-fish-modal
 })
 export class FishStatsModalComponent implements OnInit {
   @Input() fish!: Fish;
-  @Output() fishFlushed: EventEmitter<Fish> = new EventEmitter();
 
   protected contentLoaded: boolean = true;
   protected showAlert: boolean = false;
@@ -25,7 +25,8 @@ export class FishStatsModalComponent implements OnInit {
   constructor(
     protected activeModal: NgbActiveModal,
     private emojiService: EmojiService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private fishService: FishService
   ) {}
 
   ngOnInit(): void {
@@ -33,15 +34,8 @@ export class FishStatsModalComponent implements OnInit {
   }
 
   protected feed(): void {
-    // TODO make the feed button just feed the dang fish
-    // const modalRef = this.modalService.open(FeedFishModalComponent);
-    // modalRef.componentInstance.fish = this.fish;
-    // modalRef.result.then((result) => {
-    //   if (result === 'fed') {
-    //     this.fishService.feedFish(this.fish);
-    //     this.fishFed.emit(this.fish);
-    //   }
-    // });
+    this.fishService.feedFish(this.fish);
+    this.activeModal.close('fed');
   }
 
   protected removeFish(): void {
@@ -55,7 +49,7 @@ export class FishStatsModalComponent implements OnInit {
         audio.src = 'assets/sounds/toilet-flush.m4a';
         audio.load();
         audio.play();
-        this.fishFlushed.emit(this.fish);
+        this.activeModal.close('flushed');
       }
     });
   }
