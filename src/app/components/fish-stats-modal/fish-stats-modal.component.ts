@@ -1,50 +1,47 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FeedFishModalComponent } from 'src/app/components/feed-fish-modal/feed-fish-modal.component';
-import { RemoveFishModalComponent } from 'src/app/components/remove-fish-modal/remove-fish-modal.component';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
 import { EmojiService } from 'src/app/services/emoji.service';
-import { FishService } from 'src/app/services/fish.service';
-import { TankService } from 'src/app/services/tank.service';
-import { Fish, FishDetails } from 'src/app/types/fish';
+import { Fish } from 'src/app/types/fish';
+import { RemoveFishModalComponent } from '../remove-fish-modal/remove-fish-modal.component';
 
 @Component({
-  selector: 'app-fish-stats',
-  templateUrl: './fish-stats.component.html',
-  styleUrls: ['./fish-stats.component.scss'],
+  selector: 'app-fish-stats-modal',
+  templateUrl: './fish-stats-modal.component.html',
+  styleUrls: ['./fish-stats-modal.component.scss'],
 })
-export class FishStatsComponent implements OnInit {
+export class FishStatsModalComponent implements OnInit {
   @Input() fish!: Fish;
-  @Output() fishFed: EventEmitter<Fish> = new EventEmitter();
   @Output() fishFlushed: EventEmitter<Fish> = new EventEmitter();
+
+  protected contentLoaded: boolean = true;
+  protected showAlert: boolean = false;
+  protected alertMessage: string = '';
+  protected daysOld: number = 0;
   protected foodEmoji: string = '🍔';
   protected hungryEmoji: string = this.emojiService.generateRandomHungryEmoji();
   protected happyEmoji: string = this.emojiService.generateRandomHappyEmoji();
-  protected daysOld: number = 0;
 
   constructor(
-    private fishService: FishService,
-    private modalService: NgbModal,
-    private tankService: TankService,
-    private emojiService: EmojiService
-  ) {
-    this.foodEmoji = this.emojiService.generateRandomFoodEmoji();
-  }
+    protected activeModal: NgbActiveModal,
+    private emojiService: EmojiService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.daysOld = this.calculateDaysOld();
   }
 
   protected feed(): void {
-    const modalRef = this.modalService.open(FeedFishModalComponent);
-    modalRef.componentInstance.fish = this.fish;
-
-    modalRef.result.then((result) => {
-      if (result === 'fed') {
-        this.fishService.feedFish(this.fish);
-        this.fishFed.emit(this.fish);
-      }
-    });
+    // TODO make the feed button just feed the dang fish
+    // const modalRef = this.modalService.open(FeedFishModalComponent);
+    // modalRef.componentInstance.fish = this.fish;
+    // modalRef.result.then((result) => {
+    //   if (result === 'fed') {
+    //     this.fishService.feedFish(this.fish);
+    //     this.fishFed.emit(this.fish);
+    //   }
+    // });
   }
 
   protected removeFish(): void {

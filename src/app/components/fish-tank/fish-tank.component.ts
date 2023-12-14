@@ -202,5 +202,20 @@ export class FishTankComponent {
     console.log(this.screenWidth);
   }
 
-  private showFishStats(fish: Fish): void {}
+  protected showFishStats(fish: Fish): void {}
+
+  protected onFishFlushed(fish: Fish): void {
+    if (!this.tankUserIsViewing) {
+      return;
+    }
+    this.tankUserIsViewing.fishes = this.tankService.deleteFishFromTank(
+      fish,
+      this.tankUserIsViewing.fishes
+    );
+
+    this.tankService.updateTank(
+      this.tankUserIsViewing.id,
+      this.tankUserIsViewing
+    );
+  }
 }

@@ -1,0 +1,45 @@
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fish-stats-bubble {
+  width: 400px;
+  padding: 4px;
+}
+
+.fish-image-wrapper {
+  margin-left: auto;
+}
+.fish-image {
+  width: 50px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-section {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.Happy {
+  color: green;
+}
+
+.Hungry {
+  color: orange;
+}
+
+.Dead {
+  color: grey;
+}
+
+.fish-info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+}

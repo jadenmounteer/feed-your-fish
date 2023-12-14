@@ -26,6 +26,7 @@ import { FeedFishModalComponent } from './components/feed-fish-modal/feed-fish-m
 import { RemoveFishModalComponent } from './components/remove-fish-modal/remove-fish-modal.component';
 import { FishTankHeaderComponent } from './components/fish-tank-header/fish-tank-header.component';
 import { MermaidComponent } from './components/fish/mermaid/mermaid.component';
+import { FishStatsModalComponent } from './components/fish-stats-modal/fish-stats-modal.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MermaidComponent } from './components/fish/mermaid/mermaid.component';
     RemoveFishModalComponent,
     FishTankHeaderComponent,
     MermaidComponent,
+    FishStatsModalComponent,
   ],
   imports: [
     BrowserModule,

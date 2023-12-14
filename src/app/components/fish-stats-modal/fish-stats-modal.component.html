@@ -1,0 +1,63 @@
+<div class="modal-header">
+  <div class="fish-info-section">
+    <h5>{{ fish.fishName }}</h5>
+    <span>&nbsp;- {{ daysOld }} day(s) old</span>
+  </div>
+
+  <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
+  <div class="fish-image-wrapper" [ngSwitch]="fish.fishType">
+    <img
+      *ngSwitchCase="'goldfish'"
+      src="assets/goldfish-image.png"
+      class="fish-image"
+    />
+    <img
+      *ngSwitchCase="'mermaid'"
+      src="assets/mermaid-image.png"
+      class="fish-image"
+    />
+  </div>
+</div>
+
+<div class="modal-body">
+  <ngb-alert
+    class="danger-alert"
+    [dismissible]="true"
+    [animation]="true"
+    type="danger"
+    *ngIf="showAlert"
+  >
+    {{ alertMessage }}
+  </ngb-alert>
+  <span class="loading-icon" *ngIf="!contentLoaded">
+    <app-loading-spinner></app-loading-spinner>
+  </span>
+
+  <div class="content">
+    <span [ngSwitch]="fish.fishStatus">
+      <span *ngSwitchCase="'Happy'">{{ happyEmoji }}</span>
+      <span *ngSwitchCase="'Hungry'">{{ hungryEmoji }}</span>
+      <span *ngSwitchCase="'Dead'">☠️</span>
+    </span>
+    <span [ngSwitch]="fish.fishStatus">
+      <span [ngClass]="fish.fishStatus">{{ fish.fishStatus }}</span>
+    </span>
+  </div>
+
+  <div class="button-section">
+    <button
+      class="btn btn-primary"
+      *ngIf="fish.fishStatus === 'Dead'"
+      (click)="removeFish()"
+    >
+      Remove Fish 🚽
+    </button>
+    <button
+      class="btn btn-primary"
+      (click)="feed()"
+      *ngIf="fish.fishStatus === 'Happy' || fish.fishStatus === 'Hungry'"
+    >
+      Feed {{ foodEmoji }}
+    </button>
+  </div>
+</div>
