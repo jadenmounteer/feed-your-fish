@@ -1,21 +1,31 @@
 <div class="modal-header">
-  <div class="fish-info-section">
-    <h5>{{ fish.fishName }}</h5>
-    <span>&nbsp;- {{ daysOld }} day(s) old</span>
+  <div class="top-header">
+    <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
+    <div class="fish-image-wrapper" [ngSwitch]="fish.fishType">
+      <img
+        *ngSwitchCase="'goldfish'"
+        src="assets/goldfish-image.png"
+        class="fish-image"
+      />
+      <img
+        *ngSwitchCase="'mermaid'"
+        src="assets/mermaid-image.png"
+        class="fish-image"
+      />
+    </div>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    ></button>
   </div>
 
-  <!-- TODO I should have a fishType type that has the url to the image that can be dynamically used -->
-  <div class="fish-image-wrapper" [ngSwitch]="fish.fishType">
-    <img
-      *ngSwitchCase="'goldfish'"
-      src="assets/goldfish-image.png"
-      class="fish-image"
-    />
-    <img
-      *ngSwitchCase="'mermaid'"
-      src="assets/mermaid-image.png"
-      class="fish-image"
-    />
+  <div class="fish-stats-header">
+    <div class="fish-info-section">
+      <h5>{{ fish.fishName }}</h5>
+      <span>&nbsp;- {{ daysOld }} day(s) old</span>
+    </div>
   </div>
 </div>
 
