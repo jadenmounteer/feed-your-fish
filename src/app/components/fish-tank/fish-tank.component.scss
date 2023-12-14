@@ -1,5 +1,9 @@
 @import "../../../styles.scss";
 
+// Get rid of scrolling on entire page
+html {
+  overflow: hidden;
+}
 .tank {
   display: flex;
   flex-direction: column;
@@ -8,6 +12,7 @@
   height: calc(100vh);
   width: 100vw;
   position: relative;
+  // get rid of scrolling
 }
 
 .tank-info-section {
