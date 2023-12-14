@@ -6,6 +6,7 @@ import { TankService } from 'src/app/services/tank.service';
 import { Tank } from 'src/app/types/tank';
 import { transition, style, animate, trigger } from '@angular/animations';
 import { Fish, FishAnimationData } from 'src/app/types/fish';
+import { EmojiService } from 'src/app/services/emoji.service';
 
 const enterTransition = transition(':enter', [
   style({
@@ -52,11 +53,14 @@ export class FishTankComponent {
   protected showFishControls = false;
   protected screenHeight!: number;
   protected screenWidth!: number;
+  protected hungryEmoji: string = this.emojiService.generateRandomHungryEmoji();
+  protected happyEmoji: string = this.emojiService.generateRandomHappyEmoji();
 
   constructor(
     protected authService: AuthService,
     private tankService: TankService,
-    private fishService: FishService
+    private fishService: FishService,
+    private emojiService: EmojiService
   ) {
     this.onResize(event);
   }

@@ -42,6 +42,12 @@
       ></app-mermaid>
 
       <span class="fish-info-section">
+        <!-- TODO I can make these emojis be different for each fish somehow-->
+        <span [ngSwitch]="fish.fishStatus">
+          <span *ngSwitchCase="'Happy'">😀</span>
+          <span *ngSwitchCase="'Hungry'">🍗</span>
+          <span *ngSwitchCase="'Dead'">☠️</span>
+        </span>
         <p>{{ fish.fishName }}</p>
       </span>
     </div>
