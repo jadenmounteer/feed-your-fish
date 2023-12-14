@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FeedFishModalComponent } from 'src/app/components/feed-fish-modal/feed-fish-modal.component';
 import { RemoveFishModalComponent } from 'src/app/components/remove-fish-modal/remove-fish-modal.component';
 import { convertFirestoreTimestampToDate } from 'src/app/services/db-utils';
+import { EmojiService } from 'src/app/services/emoji.service';
 import { FishService } from 'src/app/services/fish.service';
 import { TankService } from 'src/app/services/tank.service';
 import { Fish, FishDetails } from 'src/app/types/fish';
@@ -17,8 +18,8 @@ export class FishStatsComponent implements OnInit {
   @Output() fishFed: EventEmitter<Fish> = new EventEmitter();
   @Output() fishFlushed: EventEmitter<Fish> = new EventEmitter();
   protected foodEmoji: string = '🍔';
-  protected hungryEmoji: string = this.generateRandomHungryEmoji();
-  protected happyEmoji: string = this.generateRandomHappyEmoji();
+  protected hungryEmoji: string = this.emojiService.generateRandomHungryEmoji();
+  protected happyEmoji: string = this.emojiService.generateRandomHappyEmoji();
   protected daysOld: number = 0;
 
   // TODO These were copy and pasted from add-fish-modal.component.ts. Find a way to make these DRY
@@ -41,9 +42,10 @@ export class FishStatsComponent implements OnInit {
   constructor(
     private fishService: FishService,
     private modalService: NgbModal,
-    private tankService: TankService
+    private tankService: TankService,
+    private emojiService: EmojiService
   ) {
-    this.foodEmoji = this.generateRandomFoodEmoji();
+    this.foodEmoji = this.emojiService.generateRandomFoodEmoji();
   }
 
   ngOnInit(): void {
@@ -76,119 +78,6 @@ export class FishStatsComponent implements OnInit {
         this.fishFlushed.emit(this.fish);
       }
     });
-  }
-
-  private generateRandomFoodEmoji(): string {
-    const foodEmojis: string[] = [
-      '🍔',
-      '🍕',
-      '🍟',
-      '🍗',
-      '🥩',
-      '🥓',
-      '🍖',
-      '🌭',
-      '🍿',
-      '🍱',
-      '🍛',
-      '🍜',
-      '🍝',
-      '🍣',
-      '🍤',
-      '🍙',
-      '🍚',
-      '🍘',
-      '🥮',
-      '🥟',
-      '🍢',
-      '🍡',
-      '🍧',
-      '🍨',
-      '🍦',
-      '🥧',
-      '🧁',
-      '🍰',
-      '🎂',
-      '🍮',
-      '🍭',
-      '🍬',
-      '🍫',
-      '🍩',
-      '🥥',
-      '🥝',
-      '🍇',
-      '🍉',
-      '🍊',
-      '🍋',
-      '🍌',
-      '🍍',
-      '🍎',
-      '🍏',
-      '🍐',
-      '🍑',
-      '🍒',
-      '🍓',
-      '🥭',
-      '🍅',
-      '🥑',
-      '🥦',
-      '🥬',
-      '🥒',
-      '🌶',
-      '🌽',
-      '🥕',
-      '🥔',
-      '🍠',
-      '🥐',
-      '🥯',
-      '🍞',
-      '🥖',
-      '🍳',
-      '🥗',
-    ];
-    const randomIndex: number = Math.floor(Math.random() * foodEmojis.length);
-    return foodEmojis[randomIndex];
-  }
-
-  private generateRandomHungryEmoji(): string {
-    const hungryEmojis: string[] = [
-      '🥺',
-      '😒',
-      '😞',
-      '😟',
-      '😠',
-      '😡',
-      '🤬',
-      '😔',
-      '😕',
-      '🙁',
-      '🤒',
-    ];
-    const randomIndex: number = Math.floor(Math.random() * hungryEmojis.length);
-    return hungryEmojis[randomIndex];
-  }
-
-  private generateRandomHappyEmoji(): string {
-    const happyEmojis: string[] = [
-      '🥰',
-      '😍',
-      '😁',
-      '😃',
-      '😄',
-      '😆',
-      '😊',
-      '😎',
-      '🤪',
-      '🤩',
-      '🥳',
-      '😏',
-      '😌',
-      '😛',
-      '😇',
-      '🤠',
-    ];
-    const randomIndex: number = Math.floor(Math.random() * happyEmojis.length);
-    return happyEmojis[randomIndex];
   }
 
   private calculateDaysOld(): number {
