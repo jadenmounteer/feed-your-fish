@@ -61,6 +61,7 @@ export class FishTankComponent {
   protected happyEmoji: string = this.emojiService.generateRandomHappyEmoji();
   // TODO this can be a directive
   protected viewingButtons: boolean = false;
+  protected clearButtonsTimeout: any;
 
   constructor(
     protected authService: AuthService,
@@ -78,6 +79,23 @@ export class FishTankComponent {
       this.tankService.tankViewingChanged.subscribe((tank: Tank) => {
         this.tankUserIsViewing = tank;
       });
+  }
+
+  protected toggleViewingButtons(): void {
+    if (!this.viewingButtons) {
+      this.viewingButtons = true;
+      this.setClearButtonsTimeout();
+      return;
+    }
+
+    clearTimeout(this.clearButtonsTimeout);
+    this.setClearButtonsTimeout();
+  }
+
+  private setClearButtonsTimeout(): void {
+    this.clearButtonsTimeout = setTimeout(() => {
+      this.viewingButtons = false;
+    }, 10000);
   }
 
   private loadTanks(): void {
