@@ -14,9 +14,7 @@
     @fadeIn
     @fadeOut
     class="tank-info-section"
-  >
-    <app-fish-stats-section [tank]="tankUserIsViewing"></app-fish-stats-section>
-  </div>
+  ></div>
 
   <ng-container *ngIf="tankUserIsViewing">
     <!-- TODO I can possibly do a rotation like this: 'transform': 'rotate(' + fish.rotation + 'deg)' -->

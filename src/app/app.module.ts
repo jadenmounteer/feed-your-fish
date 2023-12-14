@@ -17,10 +17,8 @@ import { CreateTankModalComponent } from './components/create-tank-modal/create-
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FishTankComponent } from './components/fish-tank/fish-tank.component';
 import { AuthGuard } from './services/auth.guard';
-import { FishStatsSectionComponent } from './components/fish-stats-section/fish-stats-section.component';
 import { AddFishModalComponent } from './components/add-fish-modal/add-fish-modal.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
-import { FishStatsComponent } from './components/fish-stats/fish-stats.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeedFishModalComponent } from './components/feed-fish-modal/feed-fish-modal.component';
 import { RemoveFishModalComponent } from './components/remove-fish-modal/remove-fish-modal.component';
@@ -34,16 +32,13 @@ import { FishStatsModalComponent } from './components/fish-stats-modal/fish-stat
     GoldfishComponent,
     NavComponent,
     GoogleButtonComponent,
-
     LoginOrSignUpComponent,
     TankInfoComponent,
     CreateTankModalComponent,
     LandingPageComponent,
     FishTankComponent,
-    FishStatsSectionComponent,
     AddFishModalComponent,
     LoadingSpinnerComponent,
-    FishStatsComponent,
     FeedFishModalComponent,
     RemoveFishModalComponent,
     FishTankHeaderComponent,
