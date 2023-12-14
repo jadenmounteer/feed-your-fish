@@ -228,6 +228,11 @@ export class FishTankComponent {
     console.log(this.screenWidth);
   }
 
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    this.toggleViewingButtons();
+  }
+
   protected addFish(): void {
     const modalRef = this.modalService.open(AddFishModalComponent);
     modalRef.componentInstance.tank = this.tankUserIsViewing;
